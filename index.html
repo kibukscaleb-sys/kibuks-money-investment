@@ -1,58 +1,21 @@
 <!doctype html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Kibuks Money Investments dashboard" />
-  <title>Kibuks Money Investments</title>
-  <link rel="stylesheet" href="styles.css" />
-</head>
-<body>
-  <div class="app-shell">
-    <aside class="sidebar">
-      <div class="brand"><div class="brand-mark">K</div><div><strong>Kibuks</strong><span>Money Investments</span></div></div>
-      <nav>
-        <a class="active" href="#dashboard">Dashboard</a>
-        <a href="#investments">Investments</a>
-        <a href="#deposit">Deposit</a>
-        <a href="#withdraw">Withdraw</a>
-        <a href="#transactions">Transactions</a>
-      </nav>
-      <div class="sidebar-footer">Secure investment dashboard</div>
-    </aside>
-
-    <main class="main">
-      <header class="topbar">
-        <div><p class="eyebrow">Welcome back</p><h1>Dashboard</h1></div>
-        <button class="profile">K<span>▾</span></button>
-      </header>
-
-      <section id="dashboard" class="hero-card">
-        <div><div class="eyebrow">Total investment balance</div><div class="balance">UGX 0</div><p class="muted">Connect Supabase to load your live balance.</p></div>
-        <div class="hero-actions"><button class="btn primary" onclick="showNotice('Deposit flow coming next.')">Deposit</button><button class="btn ghost" onclick="showNotice('Withdrawal flow coming next.')">Withdraw</button></div>
-      </section>
-
-      <section class="stats">
-        <article><span>Available balance</span><strong>UGX 0</strong><small>Ready to withdraw</small></article>
-        <article><span>Total invested</span><strong>UGX 0</strong><small>Your active capital</small></article>
-        <article><span>Total profits</span><strong>UGX 0</strong><small>Investment earnings</small></article>
-      </section>
-
-      <section id="investments" class="panel">
-        <div class="panel-head"><div><h2>My investments</h2><p class="muted">Your active investment plans will appear here.</p></div><button class="btn primary" onclick="showNotice('Investment plans will be connected to Supabase.')">Explore plans</button></div>
-        <div class="empty"><div class="empty-icon">↗</div><h3>No investments yet</h3><p>Once you make a deposit and choose an investment plan, your portfolio will appear here.</p></div>
-      </section>
-
-      <section class="grid-two">
-        <article id="transactions" class="panel"><div class="panel-head"><h2>Recent transactions</h2><a href="#transactions">View all</a></div><div class="empty compact"><p>No transactions yet.</p></div></article>
-        <article class="panel"><div class="panel-head"><h2>Account status</h2></div><div class="status-row"><span>Supabase</span><b class="status pending">Not connected</b></div><div class="status-row"><span>Authentication</span><b class="status pending">Next step</b></div><div class="status-row"><span>Mobile Money</span><b class="status pending">Next step</b></div></article>
-      </section>
-
-      <section id="deposit" class="hidden-anchor"></section><section id="withdraw" class="hidden-anchor"></section>
-      <footer>Kibuks Money Investments · Dashboard foundation</footer>
-    </main>
-  </div>
-  <div id="toast" class="toast"></div>
-  <script src="app.js"></script>
-</body>
-</html>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Kibuks Money Investments dashboard"><title>Kibuks Money Investments</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css"></head>
+<body><div class="app">
+<aside class="sidebar"><div class="brand"><div class="logo">K</div><div><b>Kibuks</b><small>Money Investments</small></div></div>
+<nav><a class="active" href="#dashboard">⌂ <span>Dashboard</span></a><a href="#investments">◈ <span>Investments</span></a><a href="#deposit">＋ <span>Deposit</span></a><a href="#withdraw">↗ <span>Withdraw</span></a><a href="#transactions">↔ <span>Transactions</span></a></nav>
+<div class="side-bottom"><div class="help"><span>?</span><div><b>Need help?</b><small>Contact support</small></div></div><button class="logout" onclick="showNotice('Logout will be enabled with authentication.')">↪ <span>Log out</span></button></div></aside>
+<main><header class="topbar"><button class="mobile-menu" onclick="toggleMenu()">☰</button><div><div class="kicker">PERSONAL OVERVIEW</div><h1>Good morning, Kibuks</h1><p>Here’s what’s happening with your investments.</p></div><div class="top-actions"><button class="icon-btn" onclick="showNotice('Notifications will appear here.')">♢<i></i></button><button class="avatar">K</button></div></header>
+<section id="dashboard" class="balance-card"><div class="balance-main"><div class="label">TOTAL PORTFOLIO VALUE <button class="eye" onclick="toggleBalance()">◉</button></div><div class="amount" id="amount">UGX 0</div><div class="gain"><span>↑ 0.00%</span> this month</div></div><div class="balance-actions"><button class="btn light" onclick="openAction('deposit')">＋ Deposit</button><button class="btn outline" onclick="openAction('withdraw')">Withdraw ↗</button></div><div class="shine"></div></section>
+<section class="stats"><article><div class="stat-icon blue">◉</div><div><span>Available balance</span><strong>UGX 0</strong><small>Available to withdraw</small></div></article><article><div class="stat-icon purple">◈</div><div><span>Total invested</span><strong>UGX 0</strong><small>Across active plans</small></div></article><article><div class="stat-icon green">↗</div><div><span>Total profits</span><strong>UGX 0</strong><small>Investment earnings</small></div></article></section>
+<section class="content-grid"><div id="investments" class="panel large"><div class="panel-head"><div><h2>My investments</h2><p>Track your active plans and returns.</p></div><button class="text-btn" onclick="showNotice('Investment plans will be connected next.')">View plans →</button></div><div class="empty-invest"><div class="empty-orb">◈</div><h3>Your portfolio is ready</h3><p>Start by making a deposit and selecting an investment plan. Your performance will appear here.</p><button class="btn dark" onclick="openAction('deposit')">Start investing</button></div></div>
+<div class="panel"><div class="panel-head"><div><h2>Quick actions</h2><p>Manage your money</p></div></div><div class="quick"><button onclick="openAction('deposit')"><span class="qa blue-bg">＋</span><div><b>Make a deposit</b><small>Add funds with Mobile Money</small></div><em>→</em></button><button onclick="openAction('withdraw')"><span class="qa purple-bg">↗</span><div><b>Withdraw funds</b><small>Send money to your Mobile Money</small></div><em>→</em></button><button onclick="showNotice('Transaction history will be connected next.')"><span class="qa gray-bg">↔</span><div><b>View transactions</b><small>Review your account activity</small></div><em>→</em></button></div></div></section>
+<section class="content-grid lower"><div id="transactions" class="panel"><div class="panel-head"><div><h2>Recent transactions</h2><p>Your latest account activity.</p></div><button class="text-btn" onclick="showNotice('Transaction history will be connected next.')">View all →</button></div><div class="empty-row"><span class="tx-icon">↔</span><div><b>No transactions yet</b><small>Your deposits and withdrawals will appear here.</small></div></div></div>
+<div class="panel"><div class="panel-head"><div><h2>Account status</h2><p>System connection overview.</p></div></div><div class="status"><div><span>Dashboard</span><b class="online">● Ready</b></div><div><span>Authentication</span><b class="soon">○ Coming next</b></div><div><span>Supabase</span><b class="soon">○ Coming next</b></div><div><span>Mobile Money</span><b class="soon">○ Coming next</b></div></div></div></section>
+<footer>© 2026 Kibuks Money Investments <span>•</span> Dashboard preview</footer></main></div>
+<div class="toast" id="toast"></div><div class="modal" id="modal"><div class="modal-card"><button class="close" onclick="closeModal()">×</button><div class="modal-icon" id="modalIcon">＋</div><h2 id="modalTitle">Deposit</h2><p id="modalText">This flow will be connected to your real backend next.</p><label>Amount (UGX)<input type="number" placeholder="0" min="0"></label><button class="btn dark full" onclick="showNotice('Backend connection comes next.');closeModal()">Continue</button></div></div>
+<script src="app.js"></script></body></html>
