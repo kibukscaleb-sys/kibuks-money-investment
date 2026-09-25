@@ -105,17 +105,26 @@
 </section>
 
 <section class="stat-grid" aria-label="Portfolio summary">
-        <article class="stat-card">
-          <div class="stat-symbol symbol-blue">◉</div>
-          <div><span>Available balance</span><strong>UGX 0</strong><small>Ready to withdraw</small></div>
+        <article class="stat-card balance-stat">
+          <div class="stat-top"><div class="stat-symbol symbol-blue">◉</div><span class="stat-badge">LIQUID</span></div>
+          <span class="stat-label">Available balance</span>
+          <strong>UGX 0</strong>
+          <div class="stat-meta"><small>Ready to withdraw</small><em>—</em></div>
+          <div class="stat-spark"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
         </article>
-        <article class="stat-card">
-          <div class="stat-symbol symbol-violet">◈</div>
-          <div><span>Total invested</span><strong>UGX 0</strong><small>Across active plans</small></div>
+        <article class="stat-card invested-stat">
+          <div class="stat-top"><div class="stat-symbol symbol-violet">◈</div><span class="stat-badge">PORTFOLIO</span></div>
+          <span class="stat-label">Total invested</span>
+          <strong>UGX 0</strong>
+          <div class="stat-meta"><small>Across active plans</small><em>0 plans</em></div>
+          <div class="stat-progress"><span></span></div>
         </article>
-        <article class="stat-card">
-          <div class="stat-symbol symbol-green">↗</div>
-          <div><span>Total profits</span><strong>UGX 0</strong><small>Investment earnings</small></div>
+        <article class="stat-card profit-stat">
+          <div class="stat-top"><div class="stat-symbol symbol-green">↗</div><span class="stat-badge green-badge">PERFORMANCE</span></div>
+          <span class="stat-label">Total profits</span>
+          <strong>UGX 0</strong>
+          <div class="stat-meta"><small>Investment earnings</small><em>0.00%</em></div>
+          <div class="profit-line"><span></span></div>
         </article>
       </section>
 
@@ -130,11 +139,19 @@
             <button class="link-btn" onclick="showNotice('Investment plans will be connected to the backend next.')">Explore plans →</button>
           </div>
 
-          <div class="empty-state">
-            <div class="pulse-icon">◈</div>
-            <h3>Your portfolio is ready</h3>
-            <p>No active investments yet. Make a deposit, then choose a plan when the backend is connected.</p>
-            <button class="primary-btn compact" onclick="openAction('deposit')">Start with a deposit</button>
+          <div class="investment-preview">
+            <div class="investment-card">
+              <div class="investment-card-head"><span class="plan-icon">S</span><div><b>Starter Plan</b><small>Preview · 30 days</small></div><span class="plan-status">AVAILABLE</span></div>
+              <div class="plan-row"><span>Minimum</span><strong>UGX 50,000</strong></div>
+              <div class="plan-row"><span>Term</span><strong>30 days</strong></div>
+              <div class="plan-foot"><span>Demo plan — returns activate with backend.</span><button class="mini-action" onclick="showNotice('Investment plans will be connected to the backend next.')">View plan →</button></div>
+            </div>
+            <div class="investment-card">
+              <div class="investment-card-head"><span class="plan-icon violet-plan">G</span><div><b>Growth Plan</b><small>Preview · 90 days</small></div><span class="plan-status violet-status">PLANNED</span></div>
+              <div class="plan-row"><span>Minimum</span><strong>UGX 250,000</strong></div>
+              <div class="plan-row"><span>Term</span><strong>90 days</strong></div>
+              <div class="plan-foot"><span>Illustrative details only.</span><button class="mini-action" onclick="showNotice('Growth plan will be connected to the backend next.')">View plan →</button></div>
+            </div>
           </div>
         </article>
 
