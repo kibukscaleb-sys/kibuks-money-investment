@@ -1,1 +1,77 @@
-function showNotice(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');clearTimeout(window._toast);window._toast=setTimeout(()=>t.classList.remove('show'),2600)}function toggleMenu(){document.querySelector('.sidebar').classList.toggle('open')}function toggleBalance(){const a=document.getElementById('amount');a.textContent=a.textContent==='UGX 0'?'UGX •••••••':'UGX 0'}function openAction(type){const m=document.getElementById('modal');document.getElementById('modalTitle').textContent=type==='deposit'?'Make a deposit':'Withdraw funds';document.getElementById('modalIcon').textContent=type==='deposit'?'＋':'↗';document.getElementById('modalText').textContent=type==='deposit'?'Enter the amount you want to deposit. Mobile Money will be connected in the next step.':'Enter the amount you want to withdraw. Automatic Mobile Money payout will be connected in the next step.';m.classList.add('show')}function closeModal(){document.getElementById('modal').classList.remove('show')}document.addEventListener('click',e=>{if(e.target.classList.contains('modal'))closeModal()})
+const root=document.documentElement;
+let currentAction="deposit";
+
+function showNotice(message){
+  const toast=document.getElementById("toast");
+  toast.textContent=message;
+  toast.classList.add("show");
+  clearTimeout(window.__toastTimer);
+  window.__toastTimer=setTimeout(()=>toast.classList.remove("show"),2600);
+}
+
+function toggleMenu(){
+  document.getElementById("sidebar").classList.toggle("open");
+}
+
+function toggleBalance(){
+  const amount=document.getElementById("amount");
+  const hidden=amount.dataset.hidden==="true";
+  amount.textContent=hidden?"UGX 0":"UGX •••••••";
+  amount.dataset.hidden=hidden?"false":"true";
+}
+
+function applyTheme(theme){
+  root.setAttribute("data-theme",theme);
+  localStorage.setItem("kibuks-theme",theme);
+  const icon=document.getElementById("themeIcon");
+  if(icon) icon.textContent=theme==="dark"?"☾":"☀";
+  document.querySelector('meta[name="theme-color"]')?.setAttribute("content",theme==="dark"?"#070a12":"#f4f7fb");
+}
+
+function toggleTheme(){
+  applyTheme(root.getAttribute("data-theme")==="dark"?"light":"dark");
+}
+
+function openAction(type){
+  currentAction=type;
+  const modal=document.getElementById("modal");
+  document.getElementById("modalTitle").textContent=type==="deposit"?"Make a deposit":"Withdraw funds";
+  document.getElementById("modalIcon").textContent=type==="deposit"?"＋":"↗";
+  document.getElementById("modalText").textContent=type==="deposit"
+    ?"Enter an amount. Mobile Money will be connected when the backend is enabled."
+    :"Enter an amount. Automatic Mobile Money payout will be connected when the backend is enabled.";
+  document.getElementById("modalAmount").value="";
+  modal.classList.add("show");
+  modal.setAttribute("aria-hidden","false");
+  setTimeout(()=>document.getElementById("modalAmount").focus(),50);
+}
+
+function closeModal(){
+  const modal=document.getElementById("modal");
+  modal.classList.remove("show");
+  modal.setAttribute("aria-hidden","true");
+}
+
+function submitAction(){
+  const amount=Number(document.getElementById("modalAmount").value);
+  if(!amount||amount<=0){
+    showNotice("Enter a valid amount in UGX.");
+    return;
+  }
+  showNotice(currentAction==="deposit"
+    ?"Deposit flow saved as a demo action — backend comes next."
+    :"Withdrawal flow saved as a demo action — backend comes next.");
+  closeModal();
+}
+
+document.addEventListener("click",(event)=>{
+  if(event.target.id==="modal") closeModal();
+  if(event.target.closest(".nav-link") && window.innerWidth<=850) toggleMenu();
+});
+
+document.addEventListener("keydown",(event)=>{
+  if(event.key==="Escape") closeModal();
+});
+
+const savedTheme=localStorage.getItem("kibuks-theme");
+applyTheme(savedTheme==="light"?"light":"dark");
