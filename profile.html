@@ -226,8 +226,14 @@
         const email=authUser.email;
         const {error:reauthError}=await supabaseClient.auth.signInWithPassword({email,password});
         if(reauthError) throw new Error('Password verification failed.');
-        const {error}=await supabaseClient.rpc('delete_my_account');
-        if(error) throw error;
+        const {data:deleteResult,error}=await supabaseClient.rpc('delete_my_account');
+        if(error){
+          if(/function .*delete_my_account.*does not exist/i.test(error.message||'')){
+            throw new Error('Account deletion is not enabled in Supabase yet. Run account-security.sql once in Supabase SQL Editor.');
+          }
+          throw error;
+        }
+        if(!confirm('Final confirmation: permanently delete your HUT 10 PRO account?')){ msg.textContent='Deletion cancelled. Your account is unchanged.'; return; }
         localStorage.clear();
         msg.style.color='#6fe3bd';
         msg.textContent='Account deleted. Redirecting…';
