@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="HUT 10 PRO user profile">
+  <meta name="theme-color" content="#070a12">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg?v=20260929">
+  <title>My Profile • HUT 10 PRO</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=20260929">
+  <style>
+    .profile-page{max-width:1080px;margin:0 auto;padding:34px 30px 70px}
+    .profile-top{display:flex;align-items:center;justify-content:space-between;gap:18px;margin-bottom:22px}
+    .profile-top h1{font-family:"Sora",sans-serif;margin:5px 0 4px;font-size:30px;letter-spacing:-1.2px}
+    .profile-top p{margin:0;color:var(--muted);font-size:12px}
+    .back-btn{display:inline-flex;align-items:center;gap:8px;text-decoration:none;color:var(--text);border:1px solid var(--line);background:rgba(255,255,255,.035);padding:10px 14px;border-radius:11px;font-size:10px;font-weight:800}
+    .profile-hero{display:grid;grid-template-columns:1.2fr .8fr;gap:18px;margin-bottom:18px}
+    .profile-card,.profile-stats,.profile-form{border:1px solid var(--line);border-radius:20px;background:linear-gradient(145deg,rgba(18,24,39,.88),rgba(8,11,19,.78));backdrop-filter:blur(18px);box-shadow:0 20px 60px rgba(0,0,0,.18)}
+    .profile-card{padding:24px;display:flex;align-items:center;gap:20px;position:relative;overflow:hidden}
+    .profile-avatar{width:92px;height:92px;flex:0 0 92px;border-radius:26px;display:grid;place-items:center;background:linear-gradient(135deg,#ffbd5a,#ff7a3d);color:#fff;font-family:"Sora",sans-serif;font-size:30px;font-weight:800;box-shadow:0 0 38px rgba(255,145,61,.25)}
+    .profile-card h2{margin:0;font-family:"Sora",sans-serif;font-size:23px}
+    .profile-card p{margin:6px 0 12px;color:var(--muted);font-size:11px}
+    .verified{display:inline-flex;align-items:center;gap:6px;padding:6px 9px;border-radius:8px;background:rgba(57,216,154,.07);border:1px solid rgba(57,216,154,.16);color:var(--green);font-size:8px;font-weight:800;letter-spacing:.7px}
+    .profile-stats{padding:20px}
+    .profile-stats h3{margin:0 0 13px;font-family:"Sora",sans-serif;font-size:12px}
+    .profile-stat{display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--line);font-size:9px}
+    .profile-stat:last-child{border-bottom:0}.profile-stat span{color:var(--muted)}.profile-stat b{font-size:10px}
+    .profile-form{padding:24px}
+    .form-head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:18px}
+    .form-head h2{margin:3px 0 0;font-family:"Sora",sans-serif;font-size:18px}
+    .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+    .field{display:grid;gap:7px}.field.full-field{grid-column:1/-1}
+    .field label{font-size:9px;color:var(--muted);font-weight:800;letter-spacing:.4px}
+    .field input,.field select{width:100%;box-sizing:border-box;border:1px solid var(--line);border-radius:11px;background:rgba(255,255,255,.035);color:var(--text);padding:12px 13px;outline:none;font:500 11px "Manrope",sans-serif}
+    .field input:focus,.field select:focus{border-color:rgba(255,189,90,.55);box-shadow:0 0 0 3px rgba(255,189,90,.07)}
+    .profile-actions{display:flex;gap:10px;justify-content:flex-end;margin-top:20px}
+    .save-profile{border:0;border-radius:11px;padding:12px 17px;background:linear-gradient(135deg,#ffbd5a,#ff7a3d);color:#171008;font-weight:800;font-size:10px;cursor:pointer}
+    .reset-profile{border:1px solid var(--line);border-radius:11px;padding:11px 15px;background:rgba(255,255,255,.035);color:var(--text);font-weight:700;font-size:10px;cursor:pointer}
+    .profile-note{margin-top:15px;color:#6f7a91;font-size:8px;line-height:1.6}
+    @media(max-width:760px){.profile-page{padding:24px 16px 50px}.profile-hero{grid-template-columns:1fr}.form-grid{grid-template-columns:1fr}.field.full-field{grid-column:auto}.profile-top{align-items:flex-start;flex-direction:column}.profile-card{align-items:flex-start;flex-direction:column}}
+  </style>
+</head>
+<body>
+  <div class="ai-atmosphere" aria-hidden="true">
+    <div class="video-horizon"></div><div class="ai-grid"></div>
+    <div class="ai-orbit orbit-a"></div><div class="ai-orbit orbit-b"></div><div class="ai-orbit orbit-c"></div>
+    <div class="ai-light light-a"></div><div class="ai-light light-b"></div><div class="ai-light light-c"></div>
+    <div class="ai-particle p1"></div><div class="ai-particle p2"></div><div class="ai-particle p3"></div><div class="ai-particle p4"></div><div class="ai-particle p5"></div><div class="ai-particle p6"></div>
+  </div>
+
+  <main class="profile-page">
+    <div class="profile-top">
+      <div>
+        <span class="eyebrow">HUT 10 PRO • ACCOUNT</span>
+        <h1>My Profile</h1>
+        <p>Set up your personal details for your HUT 10 PRO account.</p>
+      </div>
+      <a class="back-btn" href="index.html">← Dashboard</a>
+    </div>
+
+    <section class="profile-hero">
+      <article class="profile-card">
+        <div class="profile-avatar" id="avatar">H</div>
+        <div>
+          <h2 id="profileName">Your Name</h2>
+          <p id="profileUsername">@yourusername</p>
+          <span class="verified">● PROFILE READY</span>
+        </div>
+      </article>
+      <article class="profile-stats">
+        <h3>ACCOUNT OVERVIEW</h3>
+        <div class="profile-stat"><span>Available balance</span><b>UGX 0</b></div>
+        <div class="profile-stat"><span>Total invested</span><b>UGX 0</b></div>
+        <div class="profile-stat"><span>Total profits</span><b>UGX 0</b></div>
+        <div class="profile-stat"><span>Account status</span><b style="color:var(--green)">Active</b></div>
+      </article>
+    </section>
+
+    <section class="profile-form">
+      <div class="form-head">
+        <div><span class="panel-kicker">PERSONAL DETAILS</span><h2>Edit your profile</h2></div>
+      </div>
+      <div class="form-grid">
+        <div class="field"><label>FULL NAME</label><input id="name" type="text" placeholder="Enter your full name"></div>
+        <div class="field"><label>USERNAME</label><input id="username" type="text" placeholder="Choose a username"></div>
+        <div class="field"><label>EMAIL ADDRESS</label><input id="email" type="email" placeholder="Enter your email"></div>
+        <div class="field"><label>PHONE NUMBER</label><input id="phone" type="tel" placeholder="+256 ..."></div>
+        <div class="field"><label>COUNTRY</label><select id="country"><option value="">Select country</option><option>Uganda</option><option>Kenya</option><option>Tanzania</option><option>Rwanda</option><option>Other</option></select></div>
+        <div class="field"><label>ACCOUNT CURRENCY</label><select id="currency"><option>UGX — Ugandan Shilling</option><option>KES — Kenyan Shilling</option><option>TZS — Tanzanian Shilling</option><option>USD — US Dollar</option></select></div>
+      </div>
+      <div class="profile-actions">
+        <button class="reset-profile" onclick="resetProfile()">Clear</button>
+        <button class="save-profile" onclick="saveProfile()">Save Profile →</button>
+      </div>
+      <p class="profile-note">Your details are currently saved only in this browser. Secure account storage, authentication and backend profile syncing will be connected when the HUT 10 PRO backend is enabled.</p>
+    </section>
+  </main>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="app.js?v=20260929"></script>
+  <script>
+    const fields=['name','username','email','phone','country','currency'];
+    function loadProfile(){
+      fields.forEach(id=>{const el=document.getElementById(id); const v=localStorage.getItem('hut10_'+id); if(v) el.value=v;});
+      const n=document.getElementById('name').value.trim()||'Your Name';
+      const u=document.getElementById('username').value.trim()||'yourusername';
+      document.getElementById('profileName').textContent=n;
+      document.getElementById('profileUsername').textContent='@'+u.replace(/^@/,'');
+      document.getElementById('avatar').textContent=n.charAt(0).toUpperCase();
+    }
+    function saveProfile(){
+      fields.forEach(id=>localStorage.setItem('hut10_'+id,document.getElementById(id).value.trim()));
+      loadProfile();
+      showNotice('Profile saved on this device.');
+    }
+    function resetProfile(){
+      fields.forEach(id=>{localStorage.removeItem('hut10_'+id);document.getElementById(id).value='';});
+      document.getElementById('currency').value='UGX — Ugandan Shilling';
+      loadProfile();
+      showNotice('Profile form cleared.');
+    }
+    loadProfile();
+  </script>
+</body>
+</html>
