@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="HUT 10 PRO machine marketplace">
+  <title>Machines • HUT 10 PRO</title>
+  <link rel="stylesheet" href="styles.css?v=20260929">
+  <style>
+    .machines-page{max-width:1180px;margin:0 auto;padding:32px 28px 70px}
+    .machines-head{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;margin-bottom:22px}
+    .machines-head h1{font:800 30px Sora;margin:5px 0}
+    .machines-head p{margin:0;max-width:680px;color:var(--muted);font-size:11px;line-height:1.7}
+    .machines-actions{display:flex;gap:9px;flex-wrap:wrap}
+    .machine-back,.machine-cart{border:1px solid var(--line);background:rgba(255,255,255,.035);color:var(--text);padding:10px 13px;border-radius:11px;text-decoration:none;font:800 9px Manrope}
+    .machine-hero{padding:22px;border:1px solid var(--line);border-radius:22px;background:linear-gradient(135deg,rgba(19,27,48,.92),rgba(7,10,17,.84));margin-bottom:18px;overflow:hidden;position:relative}
+    .machine-hero:after{content:"";position:absolute;inset:auto -10% -70% 30%;height:260px;background:radial-gradient(circle,rgba(91,120,255,.24),transparent 65%);pointer-events:none}
+    .machine-hero-grid{display:grid;grid-template-columns:1.3fr .7fr;gap:20px;align-items:center}
+    .machine-hero h2{font:800 22px Sora;margin:5px 0 8px}
+    .machine-hero p{margin:0;color:var(--muted);font-size:10px;line-height:1.7;max-width:650px}
+    .machine-note{margin-top:12px;color:#8d99b1;font-size:8px;line-height:1.6}
+    .server-visual{min-height:210px;display:grid;place-items:center;position:relative}
+    .server{width:240px;height:150px;border-radius:18px;border:1px solid rgba(153,173,255,.24);background:linear-gradient(155deg,#17213e,#070a12 74%);box-shadow:0 25px 60px rgba(0,0,0,.45),inset 0 0 45px rgba(105,126,255,.12);transform:perspective(500px) rotateY(-15deg) rotateX(8deg);position:relative}
+    .server:before{content:"";position:absolute;left:18px;right:18px;top:18px;height:72px;border-radius:11px;border:1px solid rgba(255,255,255,.07);background:repeating-linear-gradient(90deg,rgba(122,153,255,.15) 0 2px,transparent 2px 17px)}
+    .server:after{content:"H10 • AI COMPUTE";position:absolute;left:20px;bottom:20px;color:#aebcff;font:800 8px Sora;letter-spacing:1px}
+    .machine-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
+    .machine-card{border:1px solid var(--line);border-radius:20px;overflow:hidden;background:linear-gradient(145deg,rgba(16,22,37,.88),rgba(7,10,17,.82));box-shadow:0 20px 55px rgba(0,0,0,.16)}
+    .machine-art{height:180px;display:grid;place-items:center;position:relative;background:radial-gradient(circle at 50% 35%,rgba(90,122,255,.16),transparent 52%),linear-gradient(145deg,#10162a,#080b13)}
+    .machine-art .device{width:190px;height:104px;border:1px solid rgba(155,176,255,.23);border-radius:16px;background:linear-gradient(145deg,#1a2544,#070a12);box-shadow:0 18px 40px rgba(0,0,0,.35),inset 0 0 34px rgba(96,125,255,.1);position:relative}
+    .device.gpu:before,.device.gpu:after{content:"";position:absolute;border-radius:10px}
+    .device.gpu:before{inset:17px 18px 36px;background:repeating-linear-gradient(90deg,rgba(128,151,255,.18) 0 5px,transparent 5px 13px);border:1px solid rgba(150,170,255,.12)}
+    .device.gpu:after{left:22px;right:22px;bottom:15px;height:8px;border-radius:99px;background:linear-gradient(90deg,rgba(109,143,255,.9),rgba(171,113,255,.35),transparent)}
+    .device.edge{width:118px;height:118px;border-radius:24px}
+    .device.edge:before{content:"AI";position:absolute;inset:25px;display:grid;place-items:center;border-radius:18px;border:1px solid rgba(145,170,255,.18);color:#cad5ff;font:800 20px Sora}
+    .device.edge:after{content:"";position:absolute;top:15px;right:15px;width:7px;height:7px;border-radius:50%;background:#63efc0;box-shadow:0 0 12px rgba(99,239,192,.8)}
+    .device.storage{width:120px;height:150px;border-radius:17px}
+    .device.storage:before{content:"SSD";position:absolute;left:19px;right:19px;top:25px;padding:13px 0;text-align:center;border-radius:10px;border:1px solid rgba(146,168,255,.18);color:#b9c8ff;font:800 12px Sora}
+    .device.storage:after{content:"8 TB";position:absolute;left:0;right:0;bottom:28px;text-align:center;color:#7f8da8;font:800 9px Manrope}
+    .device.network{width:190px;height:76px}
+    .device.network:before{content:"NET";position:absolute;left:18px;top:22px;color:#bbc8ff;font:800 12px Sora}
+    .device.network:after{content:"● ● ● ● ● ●";position:absolute;right:15px;top:29px;color:#667bc0;letter-spacing:3px;font-size:7px}
+    .device.workstation{width:180px;height:120px;border-radius:13px}
+    .device.workstation:before{content:"WORKSTATION";position:absolute;inset:17px;border:1px solid rgba(151,173,255,.15);display:grid;place-items:center;color:#bfcaff;font:800 9px Sora;letter-spacing:1px}
+    .device.workstation:after{content:"GPU • CPU • RAM";position:absolute;left:0;right:0;bottom:-22px;text-align:center;color:#74819b;font:700 7px Manrope}
+    .device.rack{width:150px;height:138px;border-radius:12px}
+    .device.rack:before{content:"";position:absolute;inset:16px;background:repeating-linear-gradient(180deg,rgba(136,158,255,.18) 0 7px,transparent 7px 17px);border:1px solid rgba(146,168,255,.12);border-radius:7px}
+    .machine-body{padding:17px}
+    .machine-badge{display:inline-flex;padding:5px 8px;border-radius:7px;background:rgba(100,127,255,.08);border:1px solid rgba(100,127,255,.14);color:#aabaff;font:800 7px Manrope;letter-spacing:.7px}
+    .machine-body h3{font:800 16px Sora;margin:10px 0 6px}
+    .machine-body p{margin:0;color:var(--muted);font-size:9px;line-height:1.6;min-height:29px}
+    .machine-meta{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:14px 0}
+    .machine-meta div{padding:9px;border:1px solid var(--line);border-radius:10px;background:rgba(255,255,255,.022)}
+    .machine-meta span{display:block;color:#78859c;font-size:7px;text-transform:uppercase;letter-spacing:.6px}
+    .machine-meta b{display:block;margin-top:4px;font-size:10px}
+    .machine-price{display:flex;align-items:flex-end;justify-content:space-between;gap:8px;margin-top:4px}
+    .machine-price small{display:block;color:#7d8aa3;font-size:7px}
+    .machine-price strong{display:block;margin-top:3px;font:800 15px Sora}
+    .buy-machine{border:0;border-radius:10px;padding:11px 13px;background:linear-gradient(135deg,#8fa4ff,#a56cff);color:#0a0d16;font:800 9px Manrope;cursor:pointer}
+    .catalog-disclaimer{margin-top:18px;padding:12px 14px;border:1px solid rgba(255,255,255,.07);border-radius:13px;color:#747f95;font-size:8px;line-height:1.65;background:rgba(255,255,255,.02)}
+    .buy-modal{display:none;position:fixed;inset:0;background:rgba(2,4,9,.78);backdrop-filter:blur(10px);z-index:50;place-items:center;padding:18px}
+    .buy-modal.show{display:grid}.buy-card{width:min(520px,100%);border:1px solid rgba(126,150,255,.18);border-radius:20px;padding:23px;background:linear-gradient(145deg,#12182a,#080a12);box-shadow:0 28px 100px rgba(0,0,0,.55);position:relative}
+    .buy-close{position:absolute;right:12px;top:12px;width:32px;height:32px;border-radius:50%;border:1px solid rgba(255,255,255,.08);background:transparent;color:#8490a8;font-size:17px}
+    .buy-card h2{font:800 19px Sora;margin:6px 0 8px}.buy-card p{margin:0;color:#7f8ba2;font-size:9px;line-height:1.7}
+    .buy-selected{margin:15px 0;padding:13px;border:1px solid var(--line);border-radius:12px;background:rgba(255,255,255,.025)}
+    .buy-selected b{display:block;font:800 12px Sora}.buy-selected span{display:block;margin-top:4px;color:#8b98af;font-size:8px}
+    .buy-actions{display:flex;justify-content:flex-end;gap:8px;margin-top:16px}
+    .buy-cancel{border:1px solid var(--line);border-radius:10px;padding:10px 13px;background:rgba(255,255,255,.035);color:var(--text);font:800 9px Manrope}
+    @media(max-width:950px){.machine-grid{grid-template-columns:repeat(2,1fr)}.machine-hero-grid{grid-template-columns:1fr}}
+    @media(max-width:620px){.machines-page{padding:24px 15px 50px}.machines-head{align-items:flex-start;flex-direction:column}.machine-grid{grid-template-columns:1fr}.server{transform:scale(.82) perspective(500px) rotateY(-15deg) rotateX(8deg)}}
+  </style>
+</head>
+<body>
+  <div class="ai-atmosphere" aria-hidden="true">
+    <div class="video-horizon"></div><div class="ai-grid"></div>
+    <div class="ai-orbit orbit-a"></div><div class="ai-orbit orbit-b"></div><div class="ai-orbit orbit-c"></div>
+    <div class="ai-light light-a"></div><div class="ai-light light-b"></div><div class="ai-light light-c"></div>
+    <div class="ai-particle p1"></div><div class="ai-particle p2"></div><div class="ai-particle p3"></div><div class="ai-particle p4"></div><div class="ai-particle p5"></div><div class="ai-particle p6"></div>
+  </div>
+
+  <main class="machines-page">
+    <header class="machines-head">
+      <div>
+        <span class="eyebrow">HUT 10 PRO • MACHINE MARKETPLACE</span>
+        <h1>AI Machine Store</h1>
+        <p>Browse the hardware catalogue behind the HUT 10 PRO platform. Choose a machine, review its specifications, and start a purchase request.</p>
+      </div>
+      <div class="machines-actions">
+        <a class="machine-back" href="index.html">← Dashboard</a>
+        <a class="machine-cart" href="investments.html">My Investments →</a>
+      </div>
+    </header>
+
+    <section class="machine-hero">
+      <div class="machine-hero-grid">
+        <div>
+          <span class="panel-kicker">HARDWARE OWNERSHIP</span>
+          <h2>Build your compute portfolio</h2>
+          <p>HUT 10 PRO can catalogue physical AI and compute hardware with clear specifications and purchase records. Earnings, when applicable, depend on actual machine use, operating costs, demand, and your agreement—not guaranteed daily returns.</p>
+          <p class="machine-note">Catalogue prices shown below are demo prices for the website build and must be replaced with verified supplier pricing before sales go live.</p>
+        </div>
+        <div class="server-visual"><div class="server"></div></div>
+      </div>
+    </section>
+
+    <section class="machine-grid">
+      
+      <article class="machine-card">
+        <div class="machine-art"><div class="device gpu"></div></div>
+        <div class="machine-body">
+          <span class="machine-badge">GPU COMPUTE</span>
+          <h3>AI Compute Node</h3>
+          <p>Configured HUT 10 PRO catalogue unit for AI, compute, storage, or infrastructure workloads.</p>
+          <div class="machine-meta">
+            <div><span>Core spec</span><b>24 GB class GPU</b></div>
+            <div><span>Operation</span><b>24/7</b></div>
+          </div>
+          <div class="machine-price">
+            <div><small>DEMO CATALOGUE PRICE</small><strong>UGX 1,500,000</strong></div>
+            <button class="buy-machine" onclick="openBuy('AI Compute Node','UGX 1,500,000')">Buy Machine →</button>
+          </div>
+        </div>
+      </article>
+      <article class="machine-card">
+        <div class="machine-art"><div class="device edge"></div></div>
+        <div class="machine-body">
+          <span class="machine-badge">EDGE COMPUTE</span>
+          <h3>Edge AI Node</h3>
+          <p>Configured HUT 10 PRO catalogue unit for AI, compute, storage, or infrastructure workloads.</p>
+          <div class="machine-meta">
+            <div><span>Core spec</span><b>16 GB RAM</b></div>
+            <div><span>Operation</span><b>Low power</b></div>
+          </div>
+          <div class="machine-price">
+            <div><small>DEMO CATALOGUE PRICE</small><strong>UGX 650,000</strong></div>
+            <button class="buy-machine" onclick="openBuy('Edge AI Node','UGX 650,000')">Buy Machine →</button>
+          </div>
+        </div>
+      </article>
+      <article class="machine-card">
+        <div class="machine-art"><div class="device storage"></div></div>
+        <div class="machine-body">
+          <span class="machine-badge">DATA STORAGE</span>
+          <h3>Storage Node</h3>
+          <p>Configured HUT 10 PRO catalogue unit for AI, compute, storage, or infrastructure workloads.</p>
+          <div class="machine-meta">
+            <div><span>Core spec</span><b>8 TB SSD</b></div>
+            <div><span>Operation</span><b>24/7</b></div>
+          </div>
+          <div class="machine-price">
+            <div><small>DEMO CATALOGUE PRICE</small><strong>UGX 900,000</strong></div>
+            <button class="buy-machine" onclick="openBuy('Storage Node','UGX 900,000')">Buy Machine →</button>
+          </div>
+        </div>
+      </article>
+      <article class="machine-card">
+        <div class="machine-art"><div class="device network"></div></div>
+        <div class="machine-body">
+          <span class="machine-badge">NETWORK</span>
+          <h3>Network Accelerator</h3>
+          <p>Configured HUT 10 PRO catalogue unit for AI, compute, storage, or infrastructure workloads.</p>
+          <div class="machine-meta">
+            <div><span>Core spec</span><b>10 GbE class</b></div>
+            <div><span>Operation</span><b>24/7</b></div>
+          </div>
+          <div class="machine-price">
+            <div><small>DEMO CATALOGUE PRICE</small><strong>UGX 1,200,000</strong></div>
+            <button class="buy-machine" onclick="openBuy('Network Accelerator','UGX 1,200,000')">Buy Machine →</button>
+          </div>
+        </div>
+      </article>
+      <article class="machine-card">
+        <div class="machine-art"><div class="device workstation"></div></div>
+        <div class="machine-body">
+          <span class="machine-badge">CREATOR</span>
+          <h3>AI Workstation</h3>
+          <p>Configured HUT 10 PRO catalogue unit for AI, compute, storage, or infrastructure workloads.</p>
+          <div class="machine-meta">
+            <div><span>Core spec</span><b>High-end CPU/GPU</b></div>
+            <div><span>Operation</span><b>Desktop</b></div>
+          </div>
+          <div class="machine-price">
+            <div><small>DEMO CATALOGUE PRICE</small><strong>UGX 5,500,000</strong></div>
+            <button class="buy-machine" onclick="openBuy('AI Workstation','UGX 5,500,000')">Buy Machine →</button>
+          </div>
+        </div>
+      </article>
+      <article class="machine-card">
+        <div class="machine-art"><div class="device rack"></div></div>
+        <div class="machine-body">
+          <span class="machine-badge">DATA CENTER</span>
+          <h3>Rack Compute Server</h3>
+          <p>Configured HUT 10 PRO catalogue unit for AI, compute, storage, or infrastructure workloads.</p>
+          <div class="machine-meta">
+            <div><span>Core spec</span><b>Multi-GPU ready</b></div>
+            <div><span>Operation</span><b>24/7</b></div>
+          </div>
+          <div class="machine-price">
+            <div><small>DEMO CATALOGUE PRICE</small><strong>UGX 7,500,000</strong></div>
+            <button class="buy-machine" onclick="openBuy('Rack Compute Server','UGX 7,500,000')">Buy Machine →</button>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <div class="catalog-disclaimer"><strong>Important:</strong> These machine listings are currently a website catalogue. The displayed prices are demo values, not verified live offers. A real purchase flow should only be activated after HUT 10 PRO has confirmed the physical hardware, supplier, ownership terms, delivery/hosting arrangements, operating costs, and payment provider.</div>
+  </main>
+
+  <div class="buy-modal" id="buyModal" aria-hidden="true">
+    <div class="buy-card">
+      <button class="buy-close" onclick="closeBuy()" aria-label="Close">×</button>
+      <span class="panel-kicker">MACHINE PURCHASE</span>
+      <h2>Start machine purchase</h2>
+      <p id="buyText">Review the selected machine before creating a purchase request.</p>
+      <div class="buy-selected"><b id="selectedMachine">Machine</b><span id="selectedPrice">Price</span></div>
+      <p>This creates a purchase request only. Payment and delivery are not processed by this catalogue yet.</p>
+      <div class="buy-actions">
+        <button class="buy-cancel" onclick="closeBuy()">Cancel</button>
+        <button class="buy-machine" onclick="createMachineRequest()">Create Request →</button>
+      </div>
+    </div>
+  </div>
+
+<script>
+let selectedMachineName='',selectedMachinePrice='';
+function openBuy(name,price){
+  selectedMachineName=name;selectedMachinePrice=price;
+  document.getElementById('selectedMachine').textContent=name;
+  document.getElementById('selectedPrice').textContent=price;
+  document.getElementById('buyModal').classList.add('show');
+  document.getElementById('buyModal').setAttribute('aria-hidden','false');
+}
+function closeBuy(){
+  document.getElementById('buyModal').classList.remove('show');
+  document.getElementById('buyModal').setAttribute('aria-hidden','true');
+}
+function createMachineRequest(){
+  const items=JSON.parse(localStorage.getItem('hut10_machine_requests')||'[]');
+  items.push({machine:selectedMachineName,price:selectedMachinePrice,status:'request',created_at:new Date().toISOString()});
+  localStorage.setItem('hut10_machine_requests',JSON.stringify(items));
+  closeBuy();
+  alert('Machine request saved. The live payment and delivery flow will be connected after the machine payment system is activated.');
+}
+</script>
+</body>
+</html>
