@@ -94,6 +94,31 @@ applyTheme(savedTheme==="light"?"light":"dark");
 
 /* HUT 10 PRO authentication session bridge */
 let hut10Supabase=null;
+
+async function loadDashboardData(){
+  if(!window.HUT10Data) return;
+  try{
+    const user=await window.HUT10Data.init();
+    if(!user) return;
+    const data=await window.HUT10Data.load();
+    const wallet=data.wallet?.[0]||{};
+    const balance=Number(wallet.balance ?? wallet.available_balance ?? wallet.amount ?? 0) || 0;
+    const invested=window.HUT10Data.sum(data.investments,["principal","principal_amount","amount","invested_amount"]);
+    const profit=window.HUT10Data.sum(data.investments,["profit","profit_amount","earnings","return_amount"]);
+    const plans=(data.investments||[]).length;
+    const active=(data.investments||[]).filter(row=>!row.status || ["active","running","approved"].includes(String(row.status).toLowerCase())).length;
+    const fmt=n=>"UGX "+Number(n||0).toLocaleString("en-UG");
+    const byId=(id)=>document.getElementById(id);
+    if(byId("amount")) byId("amount").textContent=fmt(balance);
+    if(byId("availableBalance")) byId("availableBalance").textContent=fmt(balance);
+    if(byId("totalInvested")) byId("totalInvested").textContent=fmt(invested);
+    if(byId("profitValue")) byId("profitValue").textContent=fmt(profit);
+    if(byId("planCount")) byId("planCount").textContent=plans+" plan"+(plans===1?"":"s");
+    if(byId("activePlans")) byId("activePlans").textContent=active;
+    if(byId("performance")) byId("performance").textContent=invested>0?((profit/invested)*100).toFixed(2)+"%":"0.00%";
+  }catch(error){ console.error("HUT 10 PRO data load failed",error); }
+}
+
 async function initDashboardAuth(){
   const cfg=window.HUT10_SUPABASE_CONFIG;
   if(!cfg || !cfg.url || !cfg.key || cfg.url.includes('PASTE_YOUR_') || cfg.key.includes('PASTE_YOUR_')){
@@ -115,6 +140,7 @@ async function initDashboardAuth(){
     updateTopUser(name);
     localStorage.setItem('hut10_email',user.email||'');
     localStorage.setItem('hut10_session','active');
+    await loadDashboardData();
     hut10Supabase.auth.onAuthStateChange((event, nextSession)=>{
       if(event==='SIGNED_OUT' || !nextSession) window.location.href='auth.html';
     });
