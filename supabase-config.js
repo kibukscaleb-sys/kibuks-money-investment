@@ -1,18 +1,16 @@
 /* HUT 10 PRO Supabase configuration
-   Use the browser-safe Project URL + Publishable/anon key.
+   Browser-safe publishable credentials only.
    Never place a service_role/secret key in this file.
-
-   TABLE NAMES:
-   Set these to the exact table names from your Supabase project.
 */
 window.HUT10_SUPABASE_CONFIG = {
-  url: "PASTE_YOUR_SUPABASE_PROJECT_URL",
-  key: "PASTE_YOUR_SUPABASE_PUBLISHABLE_KEY",
+  url: "https://pcucolystidnadafaoht.supabase.co",
+  key: "sb_publishable_zpyCJZDHqWZKQUxcNL6PEg_Sn4n5Kht",
 
   tables: {
     profiles: "profiles",
     wallets: "wallets",
     investments: "investments",
-    transactions: "transactions"
+    transactions: "transactions",
+    payment_requests: "payment_requests"
   }
 };
