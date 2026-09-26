@@ -41,7 +41,9 @@
     .reset-profile{border:1px solid var(--line);border-radius:11px;padding:11px 15px;background:rgba(255,255,255,.035);color:var(--text);font-weight:700;font-size:10px;cursor:pointer}
     .profile-note{margin-top:15px;color:#6f7a91;font-size:8px;line-height:1.6}
     @media(max-width:760px){.profile-page{padding:24px 16px 50px}.profile-hero{grid-template-columns:1fr}.form-grid{grid-template-columns:1fr}.field.full-field{grid-column:auto}.profile-top{align-items:flex-start;flex-direction:column}.profile-card{align-items:flex-start;flex-direction:column}}
-  </style>
+  
+.account-security{margin-top:20px;padding:18px;border-radius:16px;border:1px solid rgba(255,100,119,.14);background:linear-gradient(145deg,rgba(60,15,25,.22),rgba(10,12,20,.45));display:flex;align-items:center;justify-content:space-between;gap:18px}.account-security h3{margin:4px 0 6px;font:800 14px Sora}.account-security p{margin:0;max-width:640px;color:#758096;font-size:8.5px;line-height:1.65}.delete-account-btn{border:1px solid rgba(255,100,119,.22);background:rgba(255,100,119,.06);color:#ff9aa8;border-radius:10px;padding:11px 13px;font:800 9px Manrope;cursor:pointer;white-space:nowrap}.delete-account-btn:hover{background:rgba(255,100,119,.10);border-color:rgba(255,100,119,.36)}.delete-modal{position:fixed;inset:0;display:none;place-items:center;padding:18px;background:rgba(2,4,9,.78);backdrop-filter:blur(10px);z-index:100}.delete-modal.show{display:grid}.delete-card{width:min(460px,100%);position:relative;padding:24px;border:1px solid rgba(255,100,119,.18);border-radius:20px;background:linear-gradient(145deg,rgba(20,13,20,.97),rgba(8,9,16,.96));box-shadow:0 32px 100px rgba(0,0,0,.55)}.delete-close{position:absolute;right:12px;top:12px;width:32px;height:32px;border-radius:50%;border:1px solid rgba(255,255,255,.08);background:transparent;color:#8792aa;font-size:18px}.delete-card h2{font:800 20px Sora;margin:7px 0 8px}.delete-card>p{font-size:9px;line-height:1.7;color:#778298;margin:0 0 17px}.delete-card>label{display:grid;gap:7px;font-size:8px;color:#8892a8;font-weight:800;letter-spacing:.7px;margin-top:12px}.delete-card>label b{color:#ffafb9}.delete-card input[type="password"],.delete-card input[type="text"]{box-sizing:border-box;width:100%;padding:12px;border-radius:10px;border:1px solid rgba(143,162,202,.12);background:rgba(255,255,255,.03);color:#edf1ff;outline:none;font:500 10px Manrope}.delete-card input:focus{border-color:rgba(255,100,119,.4);box-shadow:0 0 0 3px rgba(255,100,119,.06)}.delete-check{display:flex!important;grid-template-columns:none!important;align-items:center;gap:9px!important;font-size:8px!important;letter-spacing:0!important;line-height:1.4}.delete-check input{accent-color:#ff6477}.delete-msg{min-height:17px;color:#ff9aa8;text-align:center;font-size:8px;margin:11px 0}.delete-confirm-btn{width:100%;border:0;border-radius:10px;padding:12px;background:linear-gradient(135deg,#b73952,#7d2037);color:#fff;font:800 9px Manrope;cursor:pointer}.delete-confirm-btn:disabled{opacity:.55;cursor:wait}@media(max-width:650px){.account-security{align-items:flex-start;flex-direction:column}.delete-account-btn{width:100%}}
+</style>
 </head>
 <body>
   <div class="ai-atmosphere" aria-hidden="true">
@@ -98,6 +100,19 @@
       <p class="profile-note" id="profileNote">Connect Supabase to sync profile details to your authenticated account. Until then, this page can use local browser storage as a frontend fallback.</p>
     </section>
   </main>
+  <div class="delete-modal" id="deleteModal" aria-hidden="true">
+    <div class="delete-card">
+      <button class="delete-close" onclick="closeDelete()" aria-label="Close">×</button>
+      <span class="panel-kicker">HIGH-SECURITY ACTION</span>
+      <h2>Delete HUT 10 PRO account?</h2>
+      <p>This permanently deletes the authenticated account and its associated HUT 10 PRO data. This cannot be undone.</p>
+      <label>CURRENT PASSWORD<input id="deletePassword" type="password" autocomplete="current-password" placeholder="Enter your current password"></label>
+      <label>TYPE <b>DELETE HUT 10 PRO</b><input id="deletePhrase" type="text" placeholder="DELETE HUT 10 PRO" autocomplete="off"></label>
+      <label class="delete-check"><input id="deleteConfirm" type="checkbox"> I understand that this action is permanent.</label>
+      <div id="deleteMsg" class="delete-msg"></div>
+      <button class="delete-confirm-btn" id="deleteConfirmBtn" onclick="deleteAccount()">Permanently delete account</button>
+    </div>
+  </div>
 
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
   <script src="app.js?v=20260929"></script>
@@ -179,8 +194,50 @@
         if(error){showNotice(error.message);return;}
       }
       localStorage.removeItem('hut10_session');
-      showNotice('Signed out.');
+      showNotice('Logged out.');
       setTimeout(()=>window.location.href='auth.html',450);
+    }
+
+    function openDelete(){
+      document.getElementById('deleteModal').classList.add('show');
+      document.getElementById('deleteModal').setAttribute('aria-hidden','false');
+      document.getElementById('deletePassword').focus();
+    }
+    function closeDelete(){
+      document.getElementById('deleteModal').classList.remove('show');
+      document.getElementById('deleteModal').setAttribute('aria-hidden','true');
+      document.getElementById('deletePassword').value='';
+      document.getElementById('deletePhrase').value='';
+      document.getElementById('deleteConfirm').checked=false;
+      document.getElementById('deleteMsg').textContent='';
+    }
+    async function deleteAccount(){
+      const password=document.getElementById('deletePassword').value;
+      const phrase=document.getElementById('deletePhrase').value.trim();
+      const confirmed=document.getElementById('deleteConfirm').checked;
+      const msg=document.getElementById('deleteMsg');
+      const btn=document.getElementById('deleteConfirmBtn');
+      if(!supabaseClient||!authUser){msg.textContent='You must be signed in to delete the account.';return;}
+      if(!password){msg.textContent='Enter your current password.';return;}
+      if(phrase!=='DELETE HUT 10 PRO'){msg.textContent='Type DELETE HUT 10 PRO exactly.';return;}
+      if(!confirmed){msg.textContent='Confirm that you understand this action is permanent.';return;}
+      btn.disabled=true; msg.textContent='Verifying account…';
+      try{
+        const email=authUser.email;
+        const {error:reauthError}=await supabaseClient.auth.signInWithPassword({email,password});
+        if(reauthError) throw new Error('Password verification failed.');
+        const {error}=await supabaseClient.rpc('delete_my_account');
+        if(error) throw error;
+        localStorage.clear();
+        msg.style.color='#6fe3bd';
+        msg.textContent='Account deleted. Redirecting…';
+        setTimeout(()=>window.location.href='auth.html',900);
+      }catch(error){
+        msg.style.color='#ff9aa8';
+        msg.textContent=error.message||'Account deletion failed. Your account has not been deleted.';
+      }finally{
+        btn.disabled=false;
+      }
     }
 
     initProfile();
