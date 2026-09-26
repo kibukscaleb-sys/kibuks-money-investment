@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="HUT 10 PRO transaction history">
+<link rel="icon" type="image/svg+xml" href="favicon.svg?v=20260929">
+<title>Transactions • HUT 10 PRO</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css?v=20260926-transactions1">
+<style>
+.tx-shell{min-height:100vh;position:relative;z-index:2}.tx-main{max-width:1180px;margin:0 auto;padding:28px}
+.tx-top{display:flex;align-items:flex-start;justify-content:space-between;gap:18px;margin-bottom:20px}.tx-title h1{margin:0;font:800 28px Sora;letter-spacing:-1px}.tx-title p{margin:8px 0 0;color:#77839d;font-size:10px}
+.tx-back{color:#91a3ff;text-decoration:none;font-size:9px;font-weight:800}
+.tx-hero{position:relative;overflow:hidden;padding:24px;border-radius:22px;background:radial-gradient(circle at 80% 15%,rgba(111,140,255,.22),transparent 28%),linear-gradient(135deg,#0a0f20,#101832 58%,#090e1b);border:1px solid rgba(135,157,203,.14);box-shadow:0 22px 65px rgba(0,0,0,.22)}
+.tx-hero h2{margin:9px 0 6px;font:800 22px Sora}.tx-kicker{font-size:8px;letter-spacing:1.7px;color:#7582a3;font-weight:800}.tx-hero p{margin:0;color:#7d88a3;font-size:9.5px;line-height:1.7;max-width:700px}
+.tx-note{display:inline-flex;margin-top:13px;padding:7px 9px;border-radius:8px;background:rgba(111,140,255,.07);border:1px solid rgba(111,140,255,.13);color:#93a3ce;font-size:8px;font-weight:800}
+.tx-toolbar{display:flex;gap:10px;align-items:center;justify-content:space-between;margin:16px 0 12px}.filters{display:flex;gap:7px;flex-wrap:wrap}.filter{border:1px solid rgba(143,162,202,.1);background:rgba(255,255,255,.025);color:#77839d;border-radius:9px;padding:9px 11px;font:700 8px Manrope;cursor:pointer}.filter.active{color:#f3f6ff;background:rgba(111,140,255,.11);border-color:rgba(111,140,255,.18)}
+.tx-search{min-width:190px;padding:10px 12px;border-radius:10px;border:1px solid rgba(143,162,202,.11);background:rgba(8,12,21,.75);color:#eef2ff;outline:none;font:500 9px Manrope}.tx-search::placeholder{color:#56627a}
+.tx-table{border:1px solid rgba(143,162,202,.11);border-radius:18px;overflow:hidden;background:linear-gradient(145deg,rgba(11,15,27,.88),rgba(7,10,18,.76));box-shadow:0 18px 50px rgba(0,0,0,.16)}
+.tx-row{display:grid;grid-template-columns:1.5fr 1fr 1fr .9fr .8fr;gap:14px;align-items:center;padding:15px 17px;border-bottom:1px solid rgba(143,162,202,.07)}
+.tx-row:last-child{border-bottom:0}.tx-head{color:#626e86;font-size:7px;letter-spacing:1.2px;font-weight:800;background:rgba(255,255,255,.02)}
+.tx-item{min-height:55px}.tx-maincol{display:flex;align-items:center;gap:10px}.tx-icon{width:34px;height:34px;border-radius:10px;display:grid;place-items:center;font-weight:800;font-size:13px;background:rgba(111,140,255,.1);color:#91a4ff}.tx-icon.out{background:rgba(255,110,126,.08);color:#ff8c9b}.tx-icon.invest{background:rgba(154,103,255,.1);color:#b59aff}
+.tx-maincol b{display:block;font-size:10px}.tx-maincol small{display:block;font-size:7.5px;color:#626e86;margin-top:3px}.tx-cell{font-size:9px;color:#8994aa}.tx-amount{font-weight:800;color:#edf1ff}.tx-status{display:inline-flex;padding:6px 7px;border-radius:7px;font-size:7px;letter-spacing:.7px;font-weight:800}.pending{color:#ffd58a;background:rgba(255,181,71,.07);border:1px solid rgba(255,181,71,.12)}.demo{color:#9eacff;background:rgba(111,140,255,.06);border:1px solid rgba(111,140,255,.11)}
+.tx-empty{padding:52px 20px;text-align:center}.tx-empty-icon{width:52px;height:52px;margin:0 auto 13px;border-radius:16px;display:grid;place-items:center;background:rgba(111,140,255,.07);border:1px solid rgba(111,140,255,.11);color:#90a2ff;font-size:20px}.tx-empty h3{margin:0 0 6px;font:800 14px Sora}.tx-empty p{margin:0;color:#677289;font-size:8.5px;line-height:1.7}
+.tx-info{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:14px}.tx-card{padding:18px;border-radius:17px;border:1px solid rgba(143,162,202,.10);background:linear-gradient(145deg,rgba(11,15,27,.84),rgba(7,10,18,.74))}.tx-card h3{margin:0 0 7px;font:800 14px Sora}.tx-card p{margin:0;color:#69748d;font-size:8.5px;line-height:1.7}
+.tx-footer{text-align:center;padding:24px 0 10px;color:#566178;font-size:8px}
+@media(max-width:800px){.tx-main{padding:18px}.tx-toolbar{align-items:stretch;flex-direction:column}.tx-search{min-width:0;width:100%;box-sizing:border-box}.tx-row{grid-template-columns:1.7fr .9fr .9fr}.tx-row>*:nth-child(4),.tx-row>*:nth-child(5){display:none}.tx-info{grid-template-columns:1fr}}
+@media(max-width:560px){.tx-title h1{font-size:22px}.tx-top{flex-direction:column}.tx-row{grid-template-columns:1fr .8fr}.tx-row>*:nth-child(3){display:none}}
+</style>
+</head>
+<body>
+<div class="ai-atmosphere" aria-hidden="true">
+<div class="video-horizon"></div><div class="ai-grid"></div><div class="ai-orbit orbit-a"></div><div class="ai-orbit orbit-b"></div><div class="ai-orbit orbit-c"></div>
+<div class="ai-light light-a"></div><div class="ai-light light-b"></div><div class="ai-light light-c"></div>
+<div class="ai-particle p1"></div><div class="ai-particle p2"></div><div class="ai-particle p3"></div><div class="ai-particle p4"></div><div class="ai-particle p5"></div><div class="ai-particle p6"></div>
+</div>
+<main class="tx-shell"><div class="tx-main">
+<div class="tx-top"><div class="tx-title"><span class="eyebrow">HUT 10 PRO • ACCOUNT ACTIVITY</span><h1>Transactions</h1><p>Review deposits, withdrawals and investment activity in one workspace.</p></div><a class="tx-back" href="index.html">← Dashboard</a></div>
+<section class="tx-hero"><span class="tx-kicker">ACTIVITY CENTER</span><h2>Your transaction history</h2><p>Transaction records will be populated from the secure backend when accounts, payments and investment services are connected.</p><span class="tx-note">● FRONTEND READY • BACKEND PENDING</span></section>
+<div class="tx-toolbar"><div class="filters"><button class="filter active" data-filter="all">ALL</button><button class="filter" data-filter="deposit">DEPOSITS</button><button class="filter" data-filter="withdrawal">WITHDRAWALS</button><button class="filter" data-filter="investment">INVESTMENTS</button></div><input id="search" class="tx-search" type="search" placeholder="Search activity..."></div>
+<section class="tx-table" aria-label="Transaction history">
+<div class="tx-row tx-head"><div>TRANSACTION</div><div>DATE</div><div>AMOUNT</div><div>STATUS</div><div>REFERENCE</div></div>
+<div id="emptyState" class="tx-empty"><div class="tx-empty-icon">↔</div><h3>No transactions yet</h3><p>Once the HUT 10 PRO backend is connected, your completed and pending transaction records will appear here.</p></div>
+<div id="sampleRows" style="display:none">
+<div class="tx-row tx-item" data-type="deposit"><div class="tx-maincol"><span class="tx-icon">＋</span><div><b>Deposit</b><small>Mobile Money</small></div></div><div class="tx-cell">—</div><div class="tx-cell tx-amount">UGX 0</div><div><span class="tx-status pending">PENDING</span></div><div class="tx-cell">—</div></div>
+<div class="tx-row tx-item" data-type="withdrawal"><div class="tx-maincol"><span class="tx-icon out">↗</span><div><b>Withdrawal</b><small>Mobile Money payout</small></div></div><div class="tx-cell">—</div><div class="tx-cell tx-amount">UGX 0</div><div><span class="tx-status pending">PENDING</span></div><div class="tx-cell">—</div></div>
+<div class="tx-row tx-item" data-type="investment"><div class="tx-maincol"><span class="tx-icon invest">◈</span><div><b>Investment</b><small>Portfolio plan</small></div></div><div class="tx-cell">—</div><div class="tx-cell tx-amount">UGX 0</div><div><span class="tx-status demo">PREVIEW</span></div><div class="tx-cell">—</div></div>
+</div>
+</section>
+<section class="tx-info"><article class="tx-card"><h3>What will appear here?</h3><p>When connected, this page will show transaction type, date, amount, status and reference information for your account activity.</p></article><article class="tx-card"><h3>Current status</h3><p>This is the live published interface only. No real deposit, withdrawal or investment transaction is being processed by this page yet.</p></article></section>
+<div class="tx-footer">© 2026 HUT 10 PRO • Transactions</div>
+</div></main>
+<script>
+const buttons=[...document.querySelectorAll('.filter')];
+const search=document.getElementById('search');
+const empty=document.getElementById('emptyState');
+const sample=document.getElementById('sampleRows');
+function apply(){
+  const filter=document.querySelector('.filter.active').dataset.filter;
+  const q=search.value.trim().toLowerCase();
+  const rows=[...sample.querySelectorAll('.tx-item')];
+  let visible=0;
+  rows.forEach(r=>{const okType=filter==='all'||r.dataset.type===filter;const okSearch=r.innerText.toLowerCase().includes(q);r.style.display=okType&&okSearch?'grid':'none';if(okType&&okSearch)visible++;});
+  sample.style.display=visible?'block':'none'; empty.style.display=visible?'none':'block';
+}
+buttons.forEach(b=>b.addEventListener('click',()=>{buttons.forEach(x=>x.classList.remove('active'));b.classList.add('active');apply();}));
+search.addEventListener('input',apply); apply();
+</script>
+</body></html>
