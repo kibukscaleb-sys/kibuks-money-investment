@@ -23,9 +23,9 @@
     .server{width:240px;height:150px;border-radius:18px;border:1px solid rgba(153,173,255,.24);background:linear-gradient(155deg,#17213e,#070a12 74%);box-shadow:0 25px 60px rgba(0,0,0,.45),inset 0 0 45px rgba(105,126,255,.12);transform:perspective(500px) rotateY(-15deg) rotateX(8deg);position:relative}
     .server:before{content:"";position:absolute;left:18px;right:18px;top:18px;height:72px;border-radius:11px;border:1px solid rgba(255,255,255,.07);background:repeating-linear-gradient(90deg,rgba(122,153,255,.15) 0 2px,transparent 2px 17px)}
     .server:after{content:"H10 • AI COMPUTE";position:absolute;left:20px;bottom:20px;color:#aebcff;font:800 8px Sora;letter-spacing:1px}
-    .machine-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
-    .machine-card{border:1px solid var(--line);border-radius:20px;overflow:hidden;background:linear-gradient(145deg,rgba(16,22,37,.88),rgba(7,10,17,.82));box-shadow:0 20px 55px rgba(0,0,0,.16)}
-    .machine-art{height:180px;display:grid;place-items:center;position:relative;background:radial-gradient(circle at 50% 35%,rgba(90,122,255,.16),transparent 52%),linear-gradient(145deg,#10162a,#080b13)}
+    .machine-grid{display:grid;grid-template-columns:1fr;gap:16px;max-width:980px;margin:0 auto}
+    .machine-card{display:grid;grid-template-columns:220px 1fr;border:1px solid var(--line);border-radius:20px;overflow:hidden;background:linear-gradient(145deg,rgba(16,22,37,.88),rgba(7,10,17,.82));box-shadow:0 20px 55px rgba(0,0,0,.16);min-height:250px}
+    .machine-art{min-height:250px;display:grid;place-items:center;position:relative;background:radial-gradient(circle at 50% 35%,rgba(90,122,255,.16),transparent 52%),linear-gradient(145deg,#10162a,#080b13)}
     .machine-art .device{width:190px;height:104px;border:1px solid rgba(155,176,255,.23);border-radius:16px;background:linear-gradient(145deg,#1a2544,#070a12);box-shadow:0 18px 40px rgba(0,0,0,.35),inset 0 0 34px rgba(96,125,255,.1);position:relative}
     .device.gpu:before,.device.gpu:after{content:"";position:absolute;border-radius:10px}
     .device.gpu:before{inset:17px 18px 36px;background:repeating-linear-gradient(90deg,rgba(128,151,255,.18) 0 5px,transparent 5px 13px);border:1px solid rgba(150,170,255,.12)}
@@ -44,7 +44,7 @@
     .device.workstation:after{content:"GPU • CPU • RAM";position:absolute;left:0;right:0;bottom:-22px;text-align:center;color:#74819b;font:700 7px Manrope}
     .device.rack{width:150px;height:138px;border-radius:12px}
     .device.rack:before{content:"";position:absolute;inset:16px;background:repeating-linear-gradient(180deg,rgba(136,158,255,.18) 0 7px,transparent 7px 17px);border:1px solid rgba(146,168,255,.12);border-radius:7px}
-    .machine-body{padding:17px}
+    .machine-body{padding:20px;display:flex;flex-direction:column;justify-content:center}
     .machine-badge{display:inline-flex;padding:5px 8px;border-radius:7px;background:rgba(100,127,255,.08);border:1px solid rgba(100,127,255,.14);color:#aabaff;font:800 7px Manrope;letter-spacing:.7px}
     .machine-body h3{font:800 16px Sora;margin:10px 0 6px}
     .machine-body p{margin:0;color:var(--muted);font-size:9px;line-height:1.6;min-height:29px}
@@ -67,8 +67,8 @@
     .buy-selected b{display:block;font:800 12px Sora}.buy-selected span{display:block;margin-top:4px;color:#8b98af;font-size:8px}
     .buy-actions{display:flex;justify-content:flex-end;gap:8px;margin-top:16px}
     .buy-cancel{border:1px solid var(--line);border-radius:10px;padding:10px 13px;background:rgba(255,255,255,.035);color:var(--text);font:800 9px Manrope}
-    @media(max-width:950px){.machine-grid{grid-template-columns:repeat(2,1fr)}.machine-hero-grid{grid-template-columns:1fr}}
-    @media(max-width:620px){.machines-page{padding:24px 15px 50px}.machines-head{align-items:flex-start;flex-direction:column}.machine-grid{grid-template-columns:1fr}.server{transform:scale(.82) perspective(500px) rotateY(-15deg) rotateX(8deg)}}
+    @media(max-width:950px){.machine-card{grid-template-columns:190px 1fr}.machine-hero-grid{grid-template-columns:1fr}}
+    @media(max-width:620px){.machines-page{padding:24px 15px 50px}.machines-head{align-items:flex-start;flex-direction:column}.machine-card{grid-template-columns:1fr}.machine-art{min-height:190px}.machine-grid{max-width:100%}.server{transform:scale(.82) perspective(500px) rotateY(-15deg) rotateX(8deg)}}
   </style>
 </head>
 <body>
@@ -84,6 +84,7 @@
       <div>
         <span class="eyebrow">HUT 10 PRO • MACHINE MARKETPLACE</span>
         <h1>AI Machine Store</h1>
+        <div style="margin-top:8px;color:#8491aa;font-size:8px;font-weight:800;letter-spacing:.9px;text-transform:uppercase">01 • 02 • 03 • 04 • 05 • 06 — Machine Catalogue</div>
         <p>Browse the hardware catalogue behind the HUT 10 PRO platform. Choose a machine, review its specifications, and start a purchase request.</p>
       </div>
       <div class="machines-actions">
