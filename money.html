@@ -40,12 +40,12 @@
 <section>
 <article class="money-card money-hero">
 <span class="money-kicker">AVAILABLE BALANCE</span><div class="money-balance"><span>CURRENT ACCOUNT BALANCE</span><strong id="moneyBalance">UGX 0</strong></div>
-<h2>Choose an action</h2><p>Mobile Money controls are ready in the interface. Real payment processing will begin after the secure backend and payment provider are connected.</p>
+<h2>Choose an action</h2><p>Mobile Money controls are ready. MTN Mobile Money deposit processing is now wired through a secure Supabase Edge Function and will activate when the MTN credentials are configured.</p>
 <div class="action-grid">
 <button class="money-action" onclick="showForm('deposit')"><div class="action-icon">＋</div><b>Deposit money</b><small>Fund your HUT 10 PRO account with Mobile Money.</small></button>
 <button class="money-action withdraw" onclick="showForm('withdraw')"><div class="action-icon">↗</div><b>Withdraw funds</b><small>Request a Mobile Money payout from your available balance.</small></button>
 </div>
-<div class="status-pill">● FRONTEND READY • PAYMENT BACKEND PENDING</div>
+<div class="status-pill">● MTN MOBILE MONEY • SECURE API FLOW INSTALLED</div>
 </article>
 <article class="money-card form-box">
 <span class="money-kicker" id="formKicker">DEPOSIT REQUEST</span><h2 id="formTitle">Make a deposit</h2><p id="formText">Enter the amount and Mobile Money number you intend to use.</p>
@@ -62,7 +62,7 @@
 <article class="money-card">
 <span class="money-kicker">PAYMENT METHOD</span><h2>Mobile Money</h2><p>HUT 10 PRO is prepared for a Mobile Money funding flow.</p>
 <div class="option-list">
-<div class="option"><span class="option-icon">M</span><div><b>MTN Mobile Money</b><small>Mobile funding / payout</small></div><em>READY FOR API</em></div>
+<div class="option"><span class="option-icon">M</span><div><b>MTN Mobile Money</b><small>Secure deposit request + status tracking</small></div><em>API FLOW INSTALLED</em></div>
 <div class="option"><span class="option-icon">A</span><div><b>Airtel Money</b><small>Mobile funding / payout</small></div><em>READY FOR API</em></div>
 </div>
 </article>
@@ -86,7 +86,7 @@ function showForm(mode){
   document.getElementById('formTitle').textContent=mode==='deposit'?'Make a deposit':'Request a withdrawal';
   document.getElementById('formText').textContent=mode==='deposit'?'Enter the amount and Mobile Money number you intend to use.':'Enter the amount and Mobile Money number for the payout.';
   document.getElementById('moneySubmit').textContent=mode==='deposit'?'Continue with deposit →':'Continue with withdrawal →';
-  document.getElementById('moneyNote').textContent=mode==='deposit'?'No money is moved by this page yet. Requests will be sent to the backend once the payment integration is enabled.':'Withdrawals will only be processed after the backend verifies your authenticated balance and payout details.';
+  document.getElementById('moneyNote').textContent=mode==='deposit'?'MTN deposits send a payment request to the customer phone. Approve the prompt in MTN Mobile Money to complete the payment.':'Withdrawals will only be processed after the backend verifies your authenticated balance and payout details.';
   document.getElementById('amount').focus();
 }
 async function submitMoney(e){
@@ -95,20 +95,72 @@ async function submitMoney(e){
   const phone=document.getElementById('phone').value.trim();
   const provider=document.getElementById('provider').value;
   if(!amount || amount<1000){alert('Enter an amount of at least UGX 1,000.');return;}
+
   const cfg=window.HUT10_SUPABASE_CONFIG;
   const configured=cfg && cfg.url && cfg.key && !cfg.url.includes('PASTE_YOUR_') && !cfg.key.includes('PASTE_YOUR_');
   if(!configured || !window.supabase){
-    alert(moneyMode==='deposit'?'Deposit request UI is ready. Add Supabase configuration before creating a request.':'Withdrawal request UI is ready. Add Supabase configuration before creating a request.');
+    alert('Supabase is not configured on this page.');
     return;
   }
-  const client=window.supabase.createClient(cfg.url,cfg.key,{auth:{persistSession:true}});
+
+  const client=window.supabase.createClient(cfg.url,cfg.key,{auth:{persistSession:true,autoRefreshToken:true}});
   const {data:{user}}=await client.auth.getUser();
-  if(!user){alert('Please log in before submitting a money request.');window.location.href='auth.html';return;}
+  if(!user){
+    alert('Please log in before submitting a money request.');
+    window.location.href='auth.html';
+    return;
+  }
+
+  if(moneyMode==='deposit'){
+    if(provider!=='MTN Mobile Money'){
+      alert('MTN Mobile Money is the provider connected right now. Airtel Money will be added separately.');
+      return;
+    }
+
+    const {data,error}=await client.functions.invoke('mtn-request-to-pay',{
+      body:{amount,phone,provider}
+    });
+
+    if(error){
+      alert(error.message || 'Could not start the MTN Mobile Money deposit.');
+      return;
+    }
+    if(data?.error){
+      alert(data.error);
+      return;
+    }
+
+    const requestId=data?.payment_request_id;
+    alert('MTN payment request sent. Approve the payment prompt on the MTN Mobile Money phone.');
+
+    if(requestId){
+      let finalStatus='PENDING';
+      for(let attempt=0;attempt<12;attempt++){
+        await new Promise(resolve=>setTimeout(resolve,5000));
+        const result=await client.functions.invoke('mtn-payment-status',{
+          body:{payment_request_id:requestId}
+        });
+        if(result.data?.status) finalStatus=String(result.data.status).toUpperCase();
+        if(finalStatus==='SUCCESSFUL'){
+          alert('Deposit successful. Your HUT 10 PRO balance has been updated.');
+          break;
+        }
+        if(finalStatus==='FAILED'){
+          alert('The MTN Mobile Money payment was not completed.');
+          break;
+        }
+      }
+    }
+
+    document.getElementById('moneyForm').reset();
+    return;
+  }
+
   const {error}=await client.from('payment_requests').insert({
-    user_id:user.id,type:moneyMode,amount,phone,provider,status:'pending'
+    user_id:user.id,type:'withdrawal',amount,phone,provider,status:'pending'
   });
   if(error){alert(error.message);return;}
-  alert(moneyMode==='deposit'?'Deposit request created. Payment processing will be completed by the backend provider.':'Withdrawal request created. The backend will verify your balance before payout.');
+  alert('Withdrawal request created. The backend will verify your balance before payout.');
   document.getElementById('moneyForm').reset();
 }
 </script>
