@@ -26,6 +26,11 @@
     .machine-grid{display:grid;grid-template-columns:1fr;gap:16px;max-width:980px;margin:0 auto}
     .machine-card{display:grid;grid-template-columns:220px 1fr;border:1px solid var(--line);border-radius:20px;overflow:hidden;background:linear-gradient(145deg,rgba(16,22,37,.88),rgba(7,10,17,.82));box-shadow:0 20px 55px rgba(0,0,0,.16);min-height:250px}
     .machine-art{min-height:250px;display:grid;place-items:center;position:relative;background:radial-gradient(circle at 50% 35%,rgba(90,122,255,.16),transparent 52%),linear-gradient(145deg,#10162a,#080b13)}
+    .machine-art.real-photo{overflow:hidden;padding:0}
+    .machine-art.real-photo img{width:100%;height:100%;min-height:250px;object-fit:cover;display:block;filter:saturate(.92) contrast(1.03);transition:transform .3s ease}
+    .machine-card:hover .machine-art.real-photo img{transform:scale(1.025)}
+    .hero-photo{overflow:hidden;border-radius:18px}
+    .hero-photo img{width:100%;max-height:250px;object-fit:cover;border-radius:18px;display:block;box-shadow:0 18px 45px rgba(0,0,0,.38)}
     .machine-art .device{width:190px;height:104px;border:1px solid rgba(155,176,255,.23);border-radius:16px;background:linear-gradient(145deg,#1a2544,#070a12);box-shadow:0 18px 40px rgba(0,0,0,.35),inset 0 0 34px rgba(96,125,255,.1);position:relative}
     .device.gpu:before,.device.gpu:after{content:"";position:absolute;border-radius:10px}
     .device.gpu:before{inset:17px 18px 36px;background:repeating-linear-gradient(90deg,rgba(128,151,255,.18) 0 5px,transparent 5px 13px);border:1px solid rgba(150,170,255,.12)}
@@ -68,7 +73,7 @@
     .buy-actions{display:flex;justify-content:flex-end;gap:8px;margin-top:16px}
     .buy-cancel{border:1px solid var(--line);border-radius:10px;padding:10px 13px;background:rgba(255,255,255,.035);color:var(--text);font:800 9px Manrope}
     @media(max-width:950px){.machine-card{grid-template-columns:190px 1fr}.machine-hero-grid{grid-template-columns:1fr}}
-    @media(max-width:620px){.machines-page{padding:24px 15px 50px}.machines-head{align-items:flex-start;flex-direction:column}.machine-card{grid-template-columns:1fr}.machine-art{min-height:190px}.machine-grid{max-width:100%}.server{transform:scale(.82) perspective(500px) rotateY(-15deg) rotateX(8deg)}}
+    @media(max-width:620px){.machines-page{padding:24px 15px 50px}.machines-head{align-items:flex-start;flex-direction:column}.machine-card{grid-template-columns:1fr}.machine-art{min-height:190px}.machine-art.real-photo img{min-height:190px}.machine-grid{max-width:100%}.server{transform:scale(.82) perspective(500px) rotateY(-15deg) rotateX(8deg)}}
   </style>
 </head>
 <body>
@@ -101,14 +106,14 @@
           <p>HUT 10 PRO can catalogue physical AI and compute hardware with clear specifications and purchase records. Earnings, when applicable, depend on actual machine use, operating costs, demand, and your agreement—not guaranteed daily returns.</p>
           <p class="machine-note">Catalogue prices shown below are demo prices for the website build and must be replaced with verified supplier pricing before sales go live.</p>
         </div>
-        <div class="server-visual"><div class="server"></div></div>
+        <div class="server-visual hero-photo"><img src="https://aimg.as-1.co.jp/c/60/4169/98/60416998.jpg" alt="AI GPU server hardware" loading="lazy" referrerpolicy="no-referrer"></div>
       </div>
     </section>
 
     <section class="machine-grid">
       
       <article class="machine-card">
-        <div class="machine-art"><div class="device gpu"></div></div>
+        <div class="machine-art real-photo"><img src="https://aimg.as-1.co.jp/c/60/4169/98/60416998.jpg" alt="AI Compute Node machine" loading="lazy" referrerpolicy="no-referrer"></div></div>
         <div class="machine-body">
           <span class="machine-badge">GPU COMPUTE</span>
           <h3>AI Compute Node</h3>
@@ -127,7 +132,7 @@
         </div>
       </article>
       <article class="machine-card">
-        <div class="machine-art"><div class="device edge"></div></div>
+        <div class="machine-art real-photo"><img src="https://img.directindustry.it/images_di/photo-g/4657-20803628.jpg" alt="Edge AI Node machine" loading="lazy" referrerpolicy="no-referrer"></div></div>
         <div class="machine-body">
           <span class="machine-badge">EDGE COMPUTE</span>
           <h3>Edge AI Node</h3>
@@ -146,7 +151,7 @@
         </div>
       </article>
       <article class="machine-card">
-        <div class="machine-art"><div class="device storage"></div></div>
+        <div class="machine-art real-photo"><img src="https://cdn.cs.1worldsync.com/20/1e/201ec962-f971-434a-864c-c04a3b804c82.jpg" alt="Storage Node machine" loading="lazy" referrerpolicy="no-referrer"></div></div>
         <div class="machine-body">
           <span class="machine-badge">DATA STORAGE</span>
           <h3>Storage Node</h3>
@@ -165,7 +170,7 @@
         </div>
       </article>
       <article class="machine-card">
-        <div class="machine-art"><div class="device network"></div></div>
+        <div class="machine-art real-photo"><img src="https://www.rackmountpro.com/images/products/SSE_G24_TG4_F1.jpg" alt="Network Accelerator machine" loading="lazy" referrerpolicy="no-referrer"></div></div>
         <div class="machine-body">
           <span class="machine-badge">NETWORK</span>
           <h3>Network Accelerator</h3>
@@ -184,7 +189,7 @@
         </div>
       </article>
       <article class="machine-card">
-        <div class="machine-art"><div class="device workstation"></div></div>
+        <div class="machine-art real-photo"><img src="https://infomaxparis.com/28945-medium_default/pc-creator-deeplearning-dual-rtx-5090-ryzen-9-powering-advanced-ai.jpg" alt="AI Workstation machine" loading="lazy" referrerpolicy="no-referrer"></div></div>
         <div class="machine-body">
           <span class="machine-badge">CREATOR</span>
           <h3>AI Workstation</h3>
@@ -203,7 +208,7 @@
         </div>
       </article>
       <article class="machine-card">
-        <div class="machine-art"><div class="device rack"></div></div>
+        <div class="machine-art real-photo"><img src="https://www.harvsinternational.com/assets/img/articles/ai-forecasting.jpg" alt="Rack Compute Server machine" loading="lazy" referrerpolicy="no-referrer"></div></div>
         <div class="machine-body">
           <span class="machine-badge">DATA CENTER</span>
           <h3>Rack Compute Server</h3>
