@@ -45,7 +45,7 @@ html[data-theme="light"] .sidebar{background:rgba(247,249,253,.9)}
 @media(max-width:520px){.main-content{padding:16px 13px}.top-actions{gap:6px}.profile-chip{width:42px;padding:4px;justify-content:center}.profile-chip span{width:32px}.top-actions .notification{display:none}.hero-amount-row strong{font-size:38px}.hero-card{min-height:220px}.panel,.stat-card{padding:17px}.footer{line-height:1.5}}
 
 
-/* ===== Kibuks visual polish layer ===== */
+/* ===== HUT 10 PRO visual polish layer ===== */
 body{
   overflow-x:hidden;
   background:
@@ -280,7 +280,7 @@ html[data-theme="light"] .stat-card{background:linear-gradient(145deg,rgba(255,2
 .plan-foot span{color:#707b94;font-size:7.5px}.mini-action{border:0;background:none;color:var(--blue);font-size:8px;font-weight:700;white-space:nowrap}
 @media(max-width:520px){.stat-card{min-height:142px}.investment-card{padding:13px}.plan-foot{align-items:flex-start}.plan-foot span{max-width:180px}}
 
-/* ===== Kibuks identity refresh ===== */
+/* ===== HUT 10 PRO identity refresh ===== */
 :root{
   --brand-gradient:linear-gradient(135deg,#6f84ff 0%,#986dff 100%);
 }
