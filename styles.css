@@ -347,3 +347,8 @@ html[data-theme="light"] .intro-card{
     radial-gradient(circle at 86% 44%,rgba(111,132,255,.10),transparent 24%),
     linear-gradient(135deg,rgba(255,255,255,.98),rgba(242,246,253,.94));
 }
+
+
+/* ===== HUT 10 PRO brand mark ===== */
+.brand-mark span{font-family:"Sora",sans-serif;font-size:15px!important;letter-spacing:-1.3px!important;font-weight:800!important}
+.brand strong{font-family:"Sora",sans-serif;font-size:16px!important}
