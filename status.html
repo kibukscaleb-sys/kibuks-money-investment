@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="HUT 10 PRO system status">
+<link rel="icon" type="image/svg+xml" href="favicon.svg?v=20260929">
+<title>System Status • HUT 10 PRO</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css?v=20260926-status1">
+<style>
+.st-shell{min-height:100vh;position:relative;z-index:2}.st-main{max-width:1180px;margin:0 auto;padding:28px}
+.st-top{display:flex;align-items:flex-start;justify-content:space-between;gap:18px;margin-bottom:20px}.st-title h1{margin:0;font:800 28px Sora;letter-spacing:-1px}.st-title p{margin:8px 0 0;color:#77839d;font-size:10px}.st-back{color:#91a3ff;text-decoration:none;font-size:9px;font-weight:800}
+.st-hero{position:relative;overflow:hidden;border-radius:22px;padding:24px;background:radial-gradient(circle at 78% 20%,rgba(111,140,255,.23),transparent 26%),linear-gradient(135deg,#0a0f20,#101832 58%,#090e1a);border:1px solid rgba(135,157,203,.14);box-shadow:0 22px 65px rgba(0,0,0,.22)}
+.st-kicker{color:#7582a3;font-size:8px;letter-spacing:1.7px;font-weight:800}.st-hero h2{margin:9px 0 6px;font:800 22px Sora;letter-spacing:-.6px}.st-hero p{margin:0;color:#7d88a3;font-size:9.5px;line-height:1.7}.overall{display:inline-flex;align-items:center;gap:7px;margin-top:14px;padding:8px 10px;border-radius:9px;background:rgba(58,216,164,.07);border:1px solid rgba(58,216,164,.14);color:#6fe3bd;font-size:8px;font-weight:800}.dot{width:7px;height:7px;border-radius:50%;background:#65dfba;box-shadow:0 0 13px rgba(101,223,186,.72)}
+.st-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:15px}.st-card{padding:19px;border-radius:17px;background:linear-gradient(145deg,rgba(11,15,27,.88),rgba(7,10,18,.76));border:1px solid rgba(143,162,202,.11);box-shadow:0 18px 50px rgba(0,0,0,.15)}
+.st-head{display:flex;align-items:center;gap:11px}.st-icon{width:39px;height:39px;border-radius:12px;display:grid;place-items:center;background:rgba(111,140,255,.10);color:#92a5ff;font-weight:800}.st-icon.purple{background:rgba(154,103,255,.10);color:#b79aff}.st-icon.green{background:rgba(58,216,164,.08);color:#70e1bd}.st-head div{flex:1}.st-head strong{display:block;font-size:11px}.st-head small{display:block;color:#626e86;font-size:7.5px;margin-top:3px}.st-state{font-size:7px;letter-spacing:.8px;padding:6px 7px;border-radius:7px}.live{color:#69e0bc;background:rgba(58,216,164,.06);border:1px solid rgba(58,216,164,.12)}.next{color:#a795ff;background:rgba(154,103,255,.06);border:1px solid rgba(154,103,255,.12)}
+.st-bar{height:4px;margin-top:17px;border-radius:5px;background:rgba(255,255,255,.045);overflow:hidden}.st-bar span{display:block;width:100%;height:100%;background:linear-gradient(90deg,#6e8cff,#9a67ff);border-radius:5px}.st-bar.pending span{width:34%;background:linear-gradient(90deg,#7869d9,#9a67ff)}
+.st-meta{display:flex;justify-content:space-between;gap:10px;margin-top:9px;color:#5e6981;font-size:7.5px}.st-meta b{color:#94a0b8}
+.st-info{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:14px}.st-info-card{padding:19px;border:1px solid rgba(143,162,202,.10);border-radius:17px;background:linear-gradient(145deg,rgba(11,15,27,.84),rgba(7,10,18,.74))}.st-info-card h3{margin:0 0 7px;font:800 14px Sora}.st-info-card p{margin:0;color:#69748d;font-size:8.5px;line-height:1.7}
+.st-footer{text-align:center;padding:24px 0 10px;color:#566178;font-size:8px}
+@media(max-width:760px){.st-main{padding:18px}.st-title h1{font-size:22px}.st-grid,.st-info{grid-template-columns:1fr}.st-top{flex-direction:column}}
+</style>
+</head>
+<body>
+<div class="ai-atmosphere" aria-hidden="true">
+<div class="video-horizon"></div><div class="ai-grid"></div><div class="ai-orbit orbit-a"></div><div class="ai-orbit orbit-b"></div><div class="ai-orbit orbit-c"></div>
+<div class="ai-light light-a"></div><div class="ai-light light-b"></div><div class="ai-light light-c"></div>
+<div class="ai-particle p1"></div><div class="ai-particle p2"></div><div class="ai-particle p3"></div><div class="ai-particle p4"></div><div class="ai-particle p5"></div><div class="ai-particle p6"></div>
+</div>
+<main class="st-shell"><div class="st-main">
+<div class="st-top"><div class="st-title"><span class="eyebrow">HUT 10 PRO • PLATFORM MONITOR</span><h1>System status</h1><p>See which parts of the HUT 10 PRO platform are active and which are being connected.</p></div><a class="st-back" href="index.html">← Dashboard</a></div>
+<section class="st-hero"><span class="st-kicker">PLATFORM HEALTH</span><h2>HUT 10 PRO is online</h2><p>The published frontend is available. Backend services are shown separately so you can see the current build stage.</p><span class="overall"><i class="dot"></i> FRONTEND ONLINE</span></section>
+<section class="st-grid">
+<article class="st-card"><div class="st-head"><span class="st-icon green">◉</span><div><strong>Website</strong><small>HUT 10 PRO frontend</small></div><span class="st-state live">ONLINE</span></div><div class="st-bar"><span></span></div><div class="st-meta"><span>Published interface</span><b>Active</b></div></article>
+<article class="st-card"><div class="st-head"><span class="st-icon">◈</span><div><strong>GitHub Pages</strong><small>Static site deployment</small></div><span class="st-state live">ONLINE</span></div><div class="st-bar"><span></span></div><div class="st-meta"><span>Site hosting</span><b>Active</b></div></article>
+<article class="st-card"><div class="st-head"><span class="st-icon purple">◎</span><div><strong>Authentication</strong><small>Secure account service</small></div><span class="st-state next">NEXT</span></div><div class="st-bar pending"><span></span></div><div class="st-meta"><span>Backend connection</span><b>Pending</b></div></article>
+<article class="st-card"><div class="st-head"><span class="st-icon purple">▣</span><div><strong>Supabase backend</strong><small>Database and application data</small></div><span class="st-state next">NEXT</span></div><div class="st-bar pending"><span></span></div><div class="st-meta"><span>Database connection</span><b>Pending</b></div></article>
+<article class="st-card"><div class="st-head"><span class="st-icon">↔</span><div><strong>Mobile Money</strong><small>Deposit and payout services</small></div><span class="st-state next">NEXT</span></div><div class="st-bar pending"><span></span></div><div class="st-meta"><span>Payment integration</span><b>Pending</b></div></article>
+<article class="st-card"><div class="st-head"><span class="st-icon">✦</span><div><strong>Investment engine</strong><small>Plans and portfolio records</small></div><span class="st-state next">NEXT</span></div><div class="st-bar pending"><span></span></div><div class="st-meta"><span>Investment service</span><b>Pending</b></div></article>
+</section>
+<section class="st-info"><article class="st-info-card"><h3>What is live now?</h3><p>The dashboard, profile interface, account access interface, Investment Hub and Transactions page are published frontend pages.</p></article><article class="st-info-card"><h3>What comes next?</h3><p>The next build stage is secure authentication and Supabase database connection, followed by real transaction and payment processing.</p></article></section>
+<div class="st-footer">© 2026 HUT 10 PRO • System Status</div>
+</div></main>
+</body></html>
