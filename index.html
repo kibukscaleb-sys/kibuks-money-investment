@@ -54,6 +54,7 @@
       <nav class="main-nav" aria-label="Main navigation">
         <a class="nav-link active" href="#dashboard"><span>⌂</span> Dashboard</a>
         <a class="nav-link" href="investments.html"><span>◈</span> Investments</a>
+        <a class="nav-link" href="machines.html"><span>▣</span> Machines</a>
         <a class="nav-link" href="transactions.html"><span>↔</span> Transactions</a>
         <a class="nav-link" href="money.html"><span>↔</span> Deposit / Withdraw</a>
         <a class="nav-link" href="status.html"><span>◌</span> System status</a>
@@ -218,6 +219,34 @@
         </article>
       </section>
 
+      <section class="panel machine-featured" style="margin-bottom:20px">
+        <div class="panel-header">
+          <div>
+            <span class="panel-kicker">HUT 10 PRO HARDWARE</span>
+            <h2>Machine Marketplace</h2>
+            <p>Explore the AI and compute machines available in the HUT 10 PRO catalogue.</p>
+          </div>
+          <a class="link-btn" href="machines.html" style="text-decoration:none">View all machines →</a>
+        </div>
+        <div class="machine-mini-grid">
+          <a class="machine-mini" href="machines.html">
+            <div class="machine-mini-art art-gpu"><span>H10</span></div>
+            <div><b>AI Compute Node</b><small>GPU compute • From UGX 1.5M</small></div>
+            <em>View →</em>
+          </a>
+          <a class="machine-mini" href="machines.html">
+            <div class="machine-mini-art art-edge"><span>EDGE</span></div>
+            <div><b>Edge AI Node</b><small>Compact AI workloads • From UGX 650K</small></div>
+            <em>View →</em>
+          </a>
+          <a class="machine-mini" href="machines.html">
+            <div class="machine-mini-art art-storage"><span>SSD</span></div>
+            <div><b>Storage Node</b><small>High-speed storage • From UGX 900K</small></div>
+            <em>View →</em>
+          </a>
+        </div>
+      </section>
+
       <section class="dashboard-grid lower-grid">
         <article id="activity" class="panel">
           <div class="panel-header">
@@ -246,13 +275,35 @@
             <div><span>Dashboard</span><b class="status-live">● Live</b></div>
             <div><span>GitHub Pages</span><b class="status-live">● Deployed</b></div>
             <div><span>Authentication</span><b class="status-soon">○ Next</b></div>
-            <div><span>Supabase backend</span><b class="status-soon">○ Next</b></div>
-            <div><span>Mobile Money</span><b class="status-soon">○ Next</b></div>
+            <div><span>Supabase backend</span><b class="status-live">● Connected</b></div>
+            <div><span>Mobile Money</span><b class="status-soon">○ Setup</b></div>
+            <div><span>Machine marketplace</span><b class="status-live">● Ready</b></div>
           </div>
         </article>
       </section>
 
-      <footer class="footer">
+    <style>
+.machine-featured{overflow:hidden}
+.machine-mini-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.machine-mini{display:grid;grid-template-columns:72px 1fr auto;gap:12px;align-items:center;padding:12px;border:1px solid var(--line);border-radius:15px;background:rgba(255,255,255,.025);text-decoration:none;color:inherit;transition:.2s ease}
+.machine-mini:hover{transform:translateY(-2px);border-color:rgba(110,139,255,.35);background:rgba(255,255,255,.045)}
+.machine-mini b{display:block;font:800 10px Sora}
+.machine-mini small{display:block;margin-top:5px;color:var(--muted);font-size:8px;line-height:1.4}
+.machine-mini em{font-size:8px;font-style:normal;color:#9ab1ff;font-weight:800}
+.machine-mini-art{height:56px;border-radius:12px;display:grid;place-items:center;position:relative;overflow:hidden;border:1px solid rgba(255,255,255,.08);background:linear-gradient(145deg,#10172b,#080b14);box-shadow:inset 0 0 24px rgba(91,120,255,.12)}
+.machine-mini-art:before,.machine-mini-art:after{content:"";position:absolute;border-radius:50%;border:1px solid rgba(128,151,255,.22)}
+.machine-mini-art:before{width:48px;height:48px}
+.machine-mini-art:after{width:30px;height:30px}
+.machine-mini-art span{z-index:2;font:800 7px Sora;letter-spacing:1.2px;color:#dfe6ff}
+.art-gpu:before{box-shadow:0 0 24px rgba(84,123,255,.18)}
+.art-edge:before{width:36px;height:36px;border-radius:10px;transform:rotate(45deg)}
+.art-edge:after{width:18px;height:18px;border-radius:6px}
+.art-storage:before{width:44px;height:30px;border-radius:8px}
+.art-storage:after{width:28px;height:18px;border-radius:5px}
+@media(max-width:900px){.machine-mini-grid{grid-template-columns:1fr}.machine-mini{grid-template-columns:64px 1fr auto}}
+</style>
+
+  <footer class="footer">
         <span>© 2026 HUT 10 PRO</span>
         <span>•</span>
         <span>Your portfolio tools are being built in stages.</span>
