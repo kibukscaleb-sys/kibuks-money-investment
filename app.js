@@ -75,3 +75,19 @@ document.addEventListener("keydown",(event)=>{
 
 const savedTheme=localStorage.getItem("hut10pro-theme");
 applyTheme(savedTheme==="light"?"light":"dark");
+
+
+/* HUT 10 PRO cinematic background animation */
+(function hutVideoBackground(){
+  const atmosphere=document.querySelector('.ai-atmosphere');
+  if(!atmosphere || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  let t=0;
+  function frame(){
+    t+=0.0025;
+    const x=Math.sin(t)*18, y=Math.cos(t*.82)*10;
+    atmosphere.style.setProperty('--drift-x',x.toFixed(2)+'px');
+    atmosphere.style.setProperty('--drift-y',y.toFixed(2)+'px');
+    requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+})();
