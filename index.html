@@ -118,15 +118,15 @@
         <article class="stat-card balance-stat">
           <div class="stat-top"><div class="stat-symbol symbol-blue">◉</div><span class="stat-badge">BALANCE</span></div>
           <span class="stat-label">Available balance</span>
-          <strong>UGX 0</strong>
+          <strong id="availableBalance">UGX 0</strong>
           <div class="stat-meta"><small>Current account balance</small><em>UGX</em></div>
           <div class="stat-spark"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
         </article>
         <article class="stat-card invested-stat">
           <div class="stat-top"><div class="stat-symbol symbol-violet">◈</div><span class="stat-badge">PORTFOLIO</span></div>
           <span class="stat-label">Total invested</span>
-          <strong>UGX 0</strong>
-          <div class="stat-meta"><small>Across investment plans</small><em>0 plans</em></div>
+          <strong id="totalInvested">UGX 0</strong>
+          <div class="stat-meta"><small>Across investment plans</small><em id="planCount">0 plans</em></div>
           <div class="stat-progress"><span></span></div>
         </article>
         <article class="stat-card profit-stat">
@@ -139,7 +139,7 @@
         <article class="stat-card active-stat">
           <div class="stat-top"><div class="stat-symbol symbol-blue">✦</div><span class="stat-badge">PLANS</span></div>
           <span class="stat-label">Active plans</span>
-          <strong>0</strong>
+          <strong id="activePlans">0</strong>
           <div class="stat-meta"><small>Connected to your account</small><em>None yet</em></div>
           <div class="stat-progress active-progress"><span></span></div>
         </article>
@@ -258,6 +258,7 @@
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="supabase-config.js?v=20260926-auth"></script>
+  <script src="supabase-data.js?v=20260926-data"></script>
   <script src="app.js?v=20260929"></script>
 </body>
 </html>
