@@ -27,7 +27,7 @@
 @media(max-width:820px){.money-main{padding:18px}.money-grid{grid-template-columns:1fr}.money-top{flex-direction:column}.money-title h1{font-size:22px}}
 @media(max-width:520px){.action-grid{grid-template-columns:1fr}}
 </style>
-</head>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script src="supabase-config.js?v=20260926-auth"></script></head>
 <body>
 <div class="ai-atmosphere" aria-hidden="true">
 <div class="video-horizon"></div><div class="ai-grid"></div><div class="ai-orbit orbit-a"></div><div class="ai-orbit orbit-b"></div><div class="ai-orbit orbit-c"></div>
@@ -89,11 +89,27 @@ function showForm(mode){
   document.getElementById('moneyNote').textContent=mode==='deposit'?'No money is moved by this page yet. Requests will be sent to the backend once the payment integration is enabled.':'Withdrawals will only be processed after the backend verifies your authenticated balance and payout details.';
   document.getElementById('amount').focus();
 }
-function submitMoney(e){
+async function submitMoney(e){
   e.preventDefault();
   const amount=Number(document.getElementById('amount').value);
+  const phone=document.getElementById('phone').value.trim();
+  const provider=document.getElementById('provider').value;
   if(!amount || amount<1000){alert('Enter an amount of at least UGX 1,000.');return;}
-  alert(moneyMode==='deposit'?'Deposit request UI is ready. Payment processing will be enabled with the backend.':'Withdrawal request UI is ready. Payout processing will be enabled with the backend.');
+  const cfg=window.HUT10_SUPABASE_CONFIG;
+  const configured=cfg && cfg.url && cfg.key && !cfg.url.includes('PASTE_YOUR_') && !cfg.key.includes('PASTE_YOUR_');
+  if(!configured || !window.supabase){
+    alert(moneyMode==='deposit'?'Deposit request UI is ready. Add Supabase configuration before creating a request.':'Withdrawal request UI is ready. Add Supabase configuration before creating a request.');
+    return;
+  }
+  const client=window.supabase.createClient(cfg.url,cfg.key,{auth:{persistSession:true}});
+  const {data:{user}}=await client.auth.getUser();
+  if(!user){alert('Please log in before submitting a money request.');window.location.href='auth.html';return;}
+  const {error}=await client.from('payment_requests').insert({
+    user_id:user.id,type:moneyMode,amount,phone,provider,status:'pending'
+  });
+  if(error){alert(error.message);return;}
+  alert(moneyMode==='deposit'?'Deposit request created. Payment processing will be completed by the backend provider.':'Withdrawal request created. The backend will verify your balance before payout.');
+  document.getElementById('moneyForm').reset();
 }
 </script>
 </body></html>
