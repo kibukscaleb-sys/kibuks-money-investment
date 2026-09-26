@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://kibukscaleb-sys.github.io/kibuks-money-investment/</loc>
-  </url>
+  <url><loc>https://kibukscaleb-sys.github.io/kibuks-money-investment/</loc></url>
+  <url><loc>https://kibukscaleb-sys.github.io/kibuks-money-investment/investments.html</loc></url>
+  <url><loc>https://kibukscaleb-sys.github.io/kibuks-money-investment/transactions.html</loc></url>
+  <url><loc>https://kibukscaleb-sys.github.io/kibuks-money-investment/status.html</loc></url>
+  <url><loc>https://kibukscaleb-sys.github.io/kibuks-money-investment/profile.html</loc></url>
+  <url><loc>https://kibukscaleb-sys.github.io/kibuks-money-investment/auth.html</loc></url>
 </urlset>
