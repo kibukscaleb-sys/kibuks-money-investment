@@ -99,6 +99,18 @@
       </div>
       <p class="profile-note" id="profileNote">Connect Supabase to sync profile details to your authenticated account. Until then, this page can use local browser storage as a frontend fallback.</p>
     </section>
+
+    <section class="account-security" aria-label="Account security">
+      <div>
+        <span class="panel-kicker">ACCOUNT SECURITY</span>
+        <h3>Manage your account</h3>
+        <p>Log out of this device, or permanently delete your HUT 10 PRO account. Account deletion requires your current password, an exact confirmation phrase, and a final confirmation.</p>
+      </div>
+      <div style="display:flex;gap:10px;flex-wrap:wrap">
+        <button class="reset-profile" type="button" onclick="signOut()">↪ Log Out</button>
+        <button class="delete-account-btn" type="button" onclick="openDelete()">Delete Account</button>
+      </div>
+    </section>
   </main>
   <div class="delete-modal" id="deleteModal" aria-hidden="true">
     <div class="delete-card">
@@ -226,14 +238,14 @@
         const email=authUser.email;
         const {error:reauthError}=await supabaseClient.auth.signInWithPassword({email,password});
         if(reauthError) throw new Error('Password verification failed.');
-        const {data:deleteResult,error}=await supabaseClient.rpc('delete_my_account');
+        if(!confirm('Final confirmation: permanently delete your HUT 10 PRO account?')){ msg.textContent='Deletion cancelled. Your account is unchanged.'; return; }
+        const {error}=await supabaseClient.rpc('delete_my_account');
         if(error){
           if(/function .*delete_my_account.*does not exist/i.test(error.message||'')){
             throw new Error('Account deletion is not enabled in Supabase yet. Run account-security.sql once in Supabase SQL Editor.');
           }
           throw error;
         }
-        if(!confirm('Final confirmation: permanently delete your HUT 10 PRO account?')){ msg.textContent='Deletion cancelled. Your account is unchanged.'; return; }
         localStorage.clear();
         msg.style.color='#6fe3bd';
         msg.textContent='Account deleted. Redirecting…';
