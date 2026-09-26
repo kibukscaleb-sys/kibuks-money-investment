@@ -48,6 +48,8 @@
     .machine-badge{display:inline-flex;padding:5px 8px;border-radius:7px;background:rgba(100,127,255,.08);border:1px solid rgba(100,127,255,.14);color:#aabaff;font:800 7px Manrope;letter-spacing:.7px}
     .machine-body h3{font:800 16px Sora;margin:10px 0 6px}
     .machine-body p{margin:0;color:var(--muted);font-size:9px;line-height:1.6;min-height:29px}
+    .machine-spec-line{display:grid;grid-template-columns:auto 1fr auto 1fr;gap:7px 9px;align-items:center;margin:0 0 13px;color:#718099;font-size:7px;text-transform:uppercase;letter-spacing:.5px}
+    .machine-spec-line b{color:#b9c6df;font-size:8px;text-transform:none;letter-spacing:0}
     .machine-meta{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:14px 0}
     .machine-meta div{padding:9px;border:1px solid var(--line);border-radius:10px;background:rgba(255,255,255,.022)}
     .machine-meta span{display:block;color:#78859c;font-size:7px;text-transform:uppercase;letter-spacing:.6px}
@@ -111,12 +113,15 @@
           <h3>AI Compute Node</h3>
           <p>Configured HUT 10 PRO catalogue unit for AI, compute, storage, or infrastructure workloads.</p>
           <div class="machine-meta">
-            <div><span>Core spec</span><b>24 GB class GPU</b></div>
-            <div><span>Operation</span><b>24/7</b></div>
+            <div><span>Machine price</span><b>UGX 1,500,000</b></div>
+            <div><span>Cycle</span><b>30 days</b></div>
+            <div><span>Est. daily money</span><b>UGX 50,000</b></div>
+            <div><span>Est. cycle money</span><b>UGX NaN</b></div>
           </div>
+          <div class="machine-spec-line"><span>Core spec</span><b>24 GB class GPU</b><span>Operation</span><b>24/7</b></div>
           <div class="machine-price">
             <div><small>DEMO CATALOGUE PRICE</small><strong>UGX 1,500,000</strong></div>
-            <button class="buy-machine" onclick="openBuy('AI Compute Node','UGX 1,500,000')">Buy Machine →</button>
+            <button class="buy-machine" onclick="openBuy('AI Compute Node','UGX 1,500,000','30 days','UGX NaN estimated cycle money')">Buy Machine →</button>
           </div>
         </div>
       </article>
@@ -127,12 +132,15 @@
           <h3>Edge AI Node</h3>
           <p>Configured HUT 10 PRO catalogue unit for AI, compute, storage, or infrastructure workloads.</p>
           <div class="machine-meta">
-            <div><span>Core spec</span><b>16 GB RAM</b></div>
-            <div><span>Operation</span><b>Low power</b></div>
+            <div><span>Machine price</span><b>UGX 650,000</b></div>
+            <div><span>Cycle</span><b>21 days</b></div>
+            <div><span>Est. daily money</span><b>UGX 25,000</b></div>
+            <div><span>Est. cycle money</span><b>UGX NaN</b></div>
           </div>
+          <div class="machine-spec-line"><span>Core spec</span><b>16 GB RAM</b><span>Operation</span><b>Low power</b></div>
           <div class="machine-price">
             <div><small>DEMO CATALOGUE PRICE</small><strong>UGX 650,000</strong></div>
-            <button class="buy-machine" onclick="openBuy('Edge AI Node','UGX 650,000')">Buy Machine →</button>
+            <button class="buy-machine" onclick="openBuy('Edge AI Node','UGX 650,000','21 days','UGX NaN estimated cycle money')">Buy Machine →</button>
           </div>
         </div>
       </article>
@@ -143,12 +151,15 @@
           <h3>Storage Node</h3>
           <p>Configured HUT 10 PRO catalogue unit for AI, compute, storage, or infrastructure workloads.</p>
           <div class="machine-meta">
-            <div><span>Core spec</span><b>8 TB SSD</b></div>
-            <div><span>Operation</span><b>24/7</b></div>
+            <div><span>Machine price</span><b>UGX 900,000</b></div>
+            <div><span>Cycle</span><b>45 days</b></div>
+            <div><span>Est. daily money</span><b>UGX 28,000</b></div>
+            <div><span>Est. cycle money</span><b>UGX NaN</b></div>
           </div>
+          <div class="machine-spec-line"><span>Core spec</span><b>8 TB SSD</b><span>Operation</span><b>24/7</b></div>
           <div class="machine-price">
             <div><small>DEMO CATALOGUE PRICE</small><strong>UGX 900,000</strong></div>
-            <button class="buy-machine" onclick="openBuy('Storage Node','UGX 900,000')">Buy Machine →</button>
+            <button class="buy-machine" onclick="openBuy('Storage Node','UGX 900,000','45 days','UGX NaN estimated cycle money')">Buy Machine →</button>
           </div>
         </div>
       </article>
@@ -159,12 +170,15 @@
           <h3>Network Accelerator</h3>
           <p>Configured HUT 10 PRO catalogue unit for AI, compute, storage, or infrastructure workloads.</p>
           <div class="machine-meta">
-            <div><span>Core spec</span><b>10 GbE class</b></div>
-            <div><span>Operation</span><b>24/7</b></div>
+            <div><span>Machine price</span><b>UGX 1,200,000</b></div>
+            <div><span>Cycle</span><b>60 days</b></div>
+            <div><span>Est. daily money</span><b>UGX 30,000</b></div>
+            <div><span>Est. cycle money</span><b>UGX NaN</b></div>
           </div>
+          <div class="machine-spec-line"><span>Core spec</span><b>10 GbE class</b><span>Operation</span><b>24/7</b></div>
           <div class="machine-price">
             <div><small>DEMO CATALOGUE PRICE</small><strong>UGX 1,200,000</strong></div>
-            <button class="buy-machine" onclick="openBuy('Network Accelerator','UGX 1,200,000')">Buy Machine →</button>
+            <button class="buy-machine" onclick="openBuy('Network Accelerator','UGX 1,200,000','60 days','UGX NaN estimated cycle money')">Buy Machine →</button>
           </div>
         </div>
       </article>
@@ -175,12 +189,15 @@
           <h3>AI Workstation</h3>
           <p>Configured HUT 10 PRO catalogue unit for AI, compute, storage, or infrastructure workloads.</p>
           <div class="machine-meta">
-            <div><span>Core spec</span><b>High-end CPU/GPU</b></div>
-            <div><span>Operation</span><b>Desktop</b></div>
+            <div><span>Machine price</span><b>UGX 5,500,000</b></div>
+            <div><span>Cycle</span><b>90 days</b></div>
+            <div><span>Est. daily money</span><b>UGX 75,000</b></div>
+            <div><span>Est. cycle money</span><b>UGX NaN</b></div>
           </div>
+          <div class="machine-spec-line"><span>Core spec</span><b>High-end CPU/GPU</b><span>Operation</span><b>Desktop</b></div>
           <div class="machine-price">
             <div><small>DEMO CATALOGUE PRICE</small><strong>UGX 5,500,000</strong></div>
-            <button class="buy-machine" onclick="openBuy('AI Workstation','UGX 5,500,000')">Buy Machine →</button>
+            <button class="buy-machine" onclick="openBuy('AI Workstation','UGX 5,500,000','90 days','UGX NaN estimated cycle money')">Buy Machine →</button>
           </div>
         </div>
       </article>
@@ -191,18 +208,21 @@
           <h3>Rack Compute Server</h3>
           <p>Configured HUT 10 PRO catalogue unit for AI, compute, storage, or infrastructure workloads.</p>
           <div class="machine-meta">
-            <div><span>Core spec</span><b>Multi-GPU ready</b></div>
-            <div><span>Operation</span><b>24/7</b></div>
+            <div><span>Machine price</span><b>UGX 7,500,000</b></div>
+            <div><span>Cycle</span><b>120 days</b></div>
+            <div><span>Est. daily money</span><b>UGX 90,000</b></div>
+            <div><span>Est. cycle money</span><b>UGX NaN</b></div>
           </div>
+          <div class="machine-spec-line"><span>Core spec</span><b>Multi-GPU ready</b><span>Operation</span><b>24/7</b></div>
           <div class="machine-price">
             <div><small>DEMO CATALOGUE PRICE</small><strong>UGX 7,500,000</strong></div>
-            <button class="buy-machine" onclick="openBuy('Rack Compute Server','UGX 7,500,000')">Buy Machine →</button>
+            <button class="buy-machine" onclick="openBuy('Rack Compute Server','UGX 7,500,000','120 days','UGX NaN estimated cycle money')">Buy Machine →</button>
           </div>
         </div>
       </article>
     </section>
 
-    <div class="catalog-disclaimer"><strong>Important:</strong> These machine listings are currently a website catalogue. The displayed prices are demo values, not verified live offers. A real purchase flow should only be activated after HUT 10 PRO has confirmed the physical hardware, supplier, ownership terms, delivery/hosting arrangements, operating costs, and payment provider.</div>
+    <div class="catalog-disclaimer"><strong>Important:</strong> These machine listings are currently a website catalogue. The displayed prices, cycle lengths, and money figures are demo estimates, not verified live offers or guaranteed returns. A real purchase flow should only be activated after HUT 10 PRO has confirmed the physical hardware, supplier, ownership terms, delivery/hosting arrangements, operating costs, and payment provider.</div>
   </main>
 
   <div class="buy-modal" id="buyModal" aria-hidden="true">
@@ -222,10 +242,10 @@
 
 <script>
 let selectedMachineName='',selectedMachinePrice='';
-function openBuy(name,price){
+function openBuy(name,price,days,total){
   selectedMachineName=name;selectedMachinePrice=price;
   document.getElementById('selectedMachine').textContent=name;
-  document.getElementById('selectedPrice').textContent=price;
+  document.getElementById('selectedPrice').textContent=price+' • '+days+' • '+total;
   document.getElementById('buyModal').classList.add('show');
   document.getElementById('buyModal').setAttribute('aria-hidden','false');
 }
