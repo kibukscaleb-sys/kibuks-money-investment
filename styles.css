@@ -438,3 +438,29 @@ body:after{
 @media(prefers-reduced-motion:reduce){
   .ai-grid,.ai-particle{animation:none!important}
 }
+
+
+/* ===== HUT 10 PRO cinematic video-like background ===== */
+.ai-atmosphere{isolation:isolate;transform:translate3d(var(--drift-x,0),var(--drift-y,0),0);transition:transform 1.2s linear}
+.video-horizon{position:absolute;left:-15%;right:-15%;bottom:7%;height:34%;background:radial-gradient(ellipse at center,rgba(255,156,61,.16),transparent 55%);filter:blur(28px);animation:horizonPulse 7s ease-in-out infinite}
+.ai-grid{opacity:.48;animation:hutGrid 14s linear infinite,gridBreath 6s ease-in-out infinite}
+.ai-orbit{position:absolute;left:50%;top:42%;border:1px solid rgba(255,181,71,.13);border-radius:50%;transform:translate(-50%,-50%);box-shadow:0 0 35px rgba(255,130,50,.04)}
+.orbit-a{width:46vw;height:18vw;animation:orbitA 16s linear infinite}
+.orbit-b{width:70vw;height:28vw;border-color:rgba(130,160,200,.08);animation:orbitB 22s linear infinite reverse}
+.orbit-c{width:92vw;height:38vw;border-color:rgba(255,181,71,.055);animation:orbitC 30s linear infinite}
+.ai-light{position:absolute;border-radius:50%;filter:blur(55px);mix-blend-mode:screen}
+.light-a{width:260px;height:260px;left:18%;top:12%;background:rgba(255,167,73,.08);animation:lightA 12s ease-in-out infinite}
+.light-b{width:340px;height:340px;right:7%;top:34%;background:rgba(80,130,190,.07);animation:lightB 16s ease-in-out infinite}
+.light-c{width:220px;height:220px;left:42%;bottom:2%;background:rgba(255,110,45,.06);animation:lightC 10s ease-in-out infinite}
+.ai-particle{animation:hutFloat 7s ease-in-out infinite,particleGlow 3s ease-in-out infinite}
+.p5{left:44%;top:19%;animation-delay:-1s}.p6{left:87%;top:58%;animation-delay:-5s}
+@keyframes horizonPulse{0%,100%{opacity:.45;transform:scaleX(.92)}50%{opacity:.9;transform:scaleX(1.08)}}
+@keyframes gridBreath{0%,100%{opacity:.3}50%{opacity:.62}}
+@keyframes orbitA{from{transform:translate(-50%,-50%) rotate(0deg)}to{transform:translate(-50%,-50%) rotate(360deg)}}
+@keyframes orbitB{from{transform:translate(-50%,-50%) rotate(0deg)}to{transform:translate(-50%,-50%) rotate(-360deg)}}
+@keyframes orbitC{from{transform:translate(-50%,-50%) rotate(0deg)}to{transform:translate(-50%,-50%) rotate(360deg)}}
+@keyframes lightA{0%,100%{transform:translate(0,0)}50%{transform:translate(80px,35px)}}
+@keyframes lightB{0%,100%{transform:translate(0,0)}50%{transform:translate(-70px,-40px)}}
+@keyframes lightC{0%,100%{transform:translate(0,0)}50%{transform:translate(35px,-25px)}}
+@keyframes particleGlow{0%,100%{box-shadow:0 0 8px rgba(255,181,71,.35)}50%{box-shadow:0 0 22px rgba(255,181,71,.95)}}
+@media(prefers-reduced-motion:reduce){.ai-orbit,.ai-light,.video-horizon{animation:none!important}}
