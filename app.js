@@ -22,7 +22,7 @@ function toggleBalance(){
 
 function applyTheme(theme){
   root.setAttribute("data-theme",theme);
-  localStorage.setItem("kibuks-theme",theme);
+  localStorage.setItem("hut10pro-theme",theme);
   const icon=document.getElementById("themeIcon");
   if(icon) icon.textContent=theme==="dark"?"☾":"☀";
   document.querySelector('meta[name="theme-color"]')?.setAttribute("content",theme==="dark"?"#070a12":"#f4f7fb");
@@ -73,5 +73,5 @@ document.addEventListener("keydown",(event)=>{
   if(event.key==="Escape") closeModal();
 });
 
-const savedTheme=localStorage.getItem("kibuks-theme");
+const savedTheme=localStorage.getItem("hut10pro-theme");
 applyTheme(savedTheme==="light"?"light":"dark");
