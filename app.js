@@ -91,3 +91,51 @@ applyTheme(savedTheme==="light"?"light":"dark");
   }
   requestAnimationFrame(frame);
 })();
+
+/* HUT 10 PRO authentication session bridge */
+let hut10Supabase=null;
+async function initDashboardAuth(){
+  const cfg=window.HUT10_SUPABASE_CONFIG;
+  if(!cfg || !cfg.url || !cfg.key || cfg.url.includes('PASTE_YOUR_') || cfg.key.includes('PASTE_YOUR_')){
+    const savedName=localStorage.getItem('hut10_name')||'HUT 10 PRO';
+    updateTopUser(savedName);
+    return;
+  }
+  try{
+    hut10Supabase=window.supabase.createClient(cfg.url,cfg.key,{auth:{autoRefreshToken:true,persistSession:true,detectSessionInUrl:true}});
+    const {data:{session}}=await hut10Supabase.auth.getSession();
+    if(!session){
+      window.location.href='auth.html';
+      return;
+    }
+    const {data,error}=await hut10Supabase.auth.getUser();
+    if(error) throw error;
+    const user=data.user;
+    const name=user.user_metadata?.full_name || user.email?.split('@')[0] || 'HUT 10 PRO';
+    updateTopUser(name);
+    localStorage.setItem('hut10_email',user.email||'');
+    localStorage.setItem('hut10_session','active');
+    hut10Supabase.auth.onAuthStateChange((event, nextSession)=>{
+      if(event==='SIGNED_OUT' || !nextSession) window.location.href='auth.html';
+    });
+  }catch(error){
+    showNotice('Authentication connection error. Check Supabase settings.');
+    console.error(error);
+  }
+}
+function updateTopUser(name){
+  const avatar=document.getElementById('topAvatar');
+  const user=document.getElementById('topUser');
+  if(avatar) avatar.textContent=name.charAt(0).toUpperCase();
+  if(user) user.textContent=name;
+}
+async function signOutUser(){
+  if(hut10Supabase){
+    const {error}=await hut10Supabase.auth.signOut({scope:'local'});
+    if(error){showNotice(error.message);return;}
+  }
+  localStorage.removeItem('hut10_session');
+  showNotice('Signed out.');
+  setTimeout(()=>window.location.href='auth.html',350);
+}
+document.addEventListener('DOMContentLoaded',initDashboardAuth);
