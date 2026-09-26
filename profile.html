@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20260929">
+  <link rel="stylesheet" href="styles.css?v=20260929">\n  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>\n  <script src="supabase-config.js?v=20260926-auth"></script>
   <style>
     .profile-page{max-width:1080px;margin:0 auto;padding:34px 30px 70px}
     .profile-top{display:flex;align-items:center;justify-content:space-between;gap:18px;margin-bottom:22px}
@@ -95,7 +95,7 @@
         <button class="reset-profile" onclick="resetProfile()">Clear</button>
         <button class="save-profile" onclick="saveProfile()">Save Profile →</button>
       </div>
-      <p class="profile-note">Your details are currently saved only in this browser. Secure account storage, authentication and backend profile syncing will be connected when the HUT 10 PRO backend is enabled.</p>
+      <p class="profile-note" id="profileNote">Connect Supabase to sync profile details to your authenticated account. Until then, this page can use local browser storage as a frontend fallback.</p>
     </section>
   </main>
 
@@ -103,26 +103,87 @@
   <script src="app.js?v=20260929"></script>
   <script>
     const fields=['name','username','email','phone','country','currency'];
-    function loadProfile(){
-      fields.forEach(id=>{const el=document.getElementById(id); const v=localStorage.getItem('hut10_'+id); if(v) el.value=v;});
-      const n=document.getElementById('name').value.trim()||'Your Name';
-      const u=document.getElementById('username').value.trim()||'yourusername';
+    let supabaseClient=null;
+    let authUser=null;
+
+    function configured(){
+      const cfg=window.HUT10_SUPABASE_CONFIG;
+      return cfg && cfg.url && cfg.key && !cfg.url.includes('PASTE_YOUR_') && !cfg.key.includes('PASTE_YOUR_');
+    }
+
+    function setProfileHeader(){
+      const n=document.getElementById('name').value.trim()||authUser?.user_metadata?.full_name||authUser?.email?.split('@')[0]||'Your Name';
+      const u=document.getElementById('username').value.trim()||authUser?.user_metadata?.username||n.toLowerCase().replace(/\s+/g,'.');
       document.getElementById('profileName').textContent=n;
       document.getElementById('profileUsername').textContent='@'+u.replace(/^@/,'');
       document.getElementById('avatar').textContent=n.charAt(0).toUpperCase();
     }
-    function saveProfile(){
-      fields.forEach(id=>localStorage.setItem('hut10_'+id,document.getElementById(id).value.trim()));
-      loadProfile();
+
+    function loadLocal(){
+      fields.forEach(id=>{const el=document.getElementById(id);const v=localStorage.getItem('hut10_'+id);if(v)el.value=v;});
+      document.getElementById('currency').value=localStorage.getItem('hut10_currency')||'UGX — Ugandan Shilling';
+      setProfileHeader();
+    }
+
+    async function initProfile(){
+      loadLocal();
+      if(!configured()){return;}
+      supabaseClient=window.supabase.createClient(window.HUT10_SUPABASE_CONFIG.url,window.HUT10_SUPABASE_CONFIG.key,{auth:{autoRefreshToken:true,persistSession:true,detectSessionInUrl:true}});
+      const {data:{session}}=await supabaseClient.auth.getSession();
+      if(!session){
+        document.getElementById('profileNote').textContent='No active Supabase session. Log in from the HUT 10 PRO account page to sync your profile.';
+        return;
+      }
+      const {data,error}=await supabaseClient.auth.getUser();
+      if(error||!data.user)return;
+      authUser=data.user;
+      const m=authUser.user_metadata||{};
+      document.getElementById('email').value=authUser.email||'';
+      if(m.full_name)document.getElementById('name').value=m.full_name;
+      if(m.username)document.getElementById('username').value=m.username;
+      if(m.phone)document.getElementById('phone').value=m.phone;
+      if(m.country)document.getElementById('country').value=m.country;
+      if(m.currency)document.getElementById('currency').value=m.currency;
+      setProfileHeader();
+      document.getElementById('profileNote').textContent='Connected to your Supabase account. Profile details can now sync to authenticated user metadata.';
+    }
+
+    async function saveProfile(){
+      const values={};
+      fields.forEach(id=>values[id]=document.getElementById(id).value.trim());
+      fields.forEach(id=>localStorage.setItem('hut10_'+id,values[id]));
+      if(supabaseClient&&authUser){
+        const {error}=await supabaseClient.auth.updateUser({data:{
+          full_name:values.name,username:values.username,phone:values.phone,country:values.country,currency:values.currency
+        }});
+        if(error){showNotice(error.message);return;}
+        authUser.user_metadata={...authUser.user_metadata,full_name:values.name,username:values.username,phone:values.phone,country:values.country,currency:values.currency};
+        setProfileHeader();
+        showNotice('Profile synced to your account.');
+        return;
+      }
+      setProfileHeader();
       showNotice('Profile saved on this device.');
     }
+
     function resetProfile(){
       fields.forEach(id=>{localStorage.removeItem('hut10_'+id);document.getElementById(id).value='';});
       document.getElementById('currency').value='UGX — Ugandan Shilling';
-      loadProfile();
+      setProfileHeader();
       showNotice('Profile form cleared.');
     }
-    loadProfile();
+
+    async function signOut(){
+      if(supabaseClient){
+        const {error}=await supabaseClient.auth.signOut({scope:'local'});
+        if(error){showNotice(error.message);return;}
+      }
+      localStorage.removeItem('hut10_session');
+      showNotice('Signed out.');
+      setTimeout(()=>window.location.href='auth.html',450);
+    }
+
+    initProfile();
   </script>
 </body>
 </html>
