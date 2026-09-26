@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://kibukscaleb-sys.github.io/kibuks-money-investment/sitemap.xml
