@@ -371,3 +371,70 @@ html[data-theme="light"] .intro-card{
 .stat-progress span{background:linear-gradient(90deg,#ff7a3d,#ffcf78)}
 .stat-spark i{background:#ffb547}
 ::selection{background:rgba(255,181,71,.30)}
+
+
+/* ===== HUT 10 PRO modern AI-style atmosphere ===== */
+body{
+  background:
+    radial-gradient(circle at 50% -12%,rgba(45,73,115,.28),transparent 30%),
+    radial-gradient(circle at 82% 28%,rgba(255,122,61,.07),transparent 24%),
+    radial-gradient(circle at 12% 72%,rgba(53,77,119,.14),transparent 26%),
+    #05070c;
+}
+body:after{
+  content:"";
+  position:fixed;inset:0;pointer-events:none;z-index:0;
+  background:
+    linear-gradient(180deg,rgba(255,255,255,.028),transparent 16%,transparent 84%,rgba(255,181,71,.018)),
+    radial-gradient(circle at 50% 38%,transparent 0 32%,rgba(255,255,255,.018) 32.15%,transparent 32.3%);
+  mix-blend-mode:screen;opacity:.65;
+}
+.ai-atmosphere{
+  position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden;
+  opacity:.9;
+}
+.ai-grid{
+  position:absolute;inset:-18% -10%;
+  background:
+    linear-gradient(rgba(150,170,205,.045) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(150,170,205,.045) 1px,transparent 1px);
+  background-size:58px 58px;
+  transform:perspective(900px) rotateX(64deg) scale(1.35) translateY(22%);
+  transform-origin:center bottom;
+  mask-image:linear-gradient(to bottom,transparent 0%,rgba(0,0,0,.75) 32%,#000 72%,#000 100%);
+  animation:hutGrid 18s linear infinite;
+}
+@keyframes hutGrid{from{background-position:0 0,0 0}to{background-position:0 58px,58px 0}}
+.ai-rings{
+  position:absolute;left:50%;top:38%;width:min(900px,110vw);height:min(900px,110vw);
+  transform:translate(-50%,-50%);border-radius:50%;
+  opacity:.52;
+}
+.ai-rings:before{
+  content:"";position:absolute;inset:28%;border-radius:50%;
+  background:radial-gradient(circle,rgba(255,181,71,.055),transparent 62%);
+  filter:blur(1px);
+}
+.ai-rings span{
+  position:absolute;left:50%;top:50%;border:1px solid rgba(110,135,165,.09);
+  border-radius:50%;transform:translate(-50%,-50%);
+}
+.ai-rings span:nth-child(1){width:30%;height:30%}
+.ai-rings span:nth-child(2){width:56%;height:56%;transform:translate(-50%,-50%) rotate(18deg) scaleX(1.4)}
+.ai-rings span:nth-child(3){width:82%;height:82%;transform:translate(-50%,-50%) rotate(-24deg) scaleX(1.2);border-color:rgba(255,181,71,.07)}
+.ai-particle{
+  position:absolute;width:4px;height:4px;border-radius:50%;
+  background:#ffd18a;box-shadow:0 0 14px rgba(255,181,71,.75);
+  opacity:.55;animation:hutFloat 9s ease-in-out infinite;
+}
+.p1{left:18%;top:26%;animation-delay:-2s}.p2{left:78%;top:22%;animation-delay:-6s}
+.p3{left:69%;top:68%;animation-delay:-4s}.p4{left:27%;top:72%;animation-delay:-8s}
+@keyframes hutFloat{
+  0%,100%{transform:translate3d(0,0,0);opacity:.25}
+  50%{transform:translate3d(10px,-18px,0);opacity:.7}
+}
+.sidebar,.main-content{position:relative;z-index:2}
+.hero-card,.panel,.stat-card,.intro-card,.market-card{backdrop-filter:blur(18px)}
+@media(prefers-reduced-motion:reduce){
+  .ai-grid,.ai-particle{animation:none!important}
+}
