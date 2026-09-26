@@ -53,7 +53,7 @@
       </div>
 
       <div class="sidebar-bottom">
-        <button class="ghost-btn" onclick="showNotice('Authentication is planned for the next build.')">↪ <span>Sign out</span></button>
+        <button class="ghost-btn" onclick="signOutUser()">↪ <span>Sign out</span></button>
       </div>
     </aside>
 
@@ -68,7 +68,7 @@
         <div class="top-actions">
           <button class="icon-btn" aria-label="Toggle theme" onclick="toggleTheme()"><span id="themeIcon">☾</span></button>
           <button class="icon-btn notification" aria-label="Notifications" onclick="showNotice('No new notifications.')">♢<i></i></button>
-          <button class="profile-chip" onclick="showNotice('Profile and authentication are coming next.')"><span>H</span><em>HUT 10 PRO</em></button>
+          <button class="profile-chip" onclick="window.location.href='profile.html'"><span id="topAvatar">H</span><em id="topUser">HUT 10 PRO</em></button>
         </div>
       </header>
 
@@ -256,6 +256,8 @@
     </div>
   </div>
 
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="supabase-config.js?v=20260926-auth"></script>
   <script src="app.js?v=20260929"></script>
 </body>
 </html>
