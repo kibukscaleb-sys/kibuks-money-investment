@@ -139,3 +139,31 @@ where not exists (select 1 from public.investment_plans where name = 'Starter Pl
 insert into public.investment_plans (name, minimum_amount, term_days, description, is_active)
 select 'Growth Plan', 250000, 90, 'Growth plan preview for HUT 10 PRO', true
 where not exists (select 1 from public.investment_plans where name = 'Growth Plan');
+
+
+-- Secure self-service account deletion.
+-- The client must already have a valid authenticated session.
+create or replace function public.delete_my_account()
+returns void
+language plpgsql
+security definer
+set search_path = public, auth
+as $$
+declare
+  uid uuid := auth.uid();
+begin
+  if uid is null then
+    raise exception 'Not authenticated';
+  end if;
+
+  delete from public.payment_requests where user_id = uid;
+  delete from public.transactions where user_id = uid;
+  delete from public.investments where user_id = uid;
+  delete from public.wallets where user_id = uid;
+  delete from public.profiles where user_id = uid;
+  delete from auth.users where id = uid;
+end;
+$$;
+
+revoke all on function public.delete_my_account() from public;
+grant execute on function public.delete_my_account() to authenticated;
