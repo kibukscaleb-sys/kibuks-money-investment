@@ -51,7 +51,7 @@
     .hub-footer{text-align:center;color:#566178;font-size:8px;padding:24px 0 10px}
     @media(max-width:760px){.hub-main{padding:18px}.hub-top{align-items:flex-start}.hub-title h1{font-size:22px}.plan-grid,.info-grid{grid-template-columns:1fr}}
   </style>
-</head>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script src="supabase-config.js?v=20260926-auth"></script><script src="supabase-data.js?v=20260926-data"></script></head>
 <body>
 <div class="ai-atmosphere" aria-hidden="true">
   <div class="video-horizon"></div><div class="ai-grid"></div>
@@ -125,5 +125,29 @@ function notice(message){
   document.body.appendChild(el); setTimeout(()=>el.remove(),2800);
 }
 </script>
-</body>
+<script>
+async function loadLiveInvestments(){
+  if(!window.HUT10Data)return;
+  try{
+    const user=await window.HUT10Data.init();
+    if(!user)return;
+    const data=await window.HUT10Data.load();
+    const rows=data.investments||[];
+    if(!rows.length)return;
+    const grid=document.querySelector('.plan-grid');
+    if(!grid)return;
+    const money=n=>'UGX '+Number(n||0).toLocaleString('en-UG');
+    grid.innerHTML=rows.map((r,i)=>{
+      const name=r.plan_name||r.name||r.plan||('Investment '+(i+1));
+      const amount=r.principal??r.principal_amount??r.amount??r.invested_amount??0;
+      const term=r.term||r.term_days||r.duration||'—';
+      const status=String(r.status||'ACTIVE').toUpperCase();
+      const profit=r.profit??r.profit_amount??r.earnings??r.return_amount??0;
+      return '<article class="plan"><div class="plan-head"><span class="plan-icon '+(i%2?'purple':'')+'">'+name.charAt(0).toUpperCase()+'</span><div><strong>'+name+'</strong><small>Account investment</small></div><span class="plan-status">'+status+'</span></div><div class="plan-body"><div class="metric"><span>INVESTED</span><b>'+money(amount)+'</b></div><div class="metric"><span>TERM</span><b>'+term+(typeof term==='number'?' DAYS':'')+'</b></div><div class="metric"><span>PROFIT</span><b>'+money(profit)+'</b></div><div class="metric"><span>STATUS</span><b>'+status+'</b></div></div><div class="plan-foot"><small>Loaded from your authenticated account.</small><button class="plan-btn" onclick="location.href='transactions.html'">View activity →</button></div></article>';
+    }).join('');
+    const note=document.querySelector('.hero-note'); if(note){note.textContent='● LIVE ACCOUNT DATA • SUPABASE CONNECTED';}
+  }catch(e){console.error('Investment load failed',e);}
+}
+document.addEventListener('DOMContentLoaded',loadLiveInvestments);
+</script></body>
 </html>
