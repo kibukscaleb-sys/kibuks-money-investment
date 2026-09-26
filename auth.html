@@ -227,7 +227,7 @@ body{
 <label id="nameField" class="hidden">FULL NAME<input id="fullName" type="text" placeholder="Your full name"></label>
 <label>EMAIL ADDRESS<input id="email" type="email" placeholder="you@example.com" required></label>
 <label>PHONE NUMBER<input id="phone" type="tel" placeholder="+256 ..." ></label>
-<label>PASSWORD<input id="password" type="password" placeholder="Enter password" required minlength="6"><button type="button" class="forgot-link" onclick="resetPassword()">Forgot password?</button></label>
+<label>PASSWORD<input id="password" type="password" placeholder="Enter password" required minlength="6"><button type="button" class="forgot-link" onclick="resetPassword()">Forgot password? (email reset)</button></label>
 <label id="confirmField" class="hidden">CONFIRM PASSWORD<input id="confirm" type="password" placeholder="Repeat password"></label>
 <button class="auth-submit" id="submitBtn">Login to HUT 10 PRO →</button>
 <div id="authMessage" class="auth-message" role="status" aria-live="polite"></div>
@@ -348,7 +348,14 @@ async function handleAuth(e){
     }else{
       if(!email){setMessage('Please enter your email address.','error');return;}
       const {data,error}=await supabaseClient.auth.signInWithPassword({email,password});
-      if(error) throw error;
+      if(error){
+        const msg=String(error.message||'');
+        if(/rate limit|rate_limit|too many/i.test(msg)){
+          setMessage('Supabase is temporarily rate-limiting this account. Do not request another email; use the existing password or wait for the limit to reset.','error');
+          return;
+        }
+        throw error;
+      }
 
       localStorage.setItem('hut10_email',email);
       localStorage.setItem('hut10_session','active');
