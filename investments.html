@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="HUT 10 PRO investment hub">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg?v=20260929">
+  <title>Investments • HUT 10 PRO</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=20260926-investments1">
+  <style>
+    .page-shell{min-height:100vh;position:relative;z-index:2}
+    .hub-main{max-width:1180px;margin:0 auto;padding:28px}
+    .hub-top{display:flex;align-items:center;justify-content:space-between;gap:18px;margin-bottom:20px}
+    .hub-title h1{margin:0;font:800 28px Sora;letter-spacing:-1px}
+    .hub-title p{margin:8px 0 0;color:#77839d;font-size:10px}
+    .hub-back{color:#91a3ff;text-decoration:none;font-size:9px;font-weight:800}
+    .hero{
+      position:relative;overflow:hidden;border-radius:24px;padding:26px;
+      background:radial-gradient(circle at 78% 20%,rgba(111,140,255,.24),transparent 28%),linear-gradient(135deg,#0b1020,#101733 60%,#0a0f1d);
+      border:1px solid rgba(135,157,203,.15);box-shadow:0 25px 70px rgba(0,0,0,.25)
+    }
+    .hero:after{content:"";position:absolute;inset:0;background:linear-gradient(120deg,transparent 30%,rgba(255,255,255,.035),transparent 62%);pointer-events:none}
+    .hero-kicker{color:#7482a3;font-size:8px;letter-spacing:1.8px;font-weight:800}
+    .hero h2{margin:11px 0 7px;font:800 23px Sora;letter-spacing:-.8px;position:relative;z-index:1}
+    .hero p{max-width:620px;color:#818ca3;font-size:10px;line-height:1.7;position:relative;z-index:1}
+    .hero-note{display:inline-flex;margin-top:12px;padding:7px 9px;border-radius:8px;background:rgba(111,140,255,.08);border:1px solid rgba(111,140,255,.13);color:#94a4d1;font-size:8px;font-weight:700;position:relative;z-index:1}
+    .plan-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:16px}
+    .plan{
+      position:relative;padding:20px;border-radius:18px;
+      background:linear-gradient(145deg,rgba(11,15,27,.9),rgba(7,10,18,.79));
+      border:1px solid rgba(143,162,202,.12);box-shadow:0 16px 48px rgba(0,0,0,.15)
+    }
+    .plan:hover{border-color:rgba(111,140,255,.28);transform:translateY(-1px)}
+    .plan-head{display:flex;align-items:center;gap:11px}
+    .plan-icon{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;background:rgba(111,140,255,.11);color:#90a3ff;font:800 14px Sora}
+    .plan-icon.purple{background:rgba(154,103,255,.11);color:#b79aff}
+    .plan-head div{flex:1}.plan-head strong{display:block;font-size:12px}.plan-head small{display:block;color:#69748d;font-size:8px;margin-top:3px}
+    .plan-status{font-size:7px;letter-spacing:1px;padding:6px 7px;border-radius:7px;color:#65dfba;background:rgba(58,216,164,.06);border:1px solid rgba(58,216,164,.13)}
+    .plan-status.soon{color:#a795ff;background:rgba(154,103,255,.06);border-color:rgba(154,103,255,.12)}
+    .plan-body{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:18px 0}
+    .metric{padding:11px;border-radius:11px;background:rgba(255,255,255,.026);border:1px solid rgba(143,162,202,.08)}
+    .metric span{display:block;font-size:7px;color:#69748d;letter-spacing:.6px}.metric b{display:block;font-size:11px;margin-top:4px}
+    .plan-foot{display:flex;align-items:center;justify-content:space-between;gap:10px;border-top:1px solid rgba(143,162,202,.08);padding-top:13px}
+    .plan-foot small{font-size:7.5px;color:#626d84;line-height:1.5}.plan-btn{border:0;border-radius:9px;padding:9px 11px;background:linear-gradient(135deg,#708cff,#9a67ff);color:white;font:800 8px Manrope;cursor:pointer;white-space:nowrap}
+    .info-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:16px}
+    .info{padding:20px;border-radius:18px;background:linear-gradient(145deg,rgba(11,15,27,.86),rgba(7,10,18,.76));border:1px solid rgba(143,162,202,.11)}
+    .info h3{margin:0 0 8px;font:800 15px Sora}.info p{margin:0;color:#737e96;font-size:9px;line-height:1.7}
+    .hub-footer{text-align:center;color:#566178;font-size:8px;padding:24px 0 10px}
+    @media(max-width:760px){.hub-main{padding:18px}.hub-top{align-items:flex-start}.hub-title h1{font-size:22px}.plan-grid,.info-grid{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+<div class="ai-atmosphere" aria-hidden="true">
+  <div class="video-horizon"></div><div class="ai-grid"></div>
+  <div class="ai-orbit orbit-a"></div><div class="ai-orbit orbit-b"></div><div class="ai-orbit orbit-c"></div>
+  <div class="ai-light light-a"></div><div class="ai-light light-b"></div><div class="ai-light light-c"></div>
+  <div class="ai-particle p1"></div><div class="ai-particle p2"></div><div class="ai-particle p3"></div><div class="ai-particle p4"></div><div class="ai-particle p5"></div><div class="ai-particle p6"></div>
+</div>
+<main class="page-shell">
+  <div class="hub-main">
+    <div class="hub-top">
+      <div class="hub-title">
+        <span class="eyebrow">HUT 10 PRO • INVESTMENT HUB</span>
+        <h1>Explore investment plans</h1>
+        <p>Review the available plan structure before the backend is connected.</p>
+      </div>
+      <a class="hub-back" href="index.html">← Dashboard</a>
+    </div>
+
+    <section class="hero">
+      <span class="hero-kicker">SMART PORTFOLIO WORKSPACE</span>
+      <h2>Choose a plan that fits your portfolio workflow.</h2>
+      <p>This page is a frontend preview. It does not accept money or create live investments yet; secure account, payment and investment services will be connected to the backend in a later stage.</p>
+      <span class="hero-note">● LIVE UI • BACKEND CONNECTION PENDING</span>
+    </section>
+
+    <section class="plan-grid" aria-label="Investment plans">
+      <article class="plan">
+        <div class="plan-head">
+          <span class="plan-icon">S</span>
+          <div><strong>Starter Plan</strong><small>30-day preview</small></div>
+          <span class="plan-status">AVAILABLE</span>
+        </div>
+        <div class="plan-body">
+          <div class="metric"><span>MINIMUM</span><b>UGX 50,000</b></div>
+          <div class="metric"><span>TERM</span><b>30 DAYS</b></div>
+          <div class="metric"><span>TYPE</span><b>STARTER</b></div>
+          <div class="metric"><span>STATUS</span><b>PREVIEW</b></div>
+        </div>
+        <div class="plan-foot"><small>Illustrative details only.</small><button class="plan-btn" onclick="notice('Starter Plan will be connected after the backend is enabled.')">View plan →</button></div>
+      </article>
+
+      <article class="plan">
+        <div class="plan-head">
+          <span class="plan-icon purple">G</span>
+          <div><strong>Growth Plan</strong><small>90-day preview</small></div>
+          <span class="plan-status soon">PLANNED</span>
+        </div>
+        <div class="plan-body">
+          <div class="metric"><span>MINIMUM</span><b>UGX 250,000</b></div>
+          <div class="metric"><span>TERM</span><b>90 DAYS</b></div>
+          <div class="metric"><span>TYPE</span><b>GROWTH</b></div>
+          <div class="metric"><span>STATUS</span><b>PLANNED</b></div>
+        </div>
+        <div class="plan-foot"><small>No live returns are calculated on this page.</small><button class="plan-btn" onclick="notice('Growth Plan will be connected after the backend is enabled.')">View plan →</button></div>
+      </article>
+    </section>
+
+    <section class="info-grid">
+      <article class="info"><h3>How the hub will work</h3><p>When the backend is connected, each plan can show account eligibility, transactions, active investment records and the current portfolio position.</p></article>
+      <article class="info"><h3>Next connection</h3><p>Authentication, Supabase data, deposits, withdrawals and investment records are still separate backend steps from this published frontend.</p></article>
+    </section>
+
+    <div class="hub-footer">© 2026 HUT 10 PRO • Investment Hub</div>
+  </div>
+</main>
+<script>
+function notice(message){
+  const el=document.createElement('div');
+  el.textContent=message;
+  Object.assign(el.style,{position:'fixed',left:'50%',bottom:'24px',transform:'translateX(-50%)',padding:'12px 16px',border:'1px solid rgba(111,140,255,.2)',borderRadius:'12px',background:'rgba(7,10,18,.92)',color:'#dce4ff',font:'600 10px Manrope',zIndex:'20',boxShadow:'0 16px 40px rgba(0,0,0,.35)'});
+  document.body.appendChild(el); setTimeout(()=>el.remove(),2800);
+}
+</script>
+</body>
+</html>
