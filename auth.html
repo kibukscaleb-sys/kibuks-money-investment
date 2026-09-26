@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="HUT 10 PRO account access">
+<link rel="icon" type="image/svg+xml" href="favicon.svg?v=20260929">
+<title>Login / Register • HUT 10 PRO</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css?v=20260929">
+<style>
+.auth-wrap{min-height:100vh;display:grid;place-items:center;padding:28px;position:relative;z-index:2}.auth-box{width:min(440px,100%);padding:30px;border:1px solid var(--line);border-radius:22px;background:linear-gradient(145deg,rgba(18,24,39,.92),rgba(7,10,17,.88));backdrop-filter:blur(20px);box-shadow:0 25px 80px rgba(0,0,0,.35)}.auth-brand{text-align:center;margin-bottom:24px}.auth-mark{width:58px;height:58px;margin:0 auto 12px;border-radius:17px;display:grid;place-items:center;background:linear-gradient(135deg,#ffbd5a,#ff7a3d);font:800 17px Sora;color:white;box-shadow:0 0 32px rgba(255,145,61,.24)}.auth-brand h1{font:800 22px Sora;margin:0}.auth-brand p{font-size:10px;color:var(--muted);margin:7px 0 0}.tabs{display:grid;grid-template-columns:1fr 1fr;padding:4px;border-radius:12px;background:rgba(255,255,255,.035);margin-bottom:20px}.tabs button{border:0;background:transparent;color:var(--muted);padding:10px;border-radius:9px;font:700 10px Manrope;cursor:pointer}.tabs button.active{background:rgba(255,181,71,.12);color:#ffd18a}.auth-form{display:grid;gap:13px}.auth-form label{display:grid;gap:7px;font-size:9px;font-weight:800;color:var(--muted)}.auth-form input{box-sizing:border-box;width:100%;padding:12px;border:1px solid var(--line);border-radius:10px;background:rgba(255,255,255,.035);color:var(--text);outline:none;font:500 11px Manrope}.auth-form input:focus{border-color:rgba(255,189,90,.55)}.auth-submit{border:0;border-radius:11px;padding:13px;background:linear-gradient(135deg,#ffbd5a,#ff7a3d);color:#171008;font:800 10px Manrope;cursor:pointer;margin-top:3px}.auth-note{text-align:center;color:#68738a;font-size:8px;line-height:1.6;margin:15px 0 0}.back{text-align:center;margin-top:16px}.back a{color:#ffd18a;text-decoration:none;font-size:9px;font-weight:700}.hidden{display:none!important}
+</style>
+</head>
+<body>
+<div class="ai-atmosphere" aria-hidden="true"><div class="video-horizon"></div><div class="ai-grid"></div><div class="ai-orbit orbit-a"></div><div class="ai-orbit orbit-b"></div><div class="ai-orbit orbit-c"></div><div class="ai-light light-a"></div><div class="ai-light light-b"></div><div class="ai-light light-c"></div><div class="ai-particle p1"></div><div class="ai-particle p2"></div><div class="ai-particle p3"></div><div class="ai-particle p4"></div><div class="ai-particle p5"></div><div class="ai-particle p6"></div></div>
+<main class="auth-wrap"><section class="auth-box">
+<div class="auth-brand"><div class="auth-mark">H10</div><h1>HUT 10 PRO</h1><p>SECURE ACCOUNT ACCESS</p></div>
+<div class="tabs"><button id="loginTab" class="active" onclick="switchMode('login')">LOGIN</button><button id="registerTab" onclick="switchMode('register')">CREATE ACCOUNT</button></div>
+<form class="auth-form" onsubmit="handleAuth(event)">
+<label id="nameField" class="hidden">FULL NAME<input id="fullName" type="text" placeholder="Your full name"></label>
+<label>EMAIL ADDRESS<input id="email" type="email" placeholder="you@example.com" required></label>
+<label>PHONE NUMBER<input id="phone" type="tel" placeholder="+256 ..." ></label>
+<label>PASSWORD<input id="password" type="password" placeholder="Enter password" required minlength="6"></label>
+<label id="confirmField" class="hidden">CONFIRM PASSWORD<input id="confirm" type="password" placeholder="Repeat password"></label>
+<button class="auth-submit" id="submitBtn">Login to HUT 10 PRO →</button>
+</form>
+<p class="auth-note">This is the account interface. Secure server-side authentication will be connected when the HUT 10 PRO backend is enabled.</p>
+<div class="back"><a href="index.html">← Back to dashboard</a></div>
+</section></main>
+<script>
+let mode='login';
+function switchMode(m){mode=m;loginTab.classList.toggle('active',m==='login');registerTab.classList.toggle('active',m==='register');nameField.classList.toggle('hidden',m!=='register');confirmField.classList.toggle('hidden',m!=='register');submitBtn.textContent=m==='login'?'Login to HUT 10 PRO →':'Create HUT 10 PRO Account →';fullName.required=m==='register';confirm.required=m==='register';}
+function handleAuth(e){e.preventDefault();if(mode==='register'&&password.value!==confirm.value){alert('Passwords do not match.');return;}localStorage.setItem('hut10_email',email.value.trim());if(phone.value.trim())localStorage.setItem('hut10_phone',phone.value.trim());if(mode==='register'&&fullName.value.trim()){localStorage.setItem('hut10_name',fullName.value.trim());localStorage.setItem('hut10_username',fullName.value.trim().toLowerCase().replace(/\s+/g,'.'));}localStorage.setItem('hut10_session','active');location.href='profile.html';}
+</script>
+</body></html>
