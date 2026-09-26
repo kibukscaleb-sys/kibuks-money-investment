@@ -30,7 +30,7 @@
 @media(max-width:800px){.tx-main{padding:18px}.tx-toolbar{align-items:stretch;flex-direction:column}.tx-search{min-width:0;width:100%;box-sizing:border-box}.tx-row{grid-template-columns:1.7fr .9fr .9fr}.tx-row>*:nth-child(4),.tx-row>*:nth-child(5){display:none}.tx-info{grid-template-columns:1fr}}
 @media(max-width:560px){.tx-title h1{font-size:22px}.tx-top{flex-direction:column}.tx-row{grid-template-columns:1fr .8fr}.tx-row>*:nth-child(3){display:none}}
 </style>
-</head>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script src="supabase-config.js?v=20260926-auth"></script><script src="supabase-data.js?v=20260926-data"></script></head>
 <body>
 <div class="ai-atmosphere" aria-hidden="true">
 <div class="video-horizon"></div><div class="ai-grid"></div><div class="ai-orbit orbit-a"></div><div class="ai-orbit orbit-b"></div><div class="ai-orbit orbit-c"></div>
@@ -69,4 +69,34 @@ function apply(){
 buttons.forEach(b=>b.addEventListener('click',()=>{buttons.forEach(x=>x.classList.remove('active'));b.classList.add('active');apply();}));
 search.addEventListener('input',apply); apply();
 </script>
-</body></html>
+<script>
+async function loadLiveTransactions(){
+  if(!window.HUT10Data)return;
+  try{
+    const user=await window.HUT10Data.init();
+    if(!user)return;
+    const data=await window.HUT10Data.load();
+    const rows=data.transactions||[];
+    if(!rows.length)return;
+    const sample=document.getElementById('sampleRows');
+    const empty=document.getElementById('emptyState');
+    const typeOf=r=>String(r.type||r.transaction_type||r.category||'transaction').toLowerCase().replace(/\s+/g,'');
+    const money=n=>'UGX '+Number(n||0).toLocaleString('en-UG');
+    const dateOf=r=>r.created_at||r.date||r.transaction_date||'—';
+    sample.innerHTML=rows.map(r=>{
+      const t=typeOf(r);
+      const label=(r.type||r.transaction_type||r.category||'Transaction').toString();
+      const amount=r.amount??r.value??r.total??0;
+      const status=String(r.status||'PENDING').toUpperCase();
+      const ref=r.reference||r.reference_id||r.transaction_id||'—';
+      const icon=t.includes('withdraw')?'↗':t.includes('invest')?'◈':'＋';
+      const cls=t.includes('withdraw')?'out':t.includes('invest')?'invest':'';
+      const filter=t.includes('withdraw')?'withdrawal':t.includes('invest')?'investment':'deposit';
+      return '<div class="tx-row tx-item" data-type="'+filter+'"><div class="tx-maincol"><span class="tx-icon '+cls+'">'+icon+'</span><div><b>'+label+'</b><small>Account activity</small></div></div><div class="tx-cell">'+dateOf(r)+'</div><div class="tx-cell tx-amount">'+money(amount)+'</div><div><span class="tx-status '+(status==='COMPLETED' || status==='SUCCESS' || status==='APPROVED'?'demo':'pending')+'">'+status+'</span></div><div class="tx-cell">'+ref+'</div></div>';
+    }).join('');
+    empty.style.display='none'; sample.style.display='block';
+    apply();
+  }catch(e){console.error('Transaction load failed',e);}
+}
+document.addEventListener('DOMContentLoaded',loadLiveTransactions);
+</script></body></html>
