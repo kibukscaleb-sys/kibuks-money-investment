@@ -233,9 +233,11 @@ body{
 <div id="authMessage" class="auth-message" role="status" aria-live="polite"></div>
 <div class="auth-state"><span id="authState">SECURE AUTH</span></div>
 </form>
-<p class="auth-note">This is the account interface. Secure server-side authentication will be connected when the HUT 10 PRO backend is enabled.</p>
+<p class="auth-note">This is the account interface. Authentication is powered by your HUT 10 PRO Supabase account connection.</p>
 <div class="back"><a href="index.html">← Back to dashboard</a></div>
 </section></main>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="supabase-config.js?v=20260926-live2"></script>
 <script>
 let mode='login';
 let supabaseClient=null;
