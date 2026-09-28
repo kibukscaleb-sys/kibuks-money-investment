@@ -59,6 +59,14 @@ input,select,textarea{background:#0a0b0d!important;color:#f4f4f4!important;borde
 .stat-symbol,.quick-icon,.plan-icon{background:rgba(255,122,0,.10)!important;color:#ffb21c!important}
 .machine-card,.machine-item,.investment-card{background:linear-gradient(145deg,#151515,#0d0e10)!important;border-color:rgba(255,255,255,.07)!important}
 .machine-card:hover,.investment-card:hover,.quick-row:hover{border-color:rgba(255,145,0,.28)!important;box-shadow:0 18px 42px rgba(255,122,0,.06)!important}
+
+<style id="hut10-bottom-nav-style">
+.hut10-bottom-nav{position:fixed;left:50%;bottom:12px;transform:translateX(-50%);width:min(560px,calc(100vw - 28px));z-index:9999;display:grid;grid-template-columns:repeat(5,1fr);gap:5px;padding:7px;border:1px solid rgba(183,255,0,.16);border-radius:17px;background:rgba(8,11,8,.94);backdrop-filter:blur(18px);box-shadow:0 18px 55px rgba(0,0,0,.5),0 0 28px rgba(183,255,0,.06)}
+.hut10-bottom-nav a{display:grid;place-items:center;gap:3px;padding:7px 4px;border-radius:11px;color:#7f8b78;text-decoration:none;transition:.2s ease}
+.hut10-bottom-nav a span{font-size:16px;line-height:1}.hut10-bottom-nav a b{font:700 8px Manrope,Arial,sans-serif;letter-spacing:.2px}.hut10-bottom-nav a:hover,.hut10-bottom-nav a.active{color:#b7ff00;background:rgba(183,255,0,.09);box-shadow:inset 0 0 0 1px rgba(183,255,0,.08)}
+body{padding-bottom:86px!important}
+@media(max-width:520px){.hut10-bottom-nav{bottom:10px;width:calc(100vw - 20px);padding:6px}.hut10-bottom-nav a{padding:6px 2px}.hut10-bottom-nav a b{font-size:7px}}
+</style>
 </head>
 <body>
   <div class="ai-atmosphere" aria-hidden="true">
@@ -275,5 +283,13 @@ input,select,textarea{background:#0a0b0d!important;color:#f4f4f4!important;borde
 
     initProfile();
   </script>
+
+  <nav class="hut10-bottom-nav" aria-label="App navigation">
+    <a href="index.html"><span>⌂</span><b>Home</b></a>
+    <a href="machines.html"><span>▣</span><b>Machines</b></a>
+    <a href="money.html"><span>＋</span><b>Wallet</b></a>
+    <a href="transactions.html"><span>↔</span><b>Activity</b></a>
+    <a href="profile.html" class="active"><span>♙</span><b>Account</b></a>
+  </nav>
 </body>
 </html>
