@@ -827,3 +827,55 @@ html[data-theme="light"] .hero-card{
 body{background:radial-gradient(circle at 50% -10%,rgba(255,122,0,.14),transparent 32%),#070707}
 .primary-btn{background:linear-gradient(135deg,#ff7900,#ffb21c)!important;color:#160d02!important}
 .panel,.stat-card,.intro-card,.market-card,.money-card,.st-card,.tx-card,.tx-table,.info,.profile-card,.profile-stats,.profile-form{border-color:rgba(255,255,255,.07)!important}
+
+
+/* ===== HUT 10 PRO LEMON GREEN THEME ===== */
+:root{
+  --hut10-lime:#b7ff00!important;
+  --hut10-lime-bright:#d6ff4a!important;
+  --hut10-lime-dark:#76b800!important;
+}
+body{
+  background:
+    radial-gradient(circle at 72% -8%,rgba(183,255,0,.16),transparent 28%),
+    radial-gradient(circle at 12% 78%,rgba(118,184,0,.10),transparent 24%),
+    var(--bg)!important;
+}
+a,.page-heading .eyebrow,.panel-kicker,.link-btn,.nav-link.active span,.st-back,.hub-back,.tx-back,.money-back{
+  color:var(--hut10-lime-bright)!important;
+}
+.brand-mark,.primary-btn,.btn-primary,.machine-card .buy-btn,.buy-btn{
+  background:linear-gradient(135deg,var(--hut10-lime-dark),var(--hut10-lime))!important;
+  color:#081000!important;
+  box-shadow:0 10px 30px rgba(183,255,0,.22)!important;
+}
+.nav-link:hover,.nav-link.active{
+  background:linear-gradient(90deg,rgba(183,255,0,.12),rgba(118,184,0,.04))!important;
+  border-color:rgba(183,255,0,.20)!important;
+}
+.nav-link:before{background:var(--hut10-lime)!important}
+.stat-symbol,.quick-icon,.pulse-icon,.side-card-icon,.modal-symbol,.plan-icon{
+  color:var(--hut10-lime)!important;
+  background:rgba(183,255,0,.10)!important;
+}
+.machine-card:hover,.investment-card:hover,.quick-row:hover,.stat-card:hover,.panel:hover{
+  border-color:rgba(183,255,0,.28)!important;
+  box-shadow:0 18px 50px rgba(183,255,0,.08)!important;
+}
+.quick-row:hover{background:rgba(183,255,0,.055)!important}
+input:focus,select:focus,textarea:focus{
+  border-color:rgba(183,255,0,.50)!important;
+  box-shadow:0 0 0 3px rgba(183,255,0,.08)!important;
+}
+.badge,.status,.pill,.tag{border-color:rgba(183,255,0,.20)!important}
+.hero-card{
+  background:linear-gradient(135deg,#0b1208 0%,#111b0d 52%,#17220d 100%)!important;
+  border-color:rgba(183,255,0,.16)!important;
+}
+.hero-glow{background:radial-gradient(circle,rgba(183,255,0,.18),transparent 65%)!important}
+.hero-orbit{border-color:rgba(183,255,0,.12)!important}
+.chart-line{stroke:var(--hut10-lime)!important;filter:drop-shadow(0 0 5px rgba(183,255,0,.45))!important}
+.stat-spark i{background:var(--hut10-lime)!important}
+.green-badge,.status-live,.live,.overall{color:var(--hut10-lime)!important}
+.green-badge,.overall,.live{border-color:rgba(183,255,0,.18)!important;background:rgba(183,255,0,.06)!important}
+::selection{background:rgba(183,255,0,.35)!important;color:#fff!important}
