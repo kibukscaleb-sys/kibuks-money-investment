@@ -214,7 +214,15 @@ body{background:radial-gradient(circle at 50% -10%,rgba(255,122,0,.15),transpare
 .hut9-bottom-nav{position:fixed;left:50%;bottom:12px;transform:translateX(-50%);width:min(560px,calc(100vw - 28px));z-index:50;display:grid;grid-template-columns:repeat(5,1fr);gap:5px;padding:7px;border:1px solid rgba(255,255,255,.08);border-radius:17px;background:rgba(14,14,15,.95);backdrop-filter:blur(18px);box-shadow:0 18px 55px rgba(0,0,0,.45)}
 .hut9-bottom-nav a{display:grid;place-items:center;gap:3px;padding:7px 4px;border-radius:11px;color:#777;text-decoration:none;font:700 8px Manrope}
 .hut9-bottom-nav a span{font-size:16px;line-height:1}.hut9-bottom-nav a.active{color:#ffb21c;background:rgba(255,122,0,.08)}
-</style></head>
+</style>
+<style id="hut10-bottom-nav-style">
+.hut10-bottom-nav{position:fixed;left:50%;bottom:12px;transform:translateX(-50%);width:min(560px,calc(100vw - 28px));z-index:9999;display:grid;grid-template-columns:repeat(5,1fr);gap:5px;padding:7px;border:1px solid rgba(183,255,0,.16);border-radius:17px;background:rgba(8,11,8,.94);backdrop-filter:blur(18px);box-shadow:0 18px 55px rgba(0,0,0,.5),0 0 28px rgba(183,255,0,.06)}
+.hut10-bottom-nav a{display:grid;place-items:center;gap:3px;padding:7px 4px;border-radius:11px;color:#7f8b78;text-decoration:none;transition:.2s ease}
+.hut10-bottom-nav a span{font-size:16px;line-height:1}.hut10-bottom-nav a b{font:700 8px Manrope,Arial,sans-serif;letter-spacing:.2px}.hut10-bottom-nav a:hover,.hut10-bottom-nav a.active{color:#b7ff00;background:rgba(183,255,0,.09);box-shadow:inset 0 0 0 1px rgba(183,255,0,.08)}
+body{padding-bottom:86px!important}
+@media(max-width:520px){.hut10-bottom-nav{bottom:10px;width:calc(100vw - 20px);padding:6px}.hut10-bottom-nav a{padding:6px 2px}.hut10-bottom-nav a b{font-size:7px}}
+</style>
+</head>
 
 <body>
   <div class="ai-atmosphere" aria-hidden="true">
@@ -433,9 +441,17 @@ body{background:radial-gradient(circle at 50% -10%,rgba(255,122,0,.15),transpare
   </script>
 <nav class="hut9-bottom-nav" aria-label="App navigation">
 <a href="index.html"><span>⌂</span>Home</a>
-<a href="machines.html" class="active"><span>▣</span>Machines</a>
+<a href="machines.html" class="active" class="active"><span>▣</span>Machines</a>
 <a href="money.html"><span>◉</span>Wallet</a>
 <a href="transactions.html"><span>↔</span>Activity</a>
 <a href="profile.html"><span>◌</span>Account</a>
-</nav></body>
+</nav>
+  <nav class="hut10-bottom-nav" aria-label="App navigation">
+    <a href="index.html"><span>⌂</span><b>Home</b></a>
+    <a href="machines.html" class="active"><span>▣</span><b>Machines</b></a>
+    <a href="money.html"><span>＋</span><b>Wallet</b></a>
+    <a href="transactions.html"><span>↔</span><b>Activity</b></a>
+    <a href="profile.html"><span>♙</span><b>Account</b></a>
+  </nav>
+</body>
 </html>
