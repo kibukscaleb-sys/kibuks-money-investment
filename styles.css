@@ -820,3 +820,10 @@ html[data-theme="light"] .hero-card{
     animation:none!important;
   }
 }
+
+
+/* HUT 9-style global system for HUT 10 PRO */
+:root{--blue:#ffb21c;--violet:#ff7a00}
+body{background:radial-gradient(circle at 50% -10%,rgba(255,122,0,.14),transparent 32%),#070707}
+.primary-btn{background:linear-gradient(135deg,#ff7900,#ffb21c)!important;color:#160d02!important}
+.panel,.stat-card,.intro-card,.market-card,.money-card,.st-card,.tx-card,.tx-table,.info,.profile-card,.profile-stats,.profile-form{border-color:rgba(255,255,255,.07)!important}
