@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20260929">\n  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>\n  <script src="supabase-config.js?v=20260926-auth"></script>
+  <link rel="stylesheet" href="styles.css?v=20260929-hut9">\n  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>\n  <script src="supabase-config.js?v=20260926-auth"></script>
   <style>
     .profile-page{max-width:1080px;margin:0 auto;padding:34px 30px 70px}
     .profile-top{display:flex;align-items:center;justify-content:space-between;gap:18px;margin-bottom:22px}
@@ -44,6 +44,21 @@
   
 .account-security{margin-top:20px;padding:18px;border-radius:16px;border:1px solid rgba(255,100,119,.14);background:linear-gradient(145deg,rgba(60,15,25,.22),rgba(10,12,20,.45));display:flex;align-items:center;justify-content:space-between;gap:18px}.account-security h3{margin:4px 0 6px;font:800 14px Sora}.account-security p{margin:0;max-width:640px;color:#758096;font-size:8.5px;line-height:1.65}.delete-account-btn{border:1px solid rgba(255,100,119,.22);background:rgba(255,100,119,.06);color:#ff9aa8;border-radius:10px;padding:11px 13px;font:800 9px Manrope;cursor:pointer;white-space:nowrap}.delete-account-btn:hover{background:rgba(255,100,119,.10);border-color:rgba(255,100,119,.36)}.delete-modal{position:fixed;inset:0;display:none;place-items:center;padding:18px;background:rgba(2,4,9,.78);backdrop-filter:blur(10px);z-index:100}.delete-modal.show{display:grid}.delete-card{width:min(460px,100%);position:relative;padding:24px;border:1px solid rgba(255,100,119,.18);border-radius:20px;background:linear-gradient(145deg,rgba(20,13,20,.97),rgba(8,9,16,.96));box-shadow:0 32px 100px rgba(0,0,0,.55)}.delete-close{position:absolute;right:12px;top:12px;width:32px;height:32px;border-radius:50%;border:1px solid rgba(255,255,255,.08);background:transparent;color:#8792aa;font-size:18px}.delete-card h2{font:800 20px Sora;margin:7px 0 8px}.delete-card>p{font-size:9px;line-height:1.7;color:#778298;margin:0 0 17px}.delete-card>label{display:grid;gap:7px;font-size:8px;color:#8892a8;font-weight:800;letter-spacing:.7px;margin-top:12px}.delete-card>label b{color:#ffafb9}.delete-card input[type="password"],.delete-card input[type="text"]{box-sizing:border-box;width:100%;padding:12px;border-radius:10px;border:1px solid rgba(143,162,202,.12);background:rgba(255,255,255,.03);color:#edf1ff;outline:none;font:500 10px Manrope}.delete-card input:focus{border-color:rgba(255,100,119,.4);box-shadow:0 0 0 3px rgba(255,100,119,.06)}.delete-check{display:flex!important;grid-template-columns:none!important;align-items:center;gap:9px!important;font-size:8px!important;letter-spacing:0!important;line-height:1.4}.delete-check input{accent-color:#ff6477}.delete-msg{min-height:17px;color:#ff9aa8;text-align:center;font-size:8px;margin:11px 0}.delete-confirm-btn{width:100%;border:0;border-radius:10px;padding:12px;background:linear-gradient(135deg,#b73952,#7d2037);color:#fff;font:800 9px Manrope;cursor:pointer}.delete-confirm-btn:disabled{opacity:.55;cursor:wait}@media(max-width:650px){.account-security{align-items:flex-start;flex-direction:column}.delete-account-btn{width:100%}}
 </style>
+<style id="hut9-global">
+:root{--hut9-orange:#ff7a00!important;--hut9-gold:#ffb21c!important;--hut9-bg:#070707!important;--hut9-panel:#111214!important;--hut9-line:rgba(255,145,0,.14)!important}
+body{background:radial-gradient(circle at 50% -12%,rgba(255,122,0,.14),transparent 32%),linear-gradient(180deg,#050505,#0a0a0b 52%,#050505)!important;color:#f7f7f7!important}
+a{color:#ffad24}
+button,.primary-btn,.btn-primary{border-radius:10px!important}
+.primary-btn,.btn-primary{background:linear-gradient(135deg,#ff7900,#ffb21c)!important;color:#160d02!important;box-shadow:0 10px 28px rgba(255,122,0,.22)!important}
+.panel,.money-card,.st-card,.tx-card,.tx-table,.info,.profile-card,.profile-stats,.profile-form,.hero,.tx-hero,.st-hero,.auth-card,.auth-panel,.auth-side{background:linear-gradient(145deg,#151515,#0e0f11)!important;border:1px solid rgba(255,255,255,.07)!important;box-shadow:0 18px 50px rgba(0,0,0,.28)!important}
+h1,h2,h3{letter-spacing:-.6px}
+input,select,textarea{background:#0a0b0d!important;color:#f4f4f4!important;border-color:rgba(255,255,255,.10)!important;border-radius:9px!important}
+.badge,.status,.pill,.tag{border-color:rgba(255,145,0,.18)!important}
+.hub-back,.tx-back,.st-back,.money-back{color:#ffad24!important}
+.nav-link.active,.tab.active,.filter-btn.active{background:rgba(255,122,0,.10)!important;color:#ffb21c!important}
+.stat-symbol,.quick-icon,.plan-icon{background:rgba(255,122,0,.10)!important;color:#ffb21c!important}
+.machine-card,.machine-item,.investment-card{background:linear-gradient(145deg,#151515,#0d0e10)!important;border-color:rgba(255,255,255,.07)!important}
+.machine-card:hover,.investment-card:hover,.quick-row:hover{border-color:rgba(255,145,0,.28)!important;box-shadow:0 18px 42px rgba(255,122,0,.06)!important}
 </head>
 <body>
   <div class="ai-atmosphere" aria-hidden="true">
