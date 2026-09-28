@@ -205,7 +205,16 @@
       .buy-machine{width:100%}
     }
   </style>
-</head>
+<style id="hut9-machines">
+body{background:radial-gradient(circle at 50% -10%,rgba(255,122,0,.15),transparent 32%),#070707!important}
+.machine-card{background:linear-gradient(145deg,#151515,#0d0e10)!important;border:1px solid rgba(255,255,255,.07)!important}
+.machine-card .machine-image,.machine-image,.machine-art{background:linear-gradient(145deg,#3a2105,#17110a)!important}
+.machine-card .buy-btn,.buy-btn{background:linear-gradient(135deg,#ff7900,#ffb21c)!important;color:#160d02!important}
+.machine-card:hover{border-color:rgba(255,145,0,.28)!important;box-shadow:0 18px 45px rgba(255,122,0,.07)!important}
+.hut9-bottom-nav{position:fixed;left:50%;bottom:12px;transform:translateX(-50%);width:min(560px,calc(100vw - 28px));z-index:50;display:grid;grid-template-columns:repeat(5,1fr);gap:5px;padding:7px;border:1px solid rgba(255,255,255,.08);border-radius:17px;background:rgba(14,14,15,.95);backdrop-filter:blur(18px);box-shadow:0 18px 55px rgba(0,0,0,.45)}
+.hut9-bottom-nav a{display:grid;place-items:center;gap:3px;padding:7px 4px;border-radius:11px;color:#777;text-decoration:none;font:700 8px Manrope}
+.hut9-bottom-nav a span{font-size:16px;line-height:1}.hut9-bottom-nav a.active{color:#ffb21c;background:rgba(255,122,0,.08)}
+</style></head>
 
 <body>
   <div class="ai-atmosphere" aria-hidden="true">
@@ -422,5 +431,11 @@
       if(e.target===this) closeBuy();
     });
   </script>
-</body>
+<nav class="hut9-bottom-nav" aria-label="App navigation">
+<a href="index.html"><span>⌂</span>Home</a>
+<a href="machines.html" class="active"><span>▣</span>Machines</a>
+<a href="money.html"><span>◉</span>Wallet</a>
+<a href="transactions.html"><span>↔</span>Activity</a>
+<a href="profile.html"><span>◌</span>Account</a>
+</nav></body>
 </html>
