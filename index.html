@@ -28,6 +28,108 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css?v=20260929">
+
+<style>
+/* HUT 9-inspired HUT 10 PRO dashboard layer */
+:root{
+  --hut9-orange:#ff8a00;
+  --hut9-orange-2:#ffb020;
+  --hut9-gold:#f2c45c;
+  --hut9-bg:#090a0d;
+  --hut9-card:#111318;
+  --hut9-line:rgba(255,255,255,.075);
+}
+body{background:radial-gradient(circle at 50% -10%,rgba(255,138,0,.12),transparent 34%),#090a0d!important}
+.ai-atmosphere,.ambient{opacity:.20}
+.app-shell{display:block;min-height:100vh}
+.sidebar{display:none!important}
+.main-content{margin-left:0!important;max-width:1180px;margin-right:auto!important;margin-left:auto!important;padding:0 22px 96px!important}
+.topbar{position:sticky;top:0;background:linear-gradient(180deg,rgba(9,10,13,.98),rgba(9,10,13,.9),transparent)!important;padding:18px 2px 20px!important;border-bottom:0!important}
+.topbar:after{background:linear-gradient(90deg,transparent,rgba(255,138,0,.22),transparent)!important}
+.page-heading .eyebrow{color:#aeb4c0!important}
+.page-heading h1{font:800 24px Manrope!important;letter-spacing:-.7px!important}
+.page-heading h1 span{color:var(--hut9-orange)!important}
+.page-heading p{font-size:9px!important;color:#7f8592!important}
+.top-actions .icon-btn{border-color:var(--hut9-line)!important;background:#111318!important}
+.profile-chip{border:1px solid var(--hut9-line)!important;background:#111318!important}
+.profile-chip span{background:linear-gradient(135deg,var(--hut9-orange),var(--hut9-orange-2))!important;color:#17100a!important}
+.hero-card{
+  border:1px solid rgba(255,138,0,.24)!important;
+  border-radius:20px!important;
+  background:linear-gradient(145deg,#17120b,#0f1014 62%,#0b0d11)!important;
+  box-shadow:0 20px 65px rgba(0,0,0,.35),0 0 35px rgba(255,138,0,.05)!important;
+  padding:24px!important;
+}
+.hero-card:before{background:linear-gradient(120deg,rgba(255,138,0,.35),transparent 34%,transparent 64%,rgba(255,176,32,.20))!important}
+.hero-label{color:#9da3ae!important}
+.hero-amount-row strong{font-size:39px!important;color:#fff!important}
+.hero-growth b{color:#ffd27a!important;background:rgba(255,138,0,.08)!important;border-color:rgba(255,138,0,.16)!important}
+.hero-line{background:linear-gradient(90deg,var(--hut9-orange),transparent)!important}
+.primary-btn{background:linear-gradient(135deg,var(--hut9-orange),var(--hut9-orange-2))!important;color:#1b1003!important;box-shadow:0 14px 28px rgba(255,138,0,.22)!important}
+.secondary-btn{border-color:var(--hut9-line)!important;background:#15171b!important}
+.hero-glow{background:radial-gradient(circle,rgba(255,138,0,.15),transparent 64%)!important}
+.dashboard-intro{grid-template-columns:1fr!important;gap:12px!important}
+.intro-card,.market-card,.panel,.stat-card{
+  background:var(--hut9-card)!important;
+  border:1px solid var(--hut9-line)!important;
+  box-shadow:0 14px 40px rgba(0,0,0,.20)!important;
+}
+.intro-card{border-radius:17px!important;padding:20px!important}
+.intro-card h2{font-size:19px!important}
+.intro-orb{width:72px!important;height:72px!important;border-radius:20px!important;background:linear-gradient(145deg,rgba(255,138,0,.18),rgba(255,176,32,.06))!important;border-color:rgba(255,138,0,.16)!important}
+.intro-orb span{color:#ffc36c!important}
+.market-card{min-height:145px!important}
+.stat-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:11px!important}
+.stat-card{min-height:128px!important;border-radius:15px!important;padding:15px!important}
+.stat-symbol{width:30px!important;height:30px!important}
+.symbol-blue{background:rgba(255,138,0,.10)!important;color:#ffaf40!important}
+.symbol-violet{background:rgba(255,176,32,.09)!important;color:#ffd27a!important}
+.symbol-green{background:rgba(83,208,151,.09)!important;color:#6fe5b9!important}
+.stat-badge{border-color:var(--hut9-line)!important;color:#858d9a!important}
+.stat-card>strong{font-size:22px!important}
+.stat-meta em{color:#a0a7b3!important}
+.stat-progress span{background:linear-gradient(90deg,var(--hut9-orange),var(--hut9-orange-2))!important}
+.investment-card{border-color:var(--hut9-line)!important;background:#131519!important}
+.plan-status{color:#ffc35f!important;background:rgba(255,138,0,.08)!important;border-color:rgba(255,138,0,.14)!important}
+.plan-icon{background:rgba(255,138,0,.10)!important;color:#ffb348!important}
+.violet-plan{background:rgba(255,176,32,.10)!important;color:#ffd176!important}
+.quick-row{border-color:var(--hut9-line)!important;background:#121419!important;border-radius:13px!important}
+.quick-row:hover{border-color:rgba(255,138,0,.18)!important;background:#171a20!important}
+.q-blue{background:rgba(255,138,0,.10)!important;color:#ffad35!important}
+.q-violet{background:rgba(255,176,32,.09)!important;color:#ffd174!important}
+.machine-featured{background:linear-gradient(145deg,#12100c,#101216)!important;border-color:rgba(255,138,0,.14)!important}
+.machine-mini-grid{grid-template-columns:1fr!important}
+.machine-mini{grid-template-columns:64px 1fr auto!important;background:#121419!important;border-color:var(--hut9-line)!important}
+.machine-mini-art{height:52px!important;background:linear-gradient(145deg,#281806,#101114)!important;border-color:rgba(255,138,0,.14)!important}
+.machine-mini-art span{color:#ffc05e!important}
+.machine-mini em{color:#ffb23e!important}
+.status-live{color:#6fe5b9!important}
+.hut9-bottom-nav{
+  position:fixed;left:50%;bottom:12px;transform:translateX(-50%);
+  width:min(560px,calc(100vw - 28px));z-index:40;
+  display:grid;grid-template-columns:repeat(5,1fr);gap:5px;
+  padding:7px;border:1px solid rgba(255,255,255,.08);border-radius:17px;
+  background:rgba(14,16,21,.94);backdrop-filter:blur(18px);
+  box-shadow:0 18px 55px rgba(0,0,0,.45);
+}
+.hut9-bottom-nav a{display:grid;place-items:center;gap:3px;padding:7px 4px;border-radius:11px;color:#747c89;text-decoration:none}
+.hut9-bottom-nav a span{font-size:16px;line-height:1}
+.hut9-bottom-nav a b{font:700 7px Manrope;letter-spacing:.2px}
+.hut9-bottom-nav a.active{color:#ffb13b;background:rgba(255,138,0,.08)}
+.footer{display:none!important}
+@media(min-width:900px){
+  .main-content{padding-left:0!important;padding-right:0!important}
+  .hero-card{padding:28px 30px!important}
+  .hut9-bottom-nav{bottom:16px}
+}
+@media(max-width:520px){
+  .main-content{padding:0 13px 92px!important}
+  .top-actions .profile-chip em{display:none}
+  .hero-amount-row strong{font-size:32px!important}
+  .hero-card{padding:20px!important}
+  .intro-card h2{font-size:17px!important}
+}
+</style>
 </head>
 <body>
   <div class="ai-atmosphere" aria-hidden="true">
@@ -80,9 +182,9 @@
       <header class="topbar">
         <button class="icon-btn mobile-only" aria-label="Open navigation" onclick="toggleMenu()">☰</button>
         <div class="page-heading">
-          <span class="eyebrow">HUT 10 PRO • AI WEALTH HUB</span>
+          <span class="eyebrow">HUT 10 PRO • AI MINING HUB</span>
           <h1>Welcome back <span>✦</span></h1>
-          <p>Your modern command center for balances, plans and account activity.</p>
+          <p>Your AI mining dashboard for machines, wallet activity and earnings.</p>
         </div>
         <div class="top-actions">
           <button class="icon-btn" aria-label="Toggle theme" onclick="toggleTheme()"><span id="themeIcon">☾</span></button>
@@ -93,14 +195,14 @@
 
       <section id="dashboard" class="hero-card">
         <div class="hero-copy">
-          <span class="hero-label">TOTAL ACCOUNT BALANCE</span>
+          <span class="hero-label">TOTAL WALLET BALANCE</span>
           <div class="hero-amount-row">
             <strong id="amount">UGX 0</strong>
             <button class="hero-eye" aria-label="Hide balance" onclick="toggleBalance()">◉</button>
           </div>
           <div class="hero-growth"><b>↑ 0.00%</b><span>this month</span></div>
           <div class="hero-line"></div>
-          <p>Deposit and withdraw controls are ready for the next backend connection.</p>
+          <p>Manage your wallet and monitor your machine activity from one dashboard.</p>
         </div>
         <div class="hero-actions">
           <button class="primary-btn" onclick="openAction('deposit')"><span>＋</span> Deposit</button>
@@ -114,9 +216,9 @@
       <section class="dashboard-intro" aria-label="Portfolio snapshot">
   <div class="intro-card">
     <div>
-      <span class="panel-kicker">HUT 10 PRO • INTELLIGENT HUB</span>
-      <h2>Everything for your portfolio, in one place.</h2>
-      <p>A clean AI-inspired workspace for viewing balances, investment plans and account activity.</p>
+      <span class="panel-kicker">HUT 10 PRO • MINING OVERVIEW</span>
+      <h2>Everything for your machines, in one place.</h2>
+      <p>Track your wallet, machine cycles, daily earnings and account activity in one place.</p>
     </div>
     <div class="intro-orb"><span>H10</span></div>
   </div>
@@ -136,30 +238,30 @@
 <section class="stat-grid" aria-label="Portfolio summary">
         <article class="stat-card balance-stat">
           <div class="stat-top"><div class="stat-symbol symbol-blue">◉</div><span class="stat-badge">BALANCE</span></div>
-          <span class="stat-label">Available balance</span>
+          <span class="stat-label">Wallet balance</span>
           <strong id="availableBalance">UGX 0</strong>
-          <div class="stat-meta"><small>Current account balance</small><em>UGX</em></div>
+          <div class="stat-meta"><small>Available funds</small><em>UGX</em></div>
           <div class="stat-spark"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
         </article>
         <article class="stat-card invested-stat">
           <div class="stat-top"><div class="stat-symbol symbol-violet">◈</div><span class="stat-badge">PORTFOLIO</span></div>
-          <span class="stat-label">Total invested</span>
+          <span class="stat-label">Machine value</span>
           <strong id="totalInvested">UGX 0</strong>
-          <div class="stat-meta"><small>Across investment plans</small><em id="planCount">0 plans</em></div>
+          <div class="stat-meta"><small>Across your machines</small><em id="planCount">0 plans</em></div>
           <div class="stat-progress"><span></span></div>
         </article>
         <article class="stat-card profit-stat">
           <div class="stat-top"><div class="stat-symbol symbol-green">↗</div><span class="stat-badge green-badge">PERFORMANCE</span></div>
-          <span class="stat-label">Performance today</span>
+          <span class="stat-label">Today’s earnings</span>
           <strong>0.00%</strong>
-          <div class="stat-meta"><small>Illustrative account view</small><em>—</em></div>
+          <div class="stat-meta"><small>Current earning view</small><em>—</em></div>
           <div class="profit-line"><span></span></div>
         </article>
         <article class="stat-card active-stat">
           <div class="stat-top"><div class="stat-symbol symbol-blue">✦</div><span class="stat-badge">PLANS</span></div>
-          <span class="stat-label">Active plans</span>
+          <span class="stat-label">Active machines</span>
           <strong id="activePlans">0</strong>
-          <div class="stat-meta"><small>Connected to your account</small><em>None yet</em></div>
+          <div class="stat-meta"><small>Currently running</small><em>None yet</em></div>
           <div class="stat-progress active-progress"><span></span></div>
         </article>
       </section>
@@ -169,10 +271,10 @@
           <div class="panel-header">
             <div>
               <span class="panel-kicker">PORTFOLIO</span>
-              <h2>My investments</h2>
-              <p>Monitor plans, principal and returns.</p>
+              <h2>My machines</h2>
+              <p>Monitor purchased machines, cycle days and earnings.</p>
             </div>
-            <button class="link-btn" onclick="showNotice('Investment plans will be connected to the backend next.')">Explore plans →</button>
+            <button class="link-btn" onclick="showNotice('Investment plans will be connected to the backend next.')">View machines →</button>
           </div>
 
           <div class="investment-preview">
@@ -195,19 +297,19 @@
           <div class="panel-header">
             <div>
               <span class="panel-kicker">ACTIONS</span>
-              <h2>Quick access</h2>
-              <p>Manage your account.</p>
+              <h2>Quick actions</h2>
+              <p>Recharge, withdraw and manage your account.</p>
             </div>
           </div>
           <div class="quick-list">
             <button class="quick-row" onclick="openAction('deposit')">
               <span class="quick-icon q-blue">＋</span>
-              <span><b>Make a deposit</b><small>Mobile Money</small></span>
+              <span><b>Recharge wallet</b><small>Mobile Money</small></span>
               <em>→</em>
             </button>
             <button class="quick-row" onclick="openAction('withdraw')">
               <span class="quick-icon q-violet">↗</span>
-              <span><b>Withdraw funds</b><small>Mobile Money payout</small></span>
+              <span><b>Withdraw earnings</b><small>Mobile Money payout</small></span>
               <em>→</em>
             </button>
             <button class="quick-row" onclick="document.getElementById('activity').scrollIntoView({behavior:'smooth'})">
@@ -222,9 +324,9 @@
       <section class="panel machine-featured" style="margin-bottom:20px">
         <div class="panel-header">
           <div>
-            <span class="panel-kicker">HUT 10 PRO HARDWARE</span>
-            <h2>Machine Marketplace</h2>
-            <p>Explore the AI and compute machines available in the HUT 10 PRO catalogue.</p>
+            <span class="panel-kicker">AI MACHINE MARKETPLACE</span>
+            <h2>Available AI Machines</h2>
+            <p>Choose a machine, review its price and earning cycle, then create a purchase request.</p>
           </div>
           <a class="link-btn" href="machines.html" style="text-decoration:none">View all machines →</a>
         </div>
@@ -252,8 +354,8 @@
           <div class="panel-header">
             <div>
               <span class="panel-kicker">ACTIVITY</span>
-              <h2>Recent transactions</h2>
-              <p>Your latest account movements.</p>
+              <h2>Recent activity</h2>
+              <p>Wallet and machine activity.</p>
             </div>
             <button class="link-btn" onclick="showNotice('Transaction history will appear here.')">View all →</button>
           </div>
@@ -311,6 +413,14 @@
     </main>
   </div>
 
+  <nav class="hut9-bottom-nav" aria-label="App navigation">
+    <a class="active" href="#dashboard"><span>⌂</span><b>Home</b></a>
+    <a href="machines.html"><span>▣</span><b>Machines</b></a>
+    <a href="money.html"><span>＋</span><b>Wallet</b></a>
+    <a href="transactions.html"><span>↔</span><b>Activity</b></a>
+    <a href="profile.html"><span>♙</span><b>Account</b></a>
+  </nav>
+
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
   <div class="modal" id="modal" aria-hidden="true">
@@ -318,7 +428,7 @@
       <button class="close-btn" aria-label="Close dialog" onclick="closeModal()">×</button>
       <div class="modal-symbol" id="modalIcon">＋</div>
       <span class="panel-kicker">HUT 10 PRO</span>
-      <h2 id="modalTitle">Make a deposit</h2>
+      <h2 id="modalTitle">Recharge wallet</h2>
       <p id="modalText">Enter an amount. Mobile Money will be connected when the backend is enabled.</p>
       <label>Amount (UGX)<input id="modalAmount" type="number" min="0" inputmode="numeric" placeholder="0"></label>
       <button class="primary-btn full" onclick="submitAction()">Continue <span>→</span></button>
