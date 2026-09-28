@@ -879,3 +879,23 @@ input:focus,select:focus,textarea:focus{
 .green-badge,.status-live,.live,.overall{color:var(--hut10-lime)!important}
 .green-badge,.overall,.live{border-color:rgba(183,255,0,.18)!important;background:rgba(183,255,0,.06)!important}
 ::selection{background:rgba(183,255,0,.35)!important;color:#fff!important}
+
+/* ===== HUT 10 PRO BLUE THEME ===== */
+:root{--hut10-blue:#168cff!important;--hut10-blue-bright:#55b4ff!important;--hut10-blue-dark:#0756b8!important;--blue:#168cff!important;--violet:#55b4ff!important}
+body{background:radial-gradient(circle at 72% -8%,rgba(22,140,255,.16),transparent 28%),radial-gradient(circle at 12% 78%,rgba(7,86,184,.10),transparent 24%),#07090d!important}
+a,.page-heading .eyebrow,.panel-kicker,.link-btn,.nav-link.active span,.st-back,.hub-back,.tx-back,.money-back{color:var(--hut10-blue-bright)!important}
+.brand-mark,.primary-btn,.btn-primary,.machine-card .buy-btn,.buy-btn{background:linear-gradient(135deg,var(--hut10-blue-dark),var(--hut10-blue))!important;color:#fff!important;box-shadow:0 10px 30px rgba(22,140,255,.22)!important}
+.nav-link:hover,.nav-link.active{background:linear-gradient(90deg,rgba(22,140,255,.12),rgba(7,86,184,.04))!important;border-color:rgba(22,140,255,.20)!important}
+.nav-link:before{background:var(--hut10-blue)!important}
+.stat-symbol,.quick-icon,.pulse-icon,.side-card-icon,.modal-symbol,.plan-icon{color:var(--hut10-blue-bright)!important;background:rgba(22,140,255,.10)!important}
+.machine-card:hover,.investment-card:hover,.quick-row:hover,.stat-card:hover,.panel:hover{border-color:rgba(22,140,255,.28)!important;box-shadow:0 18px 50px rgba(22,140,255,.08)!important}
+.quick-row:hover{background:rgba(22,140,255,.055)!important}
+input:focus,select:focus,textarea:focus{border-color:rgba(22,140,255,.50)!important;box-shadow:0 0 0 3px rgba(22,140,255,.08)!important}
+.badge,.status,.pill,.tag{border-color:rgba(22,140,255,.20)!important}
+.hero-card{background:linear-gradient(135deg,#08111d 0%,#0c1827 52%,#0d2138 100%)!important;border-color:rgba(22,140,255,.16)!important}
+.hero-glow{background:radial-gradient(circle,rgba(22,140,255,.18),transparent 65%)!important}.hero-orbit{border-color:rgba(22,140,255,.12)!important}
+.chart-line{stroke:var(--hut10-blue)!important;filter:drop-shadow(0 0 5px rgba(22,140,255,.45))!important}.stat-spark i{background:var(--hut10-blue)!important}
+.green-badge,.status-live,.live,.overall{color:#55b4ff!important}.green-badge,.overall,.live{border-color:rgba(22,140,255,.18)!important;background:rgba(22,140,255,.06)!important}
+.hut10-bottom-nav{border-color:rgba(22,140,255,.22)!important;background:rgba(7,11,18,.95)!important;box-shadow:0 18px 55px rgba(0,0,0,.5),0 0 30px rgba(22,140,255,.08)!important}
+.hut10-bottom-nav a:hover,.hut10-bottom-nav a.active{color:#55b4ff!important;background:rgba(22,140,255,.10)!important;box-shadow:inset 0 0 0 1px rgba(22,140,255,.10)!important}
+::selection{background:rgba(22,140,255,.35)!important;color:#fff!important}
