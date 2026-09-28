@@ -23,6 +23,10 @@
     .server{width:240px;height:150px;border-radius:18px;border:1px solid rgba(153,173,255,.24);background:linear-gradient(155deg,#17213e,#070a12 74%);box-shadow:0 25px 60px rgba(0,0,0,.45),inset 0 0 45px rgba(105,126,255,.12);transform:perspective(500px) rotateY(-15deg) rotateX(8deg);position:relative}
     .server:before{content:"";position:absolute;left:18px;right:18px;top:18px;height:72px;border-radius:11px;border:1px solid rgba(255,255,255,.07);background:repeating-linear-gradient(90deg,rgba(122,153,255,.15) 0 2px,transparent 2px 17px)}
     .server:after{content:"H10 • AI COMPUTE";position:absolute;left:20px;bottom:20px;color:#aebcff;font:800 8px Sora;letter-spacing:1px}
+    .machine-summary-strip{max-width:980px;margin:0 auto 14px;display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+    .machine-summary-strip>div{padding:12px;border:1px solid rgba(255,138,0,.13);border-radius:12px;background:linear-gradient(145deg,#15120e,#0f1115);text-align:center}
+    .machine-summary-strip span{display:block;color:#777f8e;font-size:7px;font-weight:800;letter-spacing:.7px}
+    .machine-summary-strip b{display:block;margin-top:6px;color:#ffc15b;font:800 11px Sora}
     .machine-grid{display:grid;grid-template-columns:1fr;gap:16px;max-width:980px;margin:0 auto}
     .machine-card{display:grid;grid-template-columns:220px 1fr;border:1px solid rgba(214,167,54,.18);border-radius:20px;overflow:hidden;background:linear-gradient(145deg,rgba(16,22,37,.88),rgba(7,10,17,.82));box-shadow:0 20px 55px rgba(0,0,0,.16);min-height:250px}
     .machine-art{min-height:250px;display:grid;place-items:center;position:relative;background:radial-gradient(circle at 50% 35%,rgba(255,217,112,.36),transparent 48%),linear-gradient(145deg,#3a2507,#b8860b 52%,#5a3a0a);}
@@ -73,12 +77,231 @@
     .buy-actions{display:flex;justify-content:flex-end;gap:8px;margin-top:16px}
     .buy-cancel{border:1px solid var(--line);border-radius:10px;padding:10px 13px;background:rgba(255,255,255,.035);color:var(--text);font:800 9px Manrope}
     @media(max-width:950px){.machine-card{grid-template-columns:190px 1fr}.machine-hero-grid{grid-template-columns:1fr}}
-    @media(max-width:620px){.machines-page{padding:24px 15px 50px}.machines-head{align-items:flex-start;flex-direction:column}.machine-card{grid-template-columns:1fr}.machine-art{min-height:190px}.machine-art.real-photo img{min-height:190px}.machine-grid{max-width:100%}.server{transform:scale(.82) perspective(500px) rotateY(-15deg) rotateX(8deg)}}
+    @media(max-width:620px){
+    .machine-summary-strip{grid-template-columns:1fr 1fr}
+.machines-page{padding:24px 15px 50px}.machines-head{align-items:flex-start;flex-direction:column}.machine-card{grid-template-columns:1fr}.machine-art{min-height:190px}.machine-art.real-photo img{min-height:190px}.machine-grid{max-width:100%}.server{transform:scale(.82) perspective(500px) rotateY(-15deg) rotateX(8deg)}}
   </style>
 </head>
 <body>
   <div class="ai-atmosphere" aria-hidden="true">
     <div class="video-horizon"></div><div class="ai-grid"></div>
+    <div class="ai-orbit orbit-a"></div><div class="ai-orbit orbit-b"></div><div class="ai-orbit orbit-c"></div>
+    <div class="ai-light light-a"></div><div class="ai-light light-b"></div><div class="ai-light light-c"></div>
+    <div class="ai-particle p1"></div><div class="ai-particle p2"></div><div class="ai-particle p3"></div><div class="ai-particle p4"></div><div class="ai-particle p5"></div><div class="ai-particle p6"></div>
+  </div>
+
+  <main class="machines-page">
+    <header class="machines-head">
+      <div>
+        <span class="eyebrow">HUT 10 PRO • MACHINE MARKETPLACE</span>
+        <h1>AI Machine Store</h1>
+        <div style="margin-top:8px;color:#8491aa;font-size:8px;font-weight:800;letter-spacing:.9px;text-transform:uppercase">01 • 02 • 03 • 04 • 05 • 06 — Machine Catalogue</div>
+        <p>Browse the hardware catalogue behind the HUT 10 PRO platform. Choose a machine, review its specifications, and start a purchase request.</p>
+      </div>
+      <div class="machines-actions">
+        <a class="machine-back" href="index.html">← Dashboard</a>
+        <a class="machine-cart" href="investments.html">My Investments →</a>
+      </div>
+    </header>
+
+    <section class="machine-hero">
+      <div class="machine-hero-grid">
+        <div>
+          <span class="panel-kicker">HARDWARE OWNERSHIP</span>
+          <h2>Build your compute portfolio</h2>
+          <p>HUT 10 PRO catalogue machine for gpu compute workloads. Review price, cycle length and illustrative money figures before creating a purchase request.</p>
+          <p class="machine-note">Catalogue prices shown below are demo prices for the website build and must be replaced with verified supplier pricing before sales go live.</p>
+        </div>
+        <div class="server-visual hero-photo"><img src="https://aimg.as-1.co.jp/c/60/4169/98/60416998.jpg" alt="AI GPU server hardware" loading="lazy" referrerpolicy="no-referrer"></div>
+      </div>
+    </section>
+
+    <div class="machine-summary-strip">
+    <div><span>AVAILABLE MACHINES</span><b>06</b></div>
+    <div><span>STARTING PRICE</span><b>UGX 650K</b></div>
+    <div><span>CYCLE RANGE</span><b>21–120 DAYS</b></div>
+    <div><span>MONEY VIEW</span><b>DAILY + CYCLE</b></div>
+  </div>
+
+    <section class="machine-grid">
+      
+      <article class="machine-card">
+        <div class="machine-art real-photo"><img src="https://aimg.as-1.co.jp/c/60/4169/98/60416998.jpg" alt="AI Compute Node machine" loading="lazy" referrerpolicy="no-referrer"></div>
+        <div class="machine-body">
+          <span class="machine-badge">GPU COMPUTE</span>
+          <h3>AI Compute Node</h3>
+          <p>HUT 10 PRO catalogue machine for edge compute workloads. Review price, cycle length and illustrative money figures before creating a purchase request.</p>
+          <div class="machine-meta">
+            <div><span>PRICE</span><b>UGX 650,000</b></div>
+            <div><span>DAYS</span><b>21 Days</b></div>
+            <div><span>DAILY MONEY</span><b>UGX 25,000</b></div>
+            <div><span>CYCLE MONEY</span><b>UGX NaN</b></div>
+          </div>
+            <div><span>Est. daily money</span><b>UGX 50,000</b></div>
+            <div><span>Est. cycle money</span><b>UGX NaN</b></div>
+          </div>
+          <div class="machine-spec-line"><span>Core spec</span><b>24 GB class GPU</b><span>Operation</span><b>24/7</b></div>
+          <div class="machine-price">
+            <div><small>DEMO CATALOGUE PRICE</small><strong>UGX 1,500,000</strong></div>
+            <button class="buy-machine" onclick="openBuy('AI Compute Node','UGX 1,500,000','30 Days','UGX NaN cycle money')">Buy Machine →</button>
+          </div>
+        </div>
+      </article>
+      <article class="machine-card">
+        <div class="machine-art real-photo"><img src="https://img.directindustry.it/images_di/photo-g/4657-20803628.jpg" alt="Edge AI Node machine" loading="lazy" referrerpolicy="no-referrer"></div>
+        <div class="machine-body">
+          <span class="machine-badge">EDGE COMPUTE</span>
+          <h3>Edge AI Node</h3>
+          <p>HUT 10 PRO catalogue machine for data storage workloads. Review price, cycle length and illustrative money figures before creating a purchase request.</p>
+          <div class="machine-meta">
+            <div><span>PRICE</span><b>UGX 900,000</b></div>
+            <div><span>DAYS</span><b>45 Days</b></div>
+            <div><span>DAILY MONEY</span><b>UGX 28,000</b></div>
+            <div><span>CYCLE MONEY</span><b>UGX NaN</b></div>
+          </div>
+            <div><span>Est. daily money</span><b>UGX 25,000</b></div>
+            <div><span>Est. cycle money</span><b>UGX NaN</b></div>
+          </div>
+          <div class="machine-spec-line"><span>Core spec</span><b>16 GB RAM</b><span>Operation</span><b>Low power</b></div>
+          <div class="machine-price">
+            <div><small>DEMO CATALOGUE PRICE</small><strong>UGX 650,000</strong></div>
+            <button class="buy-machine" onclick="openBuy('Edge AI Node','UGX 650,000','21 Days','UGX NaN cycle money')">Buy Machine →</button>
+          </div>
+        </div>
+      </article>
+      <article class="machine-card">
+        <div class="machine-art real-photo"><img src="https://cdn.cs.1worldsync.com/20/1e/201ec962-f971-434a-864c-c04a3b804c82.jpg" alt="Storage Node machine" loading="lazy" referrerpolicy="no-referrer"></div>
+        <div class="machine-body">
+          <span class="machine-badge">DATA STORAGE</span>
+          <h3>Storage Node</h3>
+          <p>HUT 10 PRO catalogue machine for network workloads. Review price, cycle length and illustrative money figures before creating a purchase request.</p>
+          <div class="machine-meta">
+            <div><span>PRICE</span><b>UGX 1,200,000</b></div>
+            <div><span>DAYS</span><b>60 Days</b></div>
+            <div><span>DAILY MONEY</span><b>UGX 30,000</b></div>
+            <div><span>CYCLE MONEY</span><b>UGX NaN</b></div>
+          </div>
+            <div><span>Est. daily money</span><b>UGX 28,000</b></div>
+            <div><span>Est. cycle money</span><b>UGX NaN</b></div>
+          </div>
+          <div class="machine-spec-line"><span>Core spec</span><b>8 TB SSD</b><span>Operation</span><b>24/7</b></div>
+          <div class="machine-price">
+            <div><small>DEMO CATALOGUE PRICE</small><strong>UGX 900,000</strong></div>
+            <button class="buy-machine" onclick="openBuy('Storage Node','UGX 900,000','45 Days','UGX NaN cycle money')">Buy Machine →</button>
+          </div>
+        </div>
+      </article>
+      <article class="machine-card">
+        <div class="machine-art real-photo"><img src="https://www.rackmountpro.com/images/products/SSE_G24_TG4_F1.jpg" alt="Network Accelerator machine" loading="lazy" referrerpolicy="no-referrer"></div>
+        <div class="machine-body">
+          <span class="machine-badge">NETWORK</span>
+          <h3>Network Accelerator</h3>
+          <p>HUT 10 PRO catalogue machine for creator workloads. Review price, cycle length and illustrative money figures before creating a purchase request.</p>
+          <div class="machine-meta">
+            <div><span>PRICE</span><b>UGX 5,500,000</b></div>
+            <div><span>DAYS</span><b>90 Days</b></div>
+            <div><span>DAILY MONEY</span><b>UGX 75,000</b></div>
+            <div><span>CYCLE MONEY</span><b>UGX NaN</b></div>
+          </div>
+            <div><span>Est. daily money</span><b>UGX 30,000</b></div>
+            <div><span>Est. cycle money</span><b>UGX NaN</b></div>
+          </div>
+          <div class="machine-spec-line"><span>Core spec</span><b>10 GbE class</b><span>Operation</span><b>24/7</b></div>
+          <div class="machine-price">
+            <div><small>DEMO CATALOGUE PRICE</small><strong>UGX 1,200,000</strong></div>
+            <button class="buy-machine" onclick="openBuy('Network Accelerator','UGX 1,200,000','60 Days','UGX NaN cycle money')">Buy Machine →</button>
+          </div>
+        </div>
+      </article>
+      <article class="machine-card">
+        <div class="machine-art real-photo"><img src="https://infomaxparis.com/28945-medium_default/pc-creator-deeplearning-dual-rtx-5090-ryzen-9-powering-advanced-ai.jpg" alt="AI Workstation machine" loading="lazy" referrerpolicy="no-referrer"></div>
+        <div class="machine-body">
+          <span class="machine-badge">CREATOR</span>
+          <h3>AI Workstation</h3>
+          <p>HUT 10 PRO catalogue machine for data center workloads. Review price, cycle length and illustrative money figures before creating a purchase request.</p>
+          <div class="machine-meta">
+            <div><span>PRICE</span><b>UGX 7,500,000</b></div>
+            <div><span>DAYS</span><b>120 Days</b></div>
+            <div><span>DAILY MONEY</span><b>UGX 90,000</b></div>
+            <div><span>CYCLE MONEY</span><b>UGX NaN</b></div>
+          </div>
+            <div><span>Est. daily money</span><b>UGX 75,000</b></div>
+            <div><span>Est. cycle money</span><b>UGX NaN</b></div>
+          </div>
+          <div class="machine-spec-line"><span>Core spec</span><b>High-end CPU/GPU</b><span>Operation</span><b>Desktop</b></div>
+          <div class="machine-price">
+            <div><small>DEMO CATALOGUE PRICE</small><strong>UGX 5,500,000</strong></div>
+            <button class="buy-machine" onclick="openBuy('AI Workstation','UGX 5,500,000','90 Days','UGX NaN cycle money')">Buy Machine →</button>
+          </div>
+        </div>
+      </article>
+      <article class="machine-card">
+        <div class="machine-art real-photo"><img src="https://www.harvsinternational.com/assets/img/articles/ai-forecasting.jpg" alt="Rack Compute Server machine" loading="lazy" referrerpolicy="no-referrer"></div>
+        <div class="machine-body">
+          <span class="machine-badge">DATA CENTER</span>
+          <h3>Rack Compute Server</h3>
+          <p>Configured HUT 10 PRO catalogue unit for AI, compute, storage, or infrastructure workloads.</p>
+          <div class="machine-meta">
+            <div><span>Machine price</span><b>UGX 7,500,000</b></div>
+            <div><span>Cycle</span><b>120 days</b></div>
+            <div><span>Est. daily money</span><b>UGX 90,000</b></div>
+            <div><span>Est. cycle money</span><b>UGX NaN</b></div>
+          </div>
+          <div class="machine-spec-line"><span>Core spec</span><b>Multi-GPU ready</b><span>Operation</span><b>24/7</b></div>
+          <div class="machine-price">
+            <div><small>DEMO CATALOGUE PRICE</small><strong>UGX 7,500,000</strong></div>
+            <button class="buy-machine" onclick="openBuy('Rack Compute Server','UGX 7,500,000','120 Days','UGX NaN cycle money')">Buy Machine →</button>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <div class="catalog-disclaimer"><strong>Important:</strong> These machine listings are currently a website catalogue. The displayed prices, cycle lengths, and money figures are demo estimates, not verified live offers or guaranteed returns. A real purchase flow should only be activated after HUT 10 PRO has confirmed the physical hardware, supplier, ownership terms, delivery/hosting arrangements, operating costs, and payment provider.</div>
+  </main>
+
+  <div class="buy-modal" id="buyModal" aria-hidden="true">
+    <div class="buy-card">
+      <button class="buy-close" onclick="closeBuy()" aria-label="Close">×</button>
+      <span class="panel-kicker">MACHINE PURCHASE</span>
+      <h2>Start machine purchase</h2>
+      <p id="buyText">Review the selected machine before creating a purchase request.</p>
+      <div class="buy-selected"><b id="selectedMachine">Machine</b><span id="selectedPrice">Price</span></div>
+      <p>This creates a purchase request only. Payment and delivery are not processed by this catalogue yet.</p>
+      <div class="buy-actions">
+        <button class="buy-cancel" onclick="closeBuy()">Cancel</button>
+        <button class="buy-machine" onclick="createMachineRequest()">Create Request →</button>
+      </div>
+    </div>
+  </div>
+
+<script>
+let selectedMachineName='',selectedMachinePrice='';
+function openBuy(name,price,days,total){
+  selectedMachineName=name;selectedMachinePrice=price;
+  document.getElementById('selectedMachine').textContent=name;
+  document.getElementById('selectedPrice').textContent=price+' • '+days+' • '+total;
+  document.getElementById('buyModal').classList.add('show');
+  document.getElementById('buyModal').setAttribute('aria-hidden','false');
+}
+function closeBuy(){
+  document.getElementById('buyModal').classList.remove('show');
+  document.getElementById('buyModal').setAttribute('aria-hidden','true');
+}
+function createMachineRequest(){
+  const items=JSON.parse(localStorage.getItem('hut10_machine_requests')||'[]');
+  items.push({machine:selectedMachineName,price:selectedMachinePrice,status:'request',created_at:new Date().toISOString()});
+  localStorage.setItem('hut10_machine_requests',JSON.stringify(items));
+  closeBuy();
+  alert('Machine request saved. The live payment and delivery flow will be connected after the machine payment system is activated.');
+}
+</script>
+</body>
+</html<div class="machine-meta">
+            <div><span>PRICE</span><b>UGX 1,500,000</b></div>
+            <div><span>DAYS</span><b>30 Days</b></div>
+            <div><span>DAILY MONEY</span><b>UGX 50,000</b></div>
+            <div><span>CYCLE MONEY</span><b>UGX NaN</b></div>
+          </div>
     <div class="ai-orbit orbit-a"></div><div class="ai-orbit orbit-b"></div><div class="ai-orbit orbit-c"></div>
     <div class="ai-light light-a"></div><div class="ai-light light-b"></div><div class="ai-light light-c"></div>
     <div class="ai-particle p1"></div><div class="ai-particle p2"></div><div class="ai-particle p3"></div><div class="ai-particle p4"></div><div class="ai-particle p5"></div><div class="ai-particle p6"></div>
@@ -113,7 +336,7 @@
     <section class="machine-grid">
       
       <article class="machine-card">
-        <div class="machine-art real-photo"><img src="https://aimg.as-1.co.jp/c/60/4169/98/60416998.jpg" alt="AI Compute Node machine" loading="lazy" referrerpolicy="no-referrer"></div></div>
+        <div class="machine-art real-photo"><img src="https://aimg.as-1.co.jp/c/60/4169/98/60416998.jpg" alt="AI Compute Node machine" loading="lazy" referrerpolicy="no-referrer"></div>
         <div class="machine-body">
           <span class="machine-badge">GPU COMPUTE</span>
           <h3>AI Compute Node</h3>
@@ -132,7 +355,7 @@
         </div>
       </article>
       <article class="machine-card">
-        <div class="machine-art real-photo"><img src="https://img.directindustry.it/images_di/photo-g/4657-20803628.jpg" alt="Edge AI Node machine" loading="lazy" referrerpolicy="no-referrer"></div></div>
+        <div class="machine-art real-photo"><img src="https://img.directindustry.it/images_di/photo-g/4657-20803628.jpg" alt="Edge AI Node machine" loading="lazy" referrerpolicy="no-referrer"></div>
         <div class="machine-body">
           <span class="machine-badge">EDGE COMPUTE</span>
           <h3>Edge AI Node</h3>
@@ -151,7 +374,7 @@
         </div>
       </article>
       <article class="machine-card">
-        <div class="machine-art real-photo"><img src="https://cdn.cs.1worldsync.com/20/1e/201ec962-f971-434a-864c-c04a3b804c82.jpg" alt="Storage Node machine" loading="lazy" referrerpolicy="no-referrer"></div></div>
+        <div class="machine-art real-photo"><img src="https://cdn.cs.1worldsync.com/20/1e/201ec962-f971-434a-864c-c04a3b804c82.jpg" alt="Storage Node machine" loading="lazy" referrerpolicy="no-referrer"></div>
         <div class="machine-body">
           <span class="machine-badge">DATA STORAGE</span>
           <h3>Storage Node</h3>
@@ -170,7 +393,7 @@
         </div>
       </article>
       <article class="machine-card">
-        <div class="machine-art real-photo"><img src="https://www.rackmountpro.com/images/products/SSE_G24_TG4_F1.jpg" alt="Network Accelerator machine" loading="lazy" referrerpolicy="no-referrer"></div></div>
+        <div class="machine-art real-photo"><img src="https://www.rackmountpro.com/images/products/SSE_G24_TG4_F1.jpg" alt="Network Accelerator machine" loading="lazy" referrerpolicy="no-referrer"></div>
         <div class="machine-body">
           <span class="machine-badge">NETWORK</span>
           <h3>Network Accelerator</h3>
@@ -189,7 +412,7 @@
         </div>
       </article>
       <article class="machine-card">
-        <div class="machine-art real-photo"><img src="https://infomaxparis.com/28945-medium_default/pc-creator-deeplearning-dual-rtx-5090-ryzen-9-powering-advanced-ai.jpg" alt="AI Workstation machine" loading="lazy" referrerpolicy="no-referrer"></div></div>
+        <div class="machine-art real-photo"><img src="https://infomaxparis.com/28945-medium_default/pc-creator-deeplearning-dual-rtx-5090-ryzen-9-powering-advanced-ai.jpg" alt="AI Workstation machine" loading="lazy" referrerpolicy="no-referrer"></div>
         <div class="machine-body">
           <span class="machine-badge">CREATOR</span>
           <h3>AI Workstation</h3>
@@ -208,7 +431,7 @@
         </div>
       </article>
       <article class="machine-card">
-        <div class="machine-art real-photo"><img src="https://www.harvsinternational.com/assets/img/articles/ai-forecasting.jpg" alt="Rack Compute Server machine" loading="lazy" referrerpolicy="no-referrer"></div></div>
+        <div class="machine-art real-photo"><img src="https://www.harvsinternational.com/assets/img/articles/ai-forecasting.jpg" alt="Rack Compute Server machine" loading="lazy" referrerpolicy="no-referrer"></div>
         <div class="machine-body">
           <span class="machine-badge">DATA CENTER</span>
           <h3>Rack Compute Server</h3>
