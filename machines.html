@@ -245,6 +245,17 @@ body{background:radial-gradient(circle at 50% -10%,rgba(22,140,255,.20),transpar
 .machine-modal{background:rgba(1,5,10,.84)!important}.machine-modal-card{border-color:rgba(22,140,255,.24)!important;background:linear-gradient(145deg,#071827,#03080e)!important}.machine-modal-close,.modal-cancel{background:#07111d!important;border-color:rgba(85,184,255,.14)!important;color:#cdeaff!important}
 .machine-back,.machine-investments{background:#07111d!important;border-color:rgba(85,184,255,.14)!important;color:#dff3ff!important}
 </style>
+
+<style id="hut10-vertical-machines">
+/* ===== VERTICAL MACHINE LIST ===== */
+.machine-list{display:flex!important;flex-direction:column!important;align-items:stretch!important;gap:16px!important;width:100%!important}
+.machine-card{display:grid!important;grid-template-columns:240px minmax(0,1fr)!important;width:100%!important;min-height:245px!important}
+.machine-photo{min-height:245px!important}
+.machine-body{min-width:0!important}
+.machine-stats{grid-template-columns:repeat(4,minmax(0,1fr))!important}
+@media(max-width:820px){.machine-card{grid-template-columns:200px minmax(0,1fr)!important}.machine-stats{grid-template-columns:repeat(2,minmax(0,1fr))!important}}
+@media(max-width:620px){.machine-list{gap:14px!important}.machine-card{grid-template-columns:1fr!important}.machine-photo{min-height:190px!important}.machine-stats{grid-template-columns:1fr 1fr!important}}
+</style>
 </head>
 
 <body>
