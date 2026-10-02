@@ -1070,3 +1070,100 @@ input:focus,select:focus,textarea:focus{
   box-shadow:inset 0 0 0 1px rgba(22,140,255,.14)!important;
 }
 ::selection{background:rgba(22,140,255,.42)!important;color:#fff!important}
+
+
+/* ===== FINAL HUT 9-STYLE SITE OVERRIDE ===== */
+:root{
+  --hut9-orange:#ff8a00!important;
+  --hut9-gold:#ffb52e!important;
+  --hut9-gold-soft:#ffd27a!important;
+  --hut9-bg:#090a0d!important;
+  --hut9-panel:#111318!important;
+  --hut9-line:rgba(255,255,255,.075)!important;
+}
+html,body{
+  background:
+    radial-gradient(circle at 50% -10%,rgba(255,138,0,.13),transparent 34%),
+    radial-gradient(circle at 8% 85%,rgba(255,176,32,.055),transparent 28%),
+    #090a0d!important;
+  color:#f4f5f7!important;
+}
+body *{--accent:#ff8a00!important}
+body:before{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;
+  background:radial-gradient(circle at 50% 20%,rgba(255,138,0,.035),transparent 45%);
+}
+.ai-atmosphere{opacity:.18!important;filter:saturate(.65) sepia(.18)!important}
+.video-horizon{background:radial-gradient(ellipse at center,rgba(255,138,0,.12),transparent 60%)!important}
+.ai-grid{opacity:.16!important}
+a,.link-btn,.panel-kicker,.page-heading .eyebrow,.eyebrow,.st-back,.hub-back,.tx-back,.money-back,
+.page-heading h1 span,.nav-link.active span{color:#ffb52e!important}
+h1,h2,h3,h4,strong,b{color:#f5f6f8!important}
+button.primary-btn,button.btn-primary,.primary-btn,.btn-primary,.buy-btn,.money-btn,.buy-machine,
+.delete-confirm-btn,.mini-action{
+  background:linear-gradient(135deg,#ff7900,#ffb21c)!important;
+  color:#170d02!important;
+  border-color:rgba(255,190,70,.35)!important;
+  box-shadow:0 12px 30px rgba(255,122,0,.18)!important;
+}
+button.secondary-btn,.secondary-btn,.ghost-btn,.icon-btn,.profile-chip,
+.machine-back,.machine-investments,.modal-cancel{
+  color:#e7e9ed!important;
+  border-color:rgba(255,255,255,.09)!important;
+  background:#111318!important;
+}
+.nav-link:hover,.nav-link.active{
+  color:#fff!important;
+  background:linear-gradient(90deg,rgba(255,138,0,.14),rgba(255,138,0,.025))!important;
+  border-color:rgba(255,176,40,.22)!important;
+}
+.nav-link:before{background:#ff8a00!important}
+.brand-mark,.profile-chip span{
+  background:linear-gradient(135deg,#c85c00,#ff8a00,#ffc34d)!important;
+}
+.panel,.stat-card,.intro-card,.market-card,.money-card,.st-card,.tx-card,.tx-table,
+.info,.profile-card,.profile-stats,.profile-form,.machine-card,.investment-card{
+  background:#111318!important;
+  border-color:rgba(255,255,255,.075)!important;
+  box-shadow:0 14px 42px rgba(0,0,0,.20)!important;
+}
+.panel:hover,.stat-card:hover,.machine-card:hover,.investment-card:hover{
+  border-color:rgba(255,176,40,.28)!important;
+  box-shadow:0 20px 58px rgba(0,0,0,.34),0 0 25px rgba(255,138,0,.045)!important;
+}
+.stat-symbol,.quick-icon,.pulse-icon,.side-card-icon,.modal-symbol,.plan-icon,.action-icon,.option-icon{
+  color:#ffb52e!important;background:rgba(255,138,0,.09)!important;
+}
+input,select,textarea{
+  background:#0b0d11!important;color:#f1f3f5!important;
+  border-color:rgba(255,255,255,.09)!important;
+}
+input:focus,select:focus,textarea:focus{
+  border-color:rgba(255,176,40,.55)!important;
+  box-shadow:0 0 0 3px rgba(255,138,0,.08),0 0 20px rgba(255,138,0,.06)!important;
+}
+.badge,.status,.pill,.tag,.green-badge,.status-live,.live,.overall{
+  color:#ffb52e!important;border-color:rgba(255,176,40,.18)!important;
+  background:rgba(255,138,0,.06)!important;
+}
+.hero-card{
+  background:linear-gradient(145deg,#17120b,#0f1014 62%,#0b0d11)!important;
+  border-color:rgba(255,138,0,.24)!important;
+}
+.hero-glow{background:radial-gradient(circle,rgba(255,138,0,.16),transparent 65%)!important}
+.hero-orbit{border-color:rgba(255,176,40,.15)!important}
+.chart-line{stroke:#ff9a18!important;filter:drop-shadow(0 0 6px rgba(255,138,0,.5))!important}
+.stat-spark i{background:#ff9a18!important}
+.hut10-bottom-nav,.hut9-bottom-nav{
+  border-color:rgba(255,255,255,.09)!important;
+  background:rgba(14,16,21,.96)!important;
+  box-shadow:0 18px 55px rgba(0,0,0,.55)!important;
+}
+.hut10-bottom-nav a:hover,.hut10-bottom-nav a.active,.hut9-bottom-nav a:hover,.hut9-bottom-nav a.active{
+  color:#ffb52e!important;background:rgba(255,138,0,.08)!important;
+}
+.machine-card .buy-btn,.machine-card .buy-machine{background:linear-gradient(135deg,#ff7900,#ffb21c)!important}
+.machine-photo{
+  background:radial-gradient(circle at 50% 42%,rgba(255,215,100,.28),transparent 48%),linear-gradient(145deg,#261704,#6f4708 48%,#171006)!important;
+}
+::selection{background:rgba(255,138,0,.38)!important;color:#fff!important}
