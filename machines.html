@@ -453,6 +453,133 @@ body{background:radial-gradient(circle at 50% -10%,rgba(22,140,255,.20),transpar
   .machine-body{padding:18px!important}
   .machine-stats span{flex-basis:130px!important}
 }
+</style><style id="hut10-hut9-store-layout">
+/* HUT 9-style compact machine store */
+.machine-list{
+  display:grid!important;
+  grid-template-columns:repeat(2,minmax(0,1fr))!important;
+  gap:18px!important;
+}
+.machine-card{
+  display:flex!important;
+  flex-direction:column!important;
+  min-height:0!important;
+  border-radius:16px!important;
+  overflow:hidden!important;
+  background:linear-gradient(180deg,#091725,#040b12)!important;
+  border:1px solid rgba(85,184,255,.16)!important;
+  box-shadow:0 15px 40px rgba(0,0,0,.30)!important;
+}
+.machine-card:hover{
+  transform:translateY(-3px)!important;
+  border-color:rgba(85,184,255,.38)!important;
+  box-shadow:0 20px 48px rgba(22,140,255,.14)!important;
+}
+.machine-photo{
+  width:100%!important;
+  min-height:210px!important;
+  height:210px!important;
+  padding:10px!important;
+  box-sizing:border-box!important;
+  background:linear-gradient(145deg,#03101d,#07508a 52%,#020911)!important;
+}
+.machine-photo img{
+  width:100%!important;
+  height:100%!important;
+  min-height:0!important;
+  object-fit:cover!important;
+  border-radius:12px!important;
+  border:1px solid rgba(85,184,255,.24)!important;
+}
+.machine-body{
+  padding:18px!important;
+  display:flex!important;
+  flex-direction:column!important;
+  justify-content:flex-start!important;
+}
+.machine-top{margin-bottom:2px!important}
+.machine-badge{
+  color:#55b8ff!important;
+  background:rgba(22,140,255,.10)!important;
+  border-color:rgba(85,184,255,.24)!important;
+}
+.machine-status{color:#55b8ff!important}
+.machine-body h3{
+  font-size:19px!important;
+  margin:8px 0 5px!important;
+  color:#edf8ff!important;
+}
+.machine-body>p{
+  margin:0 0 14px!important;
+  color:#91a8bd!important;
+  font-size:9px!important;
+  line-height:1.65!important;
+}
+.machine-stats{
+  display:flex!important;
+  flex-direction:column!important;
+  gap:7px!important;
+  width:100%!important;
+  margin:0 0 13px!important;
+}
+.machine-stats>div{
+  display:flex!important;
+  align-items:center!important;
+  justify-content:space-between!important;
+  width:100%!important;
+  min-height:46px!important;
+  padding:10px 12px!important;
+  box-sizing:border-box!important;
+  border-radius:9px!important;
+  border:1px solid rgba(85,184,255,.14)!important;
+  background:rgba(22,140,255,.055)!important;
+}
+.machine-stats span{
+  flex:0 0 auto!important;
+  color:#55b8ff!important;
+  font-size:9px!important;
+  font-weight:900!important;
+  letter-spacing:.6px!important;
+}
+.machine-stats b{
+  color:#55b8ff!important;
+  font-size:14px!important;
+  font-weight:900!important;
+  text-align:right!important;
+  margin:0!important;
+}
+.machine-detail-row{
+  margin:0 0 12px!important;
+  padding:9px 0!important;
+}
+.machine-footer{
+  margin-top:auto!important;
+  padding-top:4px!important;
+  display:flex!important;
+  flex-direction:column!important;
+  gap:10px!important;
+}
+.machine-footer>div{
+  display:flex!important;
+  justify-content:space-between!important;
+  align-items:center!important;
+  gap:8px!important;
+}
+.machine-footer small{font-size:7px!important;color:#7590a5!important}
+.machine-footer strong{font-size:10px!important;color:#55b8ff!important}
+.buy-machine{
+  width:100%!important;
+  border-radius:9px!important;
+  padding:12px 14px!important;
+  background:linear-gradient(135deg,#0756b8,#168cff,#55b8ff)!important;
+  color:#fff!important;
+  font-weight:900!important;
+  box-shadow:0 10px 22px rgba(22,140,255,.20)!important;
+}
+@media(max-width:760px){
+  .machine-list{grid-template-columns:1fr!important}
+  .machine-photo{height:220px!important;min-height:220px!important}
+}
 </style></head>
 
 <body>
